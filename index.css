@@ -1,0 +1,562 @@
+:root{
+  --bg:#ffffff;
+  --panel:#ffffff;
+  --text:#0b0b0b;
+  --muted:rgba(0,0,0,.65);
+  --line:rgba(0,0,0,.12);
+  --shadow:0 18px 50px rgba(0,0,0,.12);
+  --radius:18px;
+  --max:1120px;
+
+  /* card overlay */
+  --overlay-strong:rgba(0,0,0,.72);
+  --overlay-mid:rgba(0,0,0,.52);
+  --overlay-light:rgba(0,0,0,.28);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  color:var(--text);
+  background:#fff;
+}
+a{ color:inherit; text-decoration:none; }
+.container{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+
+/* ===== Topbar ===== */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.75);
+  border-bottom:1px solid var(--line);
+}
+.topbar__inner{
+  display:flex; align-items:center; justify-content:space-between;
+  height:72px;
+}
+.brand{ display:flex; gap:10px; align-items:center; font-weight:900; letter-spacing:.2px; }
+.brand__mark{
+  width:40px; height:40px; border-radius:12px;
+  display:grid; place-items:center;
+  background:rgba(0,0,0,.06);
+  border:1px solid var(--line);
+}
+.brand__text{ font-size:18px; }
+
+.nav{ display:flex; align-items:center; gap:14px; position:relative; }
+.nav__menu{ display:flex; align-items:center; gap:14px; }
+.nav__menu a{
+  font-size:14px;
+  color:rgba(0,0,0,.72);
+  padding:10px 12px;
+  border-radius:999px;
+  transition:.15s ease;
+}
+.nav__menu a:hover{
+  color:rgba(0,0,0,.95);
+  background:rgba(0,0,0,.06);
+}
+.nav__cta{
+  background:rgba(0,0,0,.06);
+  border:1px solid var(--line);
+  color:rgba(0,0,0,.95) !important;
+}
+.nav__toggle{
+  display:none;
+  width:44px; height:44px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.04);
+  cursor:pointer;
+}
+.nav__toggle span{
+  display:block; height:2px; width:18px; margin:4px auto;
+  background:rgba(0,0,0,.85);
+}
+
+/* ===== Hero ===== */
+.hero{ position:relative; padding:62px 0 30px; overflow:hidden; }
+.hero__inner{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
+  align-items:stretch;
+}
+.hero__copy{
+  padding:28px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.eyebrow{
+  margin:0 0 10px;
+  color:rgba(0,0,0,.55);
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:12px;
+}
+.hero h1{
+  margin:0 0 12px;
+  font-size:clamp(30px, 3.3vw, 46px);
+  line-height:1.08;
+}
+.subhead{
+  margin:0 0 20px;
+  color:rgba(0,0,0,.65);
+  line-height:1.6;
+  font-size:15px;
+}
+.hero__actions{ display:flex; gap:12px; flex-wrap:wrap; }
+.hero__stats{ display:grid; gap:12px; }
+.stat{
+  padding:18px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.stat__num{ font-size:22px; font-weight:900; }
+.stat__label{ color:rgba(0,0,0,.62); margin-top:6px; font-size:13px; }
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.04);
+  color:rgba(0,0,0,.92);
+  font-weight:750;
+  font-size:14px;
+  cursor:pointer;
+  transition:.15s ease;
+}
+.btn:hover{ transform:translateY(-1px); background:rgba(0,0,0,.06); }
+.btn--primary{
+  background:rgba(0,0,0,.92);
+  color:#fff;
+  border-color:rgba(0,0,0,.92);
+}
+.btn--primary:hover{ background:rgba(0,0,0,.85); }
+.btn--ghost{ background:rgba(0,0,0,.03); }
+
+/* ===== Sections ===== */
+.section{ padding:56px 0; }
+.section--alt{
+  background:rgba(0,0,0,.02);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.section__head h2{ margin:0 0 8px; font-size:28px; }
+.section__head p{ margin:0 0 22px; color:var(--muted); line-height:1.6; }
+
+/* ===== Services Grid ===== */
+.grid{ display:grid; grid-template-columns:repeat(12, 1fr); gap:14px; }
+.card{
+  position:relative;
+  min-height:200px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.10);
+  box-shadow:0 18px 50px rgba(0,0,0,.18);
+  display:flex;
+  grid-column:span 6;
+  transform:translateZ(0);
+}
+.card:nth-child(3){ grid-column:span 4; }
+.card:nth-child(4){ grid-column:span 4; }
+.card:nth-child(5){ grid-column:span 4; }
+
+.card::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:var(--bgimg);
+  background-size:cover;
+  background-position:center;
+  transform:scale(1.06);
+  filter:contrast(1.08) brightness(.92) saturate(1.18);
+}
+.card__overlay{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(90deg, var(--overlay-strong) 0%, var(--overlay-mid) 55%, var(--overlay-light) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.55) 100%);
+  backdrop-filter:blur(1px);
+}
+.card__content{
+  position:relative;
+  padding:18px;
+  margin-top:auto;
+  text-shadow:0 2px 16px rgba(0,0,0,.7);
+}
+.card h3{ margin:0 0 6px; font-size:18px; color:#fff; }
+.card p{ margin:0 0 10px; color:rgba(255,255,255,.88); font-size:13px; line-height:1.45; }
+.card__link{ font-size:13px; color:rgba(255,255,255,.92); opacity:.92; }
+.card:hover{ outline:2px solid rgba(0,0,0,.20); }
+
+/* ===== About panels ===== */
+.twoCol{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.panel{
+  padding:20px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.panel h3{ margin:0 0 10px; }
+.panel p{ margin:0 0 12px; color:var(--muted); line-height:1.7; font-size:14px; }
+.list{ margin:0; padding-left:18px; color:rgba(0,0,0,.84); }
+.list li{ margin:8px 0; line-height:1.5; }
+.pillRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+.pill{
+  font-size:13px;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.04);
+  color:rgba(0,0,0,.82);
+}
+.note{
+  margin-top:14px;
+  padding:14px;
+  border-radius:14px;
+  border:1px dashed rgba(0,0,0,.18);
+  color:rgba(0,0,0,.78);
+  background:rgba(0,0,0,.02);
+  line-height:1.55;
+  font-size:14px;
+}
+
+/* ===== Detail Slider container ===== */
+.detailSlider{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.sliderTrack{
+  display:flex;
+  width:100%;
+  transition:transform .55s ease;
+}
+.slide{ flex:0 0 100%; }
+
+/* Slider arrows */
+.sliderBtn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:20;
+  width:46px; height:46px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  font-size:28px;
+  line-height:1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+}
+.sliderBtn:hover{ background:rgba(0,0,0,.45); }
+.sliderBtn--left{ left:18px; }
+.sliderBtn--right{ right:18px; }
+
+/* Slider dots */
+.sliderDots{
+  position:absolute;
+  left:0; right:0;
+  bottom:18px;
+  z-index:25;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+}
+.sliderDot{
+  width:10px; height:10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.55);
+  background:rgba(255,255,255,.22);
+  cursor:pointer;
+}
+.sliderDot.is-active{
+  background:rgba(255,255,255,.90);
+  border-color:rgba(255,255,255,.90);
+}
+
+/* =====================================================
+   DETAIL FINAL (FIXED): Z-INDEX зөв + CARD шиг тод текст
+   ===================================================== */
+.detail{
+  position:relative;
+  min-height:72vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:90px 0;
+  overflow:hidden;
+
+  /* overlay/text давхаргыг тусгаарлаж өгнө */
+  isolation:isolate;
+}
+
+/* background хамгийн доор */
+.detail::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+
+  background-image:var(--detailbg);
+  background-size:cover;
+  background-position:center;
+
+  transform-origin:center;
+  will-change:transform;
+
+  /* зураг кино шиг боловч хэт бараан биш */
+  filter: brightness(.92) contrast(1.12) saturate(1.18);
+}
+
+/* overlay зураг дээр, гэхдээ текстний доор */
+.detail::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+
+  /* card шиг gradient overlay */
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.62) 55%, rgba(0,0,0,.42) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.72) 100%);
+}
+
+/* текст overlay-ийн ДЭЭР */
+.detail .detail__inner{
+  position:relative;
+  z-index:2;
+  padding:0 18px;
+  max-width:980px;
+}
+
+/* Text rendering */
+.detail{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.detail, .detail *{ color:#fff; }
+
+/* Гарчиг (card шиг) */
+.detail h2{
+  margin:0 0 12px;
+  font-size:clamp(44px, 5.5vw, 82px);
+  font-weight:900;
+  letter-spacing:-0.03em;
+  text-shadow:
+    0 2px 0 rgba(0,0,0,1),
+    0 18px 60px rgba(0,0,0,1);
+}
+
+/* Тайлбар */
+.detail p{
+  margin:0 auto 18px;
+  max-width:780px;
+  font-size:18px;
+  font-weight:650;
+  line-height:1.7;
+  color:rgba(255,255,255,.96);
+  text-shadow:
+    0 1px 0 rgba(0,0,0,1),
+    0 14px 44px rgba(0,0,0,1);
+}
+
+/* Bullet list */
+.detail__bullets{
+  list-style:none;
+  padding:0;
+  margin:18px auto 0;
+  max-width:760px;
+  display:grid;
+  gap:10px;
+}
+.detail__bullets li{
+  padding:14px 16px;
+  border-radius:16px;
+  background:rgba(0,0,0,.48);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
+  font-weight:650;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,1),
+    0 12px 36px rgba(0,0,0,1);
+}
+
+/* ===== Cinematic text in ===== */
+.slide .detail__inner > *{ opacity:1; } /* алга болгохгүй */
+
+.slide.is-active .detail__inner h2{
+  animation:textIn .7s cubic-bezier(.2,.9,.2,1) both .05s;
+}
+.slide.is-active .detail__inner p{
+  animation:textIn .7s cubic-bezier(.2,.9,.2,1) both .16s;
+}
+.slide.is-active .detail__inner .detail__bullets{
+  animation:textIn .7s cubic-bezier(.2,.9,.2,1) both .28s;
+}
+
+/* Bullet нэг нэгээр */
+.slide.is-active .detail__inner .detail__bullets li{
+  opacity:0;
+  transform:translateY(14px);
+  filter:blur(6px);
+  animation:textIn .6s cubic-bezier(.2,.9,.2,1) forwards;
+}
+.slide.is-active .detail__inner .detail__bullets li:nth-child(1){ animation-delay:.34s; }
+.slide.is-active .detail__inner .detail__bullets li:nth-child(2){ animation-delay:.42s; }
+.slide.is-active .detail__inner .detail__bullets li:nth-child(3){ animation-delay:.50s; }
+.slide.is-active .detail__inner .detail__bullets li:nth-child(4){ animation-delay:.58s; }
+.slide.is-active .detail__inner .detail__bullets li:nth-child(5){ animation-delay:.66s; }
+
+@keyframes textIn{
+  from{ opacity:0; transform:translateY(18px); filter:blur(6px); }
+  to{ opacity:1; transform:translateY(0); filter:blur(0); }
+}
+
+/* ===== Ken Burns background ===== */
+.slide.is-active.detail::before{
+  animation:kenBurns 10s ease-in-out both;
+}
+.slide.kb-restart.detail::before{ animation:none; }
+.slide.is-active.kb-restart.detail::before{
+  animation:kenBurns 10s ease-in-out both;
+}
+@keyframes kenBurns{
+  0%   { transform:scale(1.06) translate(0,0); }
+  50%  { transform:scale(1.12) translate(-1.5%, -1%); }
+  100% { transform:scale(1.15) translate(1.5%, 1%); }
+}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active.detail::before,
+  .slide.is-active.kb-restart.detail::before{ animation:none !important; }
+}
+
+/* ===== Contact form ===== */
+.form{
+  padding:18px;
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.92);
+  box-shadow:var(--shadow);
+}
+.form label{
+  display:block;
+  font-size:13px;
+  color:rgba(0,0,0,.85);
+  margin-bottom:12px;
+}
+.form input, .form select, .form textarea{
+  width:100%;
+  margin-top:6px;
+  padding:12px 12px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.14);
+  background:rgba(255,255,255,.95);
+  color:rgba(0,0,0,.92);
+  outline:none;
+}
+.form input:focus, .form select:focus, .form textarea:focus{
+  border-color:rgba(0,0,0,.35);
+}
+.form__row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.form__actions{
+  margin-top:8px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.form__hint{ margin:0; color:rgba(0,0,0,.62); font-size:13px; }
+
+/* ===== Footer ===== */
+.footer{
+  padding:26px 0;
+  border-top:1px solid var(--line);
+  color:rgba(0,0,0,.62);
+}
+.footer__inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  .hero__inner{ grid-template-columns:1fr; }
+  .twoCol{ grid-template-columns:1fr; }
+  .card{ grid-column:span 12 !important; }
+  .form__row{ grid-template-columns:1fr; }
+  .nav__toggle{ display:inline-block; }
+  .nav__menu{
+    position:absolute;
+    top:72px; right:20px;
+    width:min(320px, calc(100vw - 40px));
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    padding:10px;
+    border-radius:16px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.96);
+    box-shadow:var(--shadow);
+  }
+   .sliderBtn {
+    visibility: hidden; /* Сумыг харагдахгүй болгох */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(0,0,0,.35);
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+  }
+
+  /* Хажуу талаас дархад шилжих */
+  .sliderBtn--left {
+    left: 10px;
+  }
+
+  .sliderBtn--right {
+    right: 10px;
+  }
+
+  /* Утасны дэлгэц дээр сумдыг харагдуулж, дарахад шилжих боломжтой болгох */
+  .sliderBtn:hover {
+    visibility: visible;
+    cursor: pointer;
+  }
+  .nav__menu a{ padding:12px 14px; }
+  .nav__menu.is-open{ display:flex; }
+}
+
+@media (max-width: 700px){
+  .sliderBtn{ width:42px; height:42px; font-size:26px; }
+  .sliderBtn--left{ left:10px; }
+  .sliderBtn--right{ right:10px; }
+}

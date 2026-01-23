@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TB Plan</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <!-- Дээд цэс -->
+  <header class="topbar" id="top">
+    <div class="container topbar__inner">
+      <a class="brand" href="#top" aria-label="TB Plan Нүүр">
+        <span class="brand__mark">TB</span>
+        <span class="brand__text">Plan</span>
+      </a>
+
+      <nav class="nav" aria-label="Үндсэн цэс">
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav__menu" id="navMenu">
+          <a href="#about">Бидний тухай</a>
+          <a href="#services">Чиглэлүүд</a>
+          <a href="#details">Дэлгэрэнгүй</a>
+          <a class="nav__cta" href="#contact">Холбоо барих</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Нүүр хэсэг -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">TB Plan</p>
+        <h1>Дижитал, дизайн, медиа, виз, материал — нэг баг, нэг төлөвлөгөө.</h1>
+        <p class="subhead">
+          Бид таны төслийг эхнээс нь дуустал нь хөтөлнө: вэб сайт хөгжүүлэлт,
+          интерьер төлөвлөлт, фото/видео үйлдвэрлэл, визийн материал бүрдүүлэлт,
+          мөн барилгын материалын нийлүүлэлт.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#services">Үндсэн чиглэлүүд</a>
+          <a class="btn btn--ghost" href="#details">Дэлгэрэнгүй (Slider)</a>
+        </div>
+      </div>
+
+      <div class="hero__stats">
+        <div class="stat">
+          <div class="stat__num">5</div>
+          <div class="stat__label">Үндсэн чиглэл</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">Нэгдсэн</div>
+          <div class="stat__label">Төлөвлөлт → Гүйцэтгэл</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">TB Plan</div>
+          <div class="stat__label">Нэг цэгийн үйлчилгээ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Үндсэн чиглэлүүд -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__head">
+        <h2>Үндсэн чиглэлүүд</h2>
+        <p>Карт дээр дарвал доорх slider дээр тухайн чиглэл рүү автоматаар очно.</p>
+      </div>
+
+      <div class="grid" id="serviceGrid">
+        <a class="card" href="#web"
+           data-img="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=80">
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <h3>Вэб хөгжүүлэлт</h3>
+            <p>Орчин үеийн вэб сайт, лендинг, систем, админ самбар.</p>
+            <span class="card__link">Дэлгэрэнгүй →</span>
+          </div>
+        </a>
+
+        <a class="card" href="#interior"
+           data-img="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2200&q=80">
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <h3>Интерьер дизайн</h3>
+            <p>Төлөвлөлт, концепт, 3D зураглал, материалын шийдэл.</p>
+            <span class="card__link">Дэлгэрэнгүй →</span>
+          </div>
+        </a>
+
+        <a class="card" href="#media"
+           data-img="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=2200&q=80">
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <h3>Медиа продакшн</h3>
+            <p>Фото/видео, рийл, эвлүүлэг, брэнд визуал контент.</p>
+            <span class="card__link">Дэлгэрэнгүй →</span>
+          </div>
+        </a>
+
+        <a class="card" href="#visa"
+           data-img="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=2200&q=80">
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <h3>Виз зөвлөгөө</h3>
+            <p>Материал шалгалт, маягт, зөвлөгөө, бэлтгэл.</p>
+            <span class="card__link">Дэлгэрэнгүй →</span>
+          </div>
+        </a>
+
+        <a class="card" href="#materials"
+           data-img="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2200&q=80">
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <h3>Барилгын материал</h3>
+            <p>Нийлүүлэлт, ханган нийлүүлэлт, хүргэлт.</p>
+            <span class="card__link" id="materials-detail">Дэлгэрэнгүй →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Байгууллагын үйл ажиллагаа -->
+  <section class="section section--alt" id="about">
+    <div class="container">
+      <div class="section__head">
+        <h2>TB Plan — Бидний тухай</h2>
+        <p>Манай байгууллагын үйл ажиллагааны товч танилцуулга</p>
+      </div>
+
+      <div class="twoCol">
+        <div class="panel">
+          <h3>Бид юу хийдэг вэ?</h3>
+          <p>
+            TB Plan нь олон чиглэлийн нэгдсэн үйлчилгээ үзүүлдэг байгууллага.
+            Бид төслийг зөв төлөвлөөд, хурдан хэрэгжүүлж, хэмжигдэхүйц үр дүн гаргахад төвлөрдөг.
+          </p>
+          <ul class="list">
+            <li>Вэб сайт болон вэб систем хөгжүүлэлт</li>
+            <li>Интерьер төлөвлөлт, концепт болон 3D зураглал</li>
+            <li>Фото/видео үйлдвэрлэл, контент бүтээлт</li>
+            <li>Визийн материал бүрдүүлэлт, зөвлөгөө, шалгалт</li>
+            <li>Барилгын материалын ханган нийлүүлэлт, зохион байгуулалт</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Бид хэрхэн ажилладаг вэ?</h3>
+          <p>
+            Эхлээд хэрэгцээг тодорхойлж, дараа нь төлөвлөгөө + хугацаа + үнэ санал болгоно.
+            Явцын тайлан, загвар/драфт, засваруудыг тодорхой стандарттайгаар хүргүүлдэг.
+          </p>
+
+          <div class="pillRow">
+            <span class="pill">Судалгаа</span>
+            <span class="pill">Төлөвлөлт</span>
+            <span class="pill">Дизайн</span>
+            <span class="pill">Үйлдвэрлэл</span>
+            <span class="pill">Хүргэлт</span>
+          </div>
+
+          <div class="note">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Дэлгэрэнгүй (Slider) -->
+  <section class="detailSlider" id="details" aria-label="Дэлгэрэнгүй слайдер">
+    <button class="sliderBtn sliderBtn--left" id="prevSlide" aria-label="Өмнөх слайд">‹</button>
+    <button class="sliderBtn sliderBtn--right" id="nextSlide" aria-label="Дараах слайд">›</button>
+
+    <div class="sliderTrack" id="sliderTrack">
+      <!-- SLIDE 1 -->
+      <section class="detail slide is-active" id="web"
+        data-bg="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=80">
+        <div class="container detail__inner">
+          <h2>Вэб хөгжүүлэлт</h2>
+          <p>Орчин үеийн, хурдан, найдвартай вэб шийдлүүдийг бизнесийн хэрэгцээнд нийцүүлэн хөгжүүлж байна.</p>
+          <ul class="detail__bullets">
+            <li>Бизнесийн вэб сайт + гишүүнчлэл</li>
+            <li>Админ самбар / CRM / захиалгын систем</li>
+            <li>SEO суурь + хурдны оновчлол</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 2 -->
+      <section class="detail slide" id="interior"
+        data-bg="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2400&q=80">
+        <div class="container detail__inner">
+          <h2>Интерьер дизайн</h2>
+          <p>Орон зайн төлөвлөлтөөс эхлээд концепт, материал, гэрэлтүүлэг, 3D зураглал хүртэл цогц шийдэл.</p>
+          <ul class="detail__bullets">
+            <li>Концепт + layout төлөвлөлт</li>
+            <li>Материал + гэрэлтүүлгийн санал</li>
+            <li>3D зураглал, засвар өөрчлөлт</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 -->
+      <section class="detail slide" id="media"
+        data-bg="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=2400&q=80">
+        <div class="container detail__inner">
+          <h2>Медиа продакшн</h2>
+          <p>Брэндийн фото/видео, бүтээгдэхүүний зураг авалт, рийл, эвлүүлэг, өнгө засвар, форматын хүргэлт.</p>
+          <ul class="detail__bullets">
+            <li>Рийл / реклам / бүтээгдэхүүний контент</li>
+            <li>Эвлүүлэг + өнгө засвар + motion</li>
+            <li>IG/TikTok/YouTube формат</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 -->
+      <section class="detail slide" id="visa"
+        data-bg="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=2400&q=80">
+        <div class="container detail__inner">
+          <h2>Виз зөвлөгөө</h2>
+          <p>Олон улсын визний үйл явцыг хялбаршуулж, материал бүрдүүлэлт, шалгалт, маягт бөглөлтөд найдвартай тусална.</p>
+          <ul class="detail__bullets">
+            <li>Материалын checklist + шалгалт</li>
+            <li>Маягт бөглөлтийн заавар</li>
+            <li>Ярилцлагын бэлтгэл</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 -->
+      <section class="detail slide" id="materials"
+        data-bg="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2400&q=80">
+        <div class="container detail__inner">
+          <h2>Барилгын материал</h2>
+          <p>Барилга, засварын материалын ханган нийлүүлэлт, сонголтын зөвлөгөө, хүргэлтийн зохион байгуулалт.</p>
+          <ul class="detail__bullets">
+            <li>Материалын эх үүсвэр, сонголт</li>
+            <li>Хүргэлт, зохицуулалт</li>
+            <li>Багцаар/тогтмол нийлүүлэлт</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <div class="sliderDots" id="sliderDots" aria-label="Слайдын цэгүүд"></div>
+  </section>
+
+  <!-- Холбоо барих -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section__head">
+        <h2>Холбоо барих</h2>
+        <p>Та юу хийх гэж байгаагаа бичээрэй — бид төлөвлөгөөтэйгөөр хариулна.</p>
+      </div>
+
+      <form class="form" id="contactForm">
+        <div class="form__row">
+          <label>
+            Нэр
+            <input type="text" name="name" placeholder="Таны нэр" required />
+          </label>
+          <label>
+            И-мэйл / Утас
+            <input type="text" name="contact" placeholder="you@email.com эсвэл +976..." required />
+          </label>
+        </div>
+
+        <label>
+          Сонирхож буй үйлчилгээ
+          <select name="service">
+            <option>Вэб хөгжүүлэлт</option>
+            <option>Интерьер дизайн</option>
+            <option>Медиа продакшн</option>
+            <option>Виз зөвлөгөө</option>
+            <option>Барилгын материал</option>
+          </select>
+        </label>
+
+        <label>
+          Мессеж
+          <textarea name="message" rows="5" placeholder="Ямар үйлчилгээ хэрэгтэйгээ товч тайлбарлаарай..." required></textarea>
+        </label>
+
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Илгээх</button>
+          <p class="form__hint" id="formHint" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> TB Plan. Бүх эрх хуулиар хамгаалагдсан.</p>
+      <a href="#top">Дээш очих ↑</a>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
