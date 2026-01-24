@@ -238,3 +238,23 @@ document.querySelectorAll(".sliderBtn").forEach((button) => {
     goTo(index + direction); // Индекс рүү нэмэх буюу хасах
   });
 });
+// ===== WEB DETAIL BULLET CLICK → web.html =====
+document
+  .querySelectorAll('#web .detail__bullets li')
+  .forEach((li) => {
+    li.style.cursor = "pointer"; // гар заагч
+    li.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation(); // slider-ийн click-ийг зогсооно
+      window.location.href = "web.html";
+    });
+  });
+  document.querySelectorAll("#interior .detail__bullets li").forEach((li) => {
+    li.style.cursor = "pointer"; // гар заагч
+    li.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation(); // slider-ийн click-ийг зогсооно
+      window.location.href = "design.html";
+    });
+  });
+

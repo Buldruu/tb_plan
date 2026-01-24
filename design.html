@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TB Plan | Интерьер • Тавилга • Гүйцэтгэл</title>
+
+  <style>
+    :root{
+      /* OTTO-like: warm light base */
+      --bg:#f3efe8;
+      --paper:#f7f3ec;
+      --paper2:#ffffff;
+      --ink:#141414;
+      --muted: rgba(20,20,20,.68);
+      --line: rgba(20,20,20,.14);
+      --shadow: 0 24px 70px rgba(0,0,0,.18);
+      --radius: 18px;
+      --max: 1120px;
+
+      --accent:#b07c3a;
+      --accent2:#d7b56d;
+
+      --serif: ui-serif, "Georgia", "Times New Roman", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --framePad: 26px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(900px 520px at 12% -10%, rgba(176,124,58,.16), transparent 55%),
+        radial-gradient(900px 520px at 96% 10%, rgba(215,181,109,.14), transparent 58%),
+        linear-gradient(180deg, rgba(0,0,0,.04), transparent 220px),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x:hidden;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
+
+    /* ===== Topbar (minimal, like OTTO) ===== */
+    .topbar{
+      position: sticky; top:0; z-index: 50;
+      background: rgba(243,239,232,.74);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar__inner{
+      height: 72px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+    }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight: 900; letter-spacing:.2px; }
+    .brand__mark{
+      width: 44px; height: 44px; border-radius: 14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(176,124,58,.18), rgba(215,181,109,.22));
+      border: 1px solid rgba(20,20,20,.14);
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+      font-family: var(--serif);
+      font-weight: 800;
+    }
+    .brand__text{ font-size: 15px; }
+    .nav{ display:flex; align-items:center; gap:8px; }
+    .nav a{
+      font-size: 13px;
+      color: rgba(20,20,20,.82);
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: .15s ease;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .nav a:hover{ background: rgba(0,0,0,.05); border-color: rgba(20,20,20,.12); }
+    .nav .cta{
+      border-color: rgba(176,124,58,.35);
+      background: rgba(176,124,58,.10);
+      color: rgba(20,20,20,.92);
+      font-weight: 800;
+    }
+
+    /* Mobile dots (keep) */
+    .mobileDots{ display:none; align-items:center; gap:10px; }
+    .dotLink{
+      width:10px;height:10px;border-radius:50%;
+      background: rgba(20,20,20,.20);
+      border:1px solid rgba(20,20,20,.14);
+      box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    }
+    .dotLink.is-active{
+      background: rgba(176,124,58,.55);
+      border-color: rgba(176,124,58,.55);
+    }
+
+    /* ===== HERO: big photo + floating frame (OTTO feel) ===== */
+    .hero{
+      padding: 34px 0 26px;
+      position: relative;
+    }
+    .stage{
+      position: relative;
+      border-radius: 26px;
+      overflow:hidden;
+      min-height: 520px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(20,20,20,.10);
+      background: #111;
+    }
+    .stage::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)),
+        url("images/hero.jpg") center/cover no-repeat;
+      transform: scale(1.02);
+      filter: contrast(1.02) saturate(1.02);
+    }
+    .stage::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(900px 420px at 25% 20%, rgba(215,181,109,.18), transparent 55%);
+      pointer-events:none;
+      mix-blend-mode: screen;
+      opacity:.6;
+    }
+
+    .frame{
+      position: relative;
+      width: min(980px, 100%);
+      margin: 0 auto;
+      padding: var(--framePad);
+    }
+    .heroCard{
+      position: relative;
+      border-radius: 22px;
+      background: rgba(247,243,236,.92);
+      border: 1px solid rgba(20,20,20,.14);
+      box-shadow: 0 24px 70px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .heroCard__inner{
+      padding: 22px 22px 18px;
+      display:grid;
+      gap: 12px;
+    }
+    .eyebrow{
+      margin:0;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: rgba(20,20,20,.70);
+    }
+    h1{
+      margin:0;
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase; /* OTTO vibe */
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 72ch;
+    }
+    .heroActions{ display:flex; gap:10px; flex-wrap:wrap; padding-top: 6px; }
+
+    .btn{
+      display:inline-flex;
+      align-items:center; justify-content:center;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(20,20,20,.14);
+      background: rgba(255,255,255,.55);
+      color: rgba(20,20,20,.92);
+      font-weight: 850;
+      font-size: 13px;
+      cursor:pointer;
+      transition: .15s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.80); }
+    .btn--primary{
+      border-color: rgba(176,124,58,.35);
+      background: linear-gradient(135deg, rgba(176,124,58,.16), rgba(215,181,109,.20));
+    }
+
+    .miniRow{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 0 22px 18px;
+    }
+    .mini{
+      border-radius: 16px;
+      border: 1px solid rgba(20,20,20,.12);
+      background: rgba(255,255,255,.55);
+      padding: 14px;
+    }
+    .mini strong{ display:block; font-size: 13px; letter-spacing:.2px; }
+    .mini span{ display:block; margin-top: 6px; color: var(--muted); font-size: 12.5px; }
+
+    /* ===== Sections ===== */
+    .section{ padding: 26px 0 54px; }
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin: 12px 0 14px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-family: var(--serif);
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    .sectionHead p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 74ch;
+    }
+    .chips{ display:flex; gap:10px; flex-wrap:wrap; }
+    .chip{
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(20,20,20,.12);
+      background: rgba(255,255,255,.55);
+      color: rgba(20,20,20,.78);
+    }
+
+    .sectionMeta{ display:flex; gap:10px; flex-wrap: wrap; margin: 10px 0 14px; }
+    .metaPill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px dashed rgba(176,124,58,.40);
+      background: rgba(176,124,58,.08);
+      color: rgba(20,20,20,.86);
+      font-size: 12px;
+    }
+    .metaPill b{ color: rgba(20,20,20,.92); }
+    .metaDot{
+      width:7px;height:7px;border-radius:50%;
+      background: rgba(176,124,58,.75);
+      box-shadow: 0 8px 18px rgba(176,124,58,.18);
+    }
+
+    /* ===== Gallery (lighter, clean grid) ===== */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      padding: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(20,20,20,.12);
+      background: rgba(247,243,236,.70);
+      box-shadow: 0 18px 60px rgba(0,0,0,.08);
+    }
+    .shot{
+      grid-column: span 4;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(20,20,20,.14);
+      background: rgba(255,255,255,.55);
+      box-shadow: 0 18px 50px rgba(0,0,0,.10);
+      position: relative;
+      cursor: zoom-in;
+      min-height: 220px;
+    }
+    .shot.big{ grid-column: span 8; min-height: 300px; }
+    .shot.tall{ grid-column: span 4; min-height: 360px; }
+
+    .shot img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+      transition: transform .35s ease, filter .35s ease;
+      filter: contrast(1.03) saturate(1.02);
+    }
+    .shot:hover img{ transform: scale(1.06); filter: contrast(1.06) saturate(1.05); }
+
+    .shot::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 100%);
+      pointer-events:none;
+      opacity:.85;
+    }
+
+    .shotCaption{
+      position:absolute;
+      left: 14px; right: 14px; bottom: 12px;
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 10px;
+      z-index: 2;
+      color: #fff;
+      text-shadow: 0 10px 30px rgba(0,0,0,.45);
+    }
+    .shotCaption .t{
+      font-family: var(--serif);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing:.2px;
+      text-transform: uppercase;
+    }
+    .shotCaption .k{
+      font-size: 12px;
+      color: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(0,0,0,.25);
+      padding: 6px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ===== Lightbox ===== */
+    .lb{
+      position: fixed; inset: 0; z-index: 999;
+      display:none; place-items: center;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(10px);
+      padding: 18px;
+    }
+    .lb.is-open{ display:grid; }
+    .lbInner{
+      width: min(1100px, 100%);
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(18,18,18,.92);
+      box-shadow: 0 30px 120px rgba(0,0,0,.55);
+    }
+    .lbImg{ width: 100%; max-height: 78vh; object-fit: contain; display:block; background: rgba(0,0,0,.35); }
+    .lbBar{
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+      padding: 12px 14px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.88);
+      font-size: 13px;
+    }
+    .lbBtns{ display:flex; gap: 8px; }
+    .iconBtn{
+      width: 40px; height: 40px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      cursor:pointer;
+      display:grid; place-items:center;
+      font-size: 18px;
+      transition: .15s ease;
+    }
+    .iconBtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.12); }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(20,20,20,.12);
+      padding: 22px 0;
+      color: rgba(20,20,20,.70);
+      font-size: 13px;
+    }
+    .footInner{ display:flex; align-items:center; justify-content:space-between; gap: 12px; flex-wrap: wrap; }
+
+    /* Mobile bottom bar */
+    .mobileBar{
+      display:none;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      padding: 10px 12px;
+      background: rgba(243,239,232,.78);
+      border-top: 1px solid rgba(20,20,20,.12);
+      backdrop-filter: blur(14px);
+    }
+    .mobileBar__inner{
+      width: min(var(--max), calc(100% - 18px));
+      margin: 0 auto;
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+    }
+    .mBtn{
+      display:inline-flex; align-items:center; justify-content:center;
+      height: 42px; padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(20,20,20,.14);
+      background: rgba(255,255,255,.55);
+      color: rgba(20,20,20,.92);
+      font-weight: 850;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .mBtn--accent{
+      border-color: rgba(176,124,58,.30);
+      background: rgba(176,124,58,.10);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .miniRow{ grid-template-columns: 1fr; }
+      .shot{ grid-column: span 6; }
+      .shot.big{ grid-column: span 12; }
+      .shot.tall{ grid-column: span 6; min-height: 300px; }
+      .stage{ min-height: 560px; }
+    }
+    @media (max-width: 720px){
+      .nav{ display:none; }
+      .mobileDots{ display:flex; }
+      .mobileBar{ display:block; }
+      body{ padding-bottom: 70px; }
+      .stage{ min-height: 600px; }
+    }
+    @media (max-width: 620px){
+      .container{ width: min(var(--max), calc(100% - 26px)); }
+      .shot{ grid-column: span 12; min-height: 240px; }
+      .shot.tall{ grid-column: span 12; min-height: 260px; }
+      .sectionHead{ flex-direction: column; align-items:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <header class="topbar" id="top">
+    <div class="container topbar__inner">
+      <a class="brand" href="#top" aria-label="TB Plan">
+        <span class="brand__mark">TB</span>
+        <span class="brand__text">Plan • Интерьер</span>
+      </a>
+
+      <nav class="nav" aria-label="Навигаци">
+        <a href="#office">Интерьер</a>
+        <a href="#furniture">Тавилга</a>
+        <a href="#execution">Гүйцэтгэл</a>
+        <a href="#coffeeshop">Кофе шоп</a>
+        <a href="#childroom">Хүүхдийн өрөө</a>
+        <a class="cta" href="#contact">Үнийн санал</a>
+      </nav>
+
+      <div class="mobileDots" aria-label="Хэсгүүд">
+        <a class="dotLink" href="#office" title="Интерьер"></a>
+        <a class="dotLink" href="#furniture" title="Тавилга"></a>
+        <a class="dotLink" href="#execution" title="Гүйцэтгэл"></a>
+        <a class="dotLink" href="#coffeeshop" title="Coffee shop"></a>
+        <a class="dotLink" href="#childroom" title="Хүүхдийн өрөө"></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO / STAGE -->
+  <section class="hero">
+    <div class="container">
+      <div class="stage">
+        <div class="frame">
+          <div class="heroCard">
+            <div class="heroCard__inner">
+              <p class="eyebrow">Interior Design • Furniture • Execution</p>
+              <h1>Орчин үеийн интерьер — зөв төлөвлөлтөөс бодит гүйцэтгэл хүртэл.</h1>
+              <p class="sub">
+                TB Plan нь <b>концепт → layout → материал → гэрэлтүүлэг → 3D зураглал → гүйцэтгэл</b> гэсэн нэг шугамаар шийдэж өгнө.
+                Доорх зургууд дээр дарж томоор үзээрэй.
+              </p>
+
+              <div class="heroActions">
+                <a class="btn btn--primary" href="#office">Интерьер дизайн</a>
+                <a class="btn" href="#furniture">Тавилгын дизайн</a>
+                <a class="btn" href="#execution">Гүйцэтгэл</a>
+                <a class="btn" href="#childroom">Хүүхдийн өрөө</a>
+              </div>
+            </div>
+
+            <div class="miniRow">
+              <div class="mini">
+                <strong>Бидний өгөх зүйл</strong>
+                <span>Концепт • 3D • Материалын сонголт • Зураг төсөл</span>
+              </div>
+              <div class="mini">
+                <strong>Процесс</strong>
+                <span>Хэмжилт → санал → зураглал → засвар → финал</span>
+              </div>
+              <div class="mini" id="contact">
+                <strong>Үнийн санал авах</strong>
+                <span>Талбай (м²) + хэв маяг + төсөв + хугацаа — 4 мэдээлэл байхад хангалттай</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1) Интерьер дизайн -->
+  <section class="section" id="office">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Интерьер дизайн — Оффис / Ажлын орчин</h2>
+          <p>Ажлын байрны зохион байгуулалт, гэрэлтүүлэг, хадгалалт, “open space” шийдлүүд.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Open-space</span>
+          <span class="chip">Loft</span>
+          <span class="chip">Warm wood</span>
+          <span class="chip">Storage wall</span>
+        </div>
+      </div>
+
+      <div class="sectionMeta">
+        <span class="metaPill"><span class="metaDot"></span><b>OFFICE</b> • 120м² (жишээ)</span>
+        <span class="metaPill"><span class="metaDot"></span>Тааз: <b>3.2м</b> (жишээ)</span>
+        <span class="metaPill"><span class="metaDot"></span>Style: <b>Loft / Wood</b></span>
+      </div>
+
+      <div class="gallery">
+        <figure class="shot big" data-title="Оффис - Нийт орчин" data-group="office">
+          <img src="images/office-1.png" alt="Оффис интерьер зураг 1">
+          <figcaption class="shotCaption">
+            <span class="t">Нийт орчны зохион байгуулалт</span>
+            <span class="k">Интерьер</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Оффис - Танхим / дэлгэц" data-group="office">
+          <img src="images/office-2.png" alt="Оффис интерьер зураг 2">
+          <figcaption class="shotCaption">
+            <span class="t">Танхим / презентацийн хэсэг</span>
+            <span class="k">Интерьер</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Оффис - Coffee булан" data-group="office">
+          <img src="images/office-3.png" alt="Оффис интерьер зураг 3">
+          <figcaption class="shotCaption">
+            <span class="t">Амралтын/coffee булан</span>
+            <span class="k">Интерьер</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot tall" data-title="Оффис - Ажлын хэсэг" data-group="office">
+          <img src="images/office-4.png" alt="Оффис интерьер зураг 4">
+          <figcaption class="shotCaption">
+            <span class="t">Ажлын ширээний кластер</span>
+            <span class="k">Интерьер</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Оффис - Хадгалалтын хана" data-group="office">
+          <img src="images/office-5.png" alt="Оффис интерьер зураг 5">
+          <figcaption class="shotCaption">
+            <span class="t">Тавиур + хадгалалтын шийдэл</span>
+            <span class="k">Интерьер</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) Тавилгын дизайн -->
+  <section class="section" id="furniture">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Тавилгын дизайн — Built-in шийдэл</h2>
+          <p>Шүүгээ, ор, ажлын ширээ, хадгалалтын уялдаа — өрөөнд тааруулж бодитоор гаргана.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Built-in</span>
+          <span class="chip">Хадгалалт</span>
+          <span class="chip">Minimal</span>
+          <span class="chip">Warm tone</span>
+        </div>
+      </div>
+
+      <div class="sectionMeta">
+        <span class="metaPill"><span class="metaDot"></span><b>FURNITURE</b> • Built-in</span>
+        <span class="metaPill"><span class="metaDot"></span>Материал: <b>MDF/Ламинат</b> (жишээ)</span>
+        <span class="metaPill"><span class="metaDot"></span>Функц: <b>Storage + Work</b></span>
+      </div>
+
+      <div class="gallery">
+        <figure class="shot big" data-title="Тавилга - Шүүгээний фасад / нийт харагдац" data-group="furniture">
+          <img src="images/kitchen-1.png" alt="Тавилгын дизайн зураг 1">
+          <figcaption class="shotCaption">
+            <span class="t">Шүүгээний фасад + муруй тавиур</span>
+            <span class="k">Тавилга</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Тавилга - Өрөөний 3D ерөнхий төлөвлөлт" data-group="furniture">
+          <img src="images/kitchen-2.png" alt="Тавилгын дизайн зураг 2">
+          <figcaption class="shotCaption">
+            <span class="t">Өрөөний layout / 3D</span>
+            <span class="k">Тавилга</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Тавилга - Ор + ажлын ширээ (front)" data-group="furniture">
+          <img src="images/kitchen-3.png" alt="Тавилгын дизайн зураг 3">
+          <figcaption class="shotCaption">
+            <span class="t">Ор + ажлын ширээний интеграц</span>
+            <span class="k">Тавилга</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot tall" data-title="Тавилга - Ор + хадгалалт (angle)" data-group="furniture">
+          <img src="images/kitchen-4.png" alt="Тавилгын дизайн зураг 4">
+          <figcaption class="shotCaption">
+            <span class="t">Деталь + хадгалалтын шийдэл</span>
+            <span class="k">Тавилга</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Гүйцэтгэл -->
+  <section class="section" id="execution">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Гүйцэтгэл — Талбайн бодит ажил</h2>
+          <p>Материал, угсралт, деталь гүйцэтгэл, хугацааны хяналт.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Fit-out</span>
+          <span class="chip">Материал</span>
+          <span class="chip">Деталь</span>
+          <span class="chip">Хяналт</span>
+        </div>
+      </div>
+
+      <div class="sectionMeta">
+        <span class="metaPill"><span class="metaDot"></span><b>EXECUTION</b> • Fit-out</span>
+        <span class="metaPill"><span class="metaDot"></span>Хугацаа: <b>14–30 хоног</b> (жишээ)</span>
+        <span class="metaPill"><span class="metaDot"></span>Хяналт: <b>Daily report</b></span>
+      </div>
+
+      <div class="gallery">
+        <figure class="shot big" data-title="Гүйцэтгэл - Жишээ 1" data-group="execution">
+          <img src="images/building-1.jpg" alt="Гүйцэтгэл зураг 1">
+          <figcaption class="shotCaption">
+            <span class="t">Ерөнхий харагдац / талбайн шийдэл</span>
+            <span class="k">Гүйцэтгэл</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Гүйцэтгэл - Жишээ 2" data-group="execution">
+          <img src="images/building-2.png" alt="Гүйцэтгэл зураг 2">
+          <figcaption class="shotCaption">
+            <span class="t">Зохион байгуулалт / интерьер булан</span>
+            <span class="k">Гүйцэтгэл</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Гүйцэтгэл - Жишээ 3" data-group="execution">
+          <img src="images/building-3.png" alt="Гүйцэтгэл зураг 3">
+          <figcaption class="shotCaption">
+            <span class="t">Деталь / материалын мэдрэмж</span>
+            <span class="k">Гүйцэтгэл</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot tall" data-title="Гүйцэтгэл - Жишээ 4" data-group="execution">
+          <img src="images/building-4.png" alt="Гүйцэтгэл зураг 4">
+          <figcaption class="shotCaption">
+            <span class="t">Талбайн шийдэл / өндөр зай</span>
+            <span class="k">Гүйцэтгэл</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Гүйцэтгэл - Жишээ 5" data-group="execution">
+          <img src="images/building-5.png" alt="Гүйцэтгэл зураг 5">
+          <figcaption class="shotCaption">
+            <span class="t">Гүйцэтгэлийн явц</span>
+            <span class="k">Гүйцэтгэл</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Гүйцэтгэл - Жишээ 6" data-group="execution">
+          <img src="images/building-6.png" alt="Гүйцэтгэл зураг 6">
+          <figcaption class="shotCaption">
+            <span class="t">Материалын уялдаа</span>
+            <span class="k">Гүйцэтгэл</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Гүйцэтгэл - Жишээ 7" data-group="execution">
+          <img src="images/building-7.png" alt="Гүйцэтгэл зураг 7">
+          <figcaption class="shotCaption">
+            <span class="t">Тавилга/угсралтын деталь</span>
+            <span class="k">Гүйцэтгэл</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Гүйцэтгэл - Жишээ 8" data-group="execution">
+          <img src="images/building-8.png" alt="Гүйцэтгэл зураг 8">
+          <figcaption class="shotCaption">
+            <span class="t">Финал харагдац</span>
+            <span class="k">Гүйцэтгэл</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Coffee shop -->
+  <section class="section" id="coffeeshop">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Кофе шоп / Үйлчилгээний талбай</h2>
+          <p>Урсгал, суудлын зохион байгуулалт, гэрэлтүүлэг, брэнд мэдрэмжтэй интерьер шийдэл.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Hospitality</span>
+          <span class="chip">Flow</span>
+          <span class="chip">Lighting</span>
+          <span class="chip">Brand feel</span>
+        </div>
+      </div>
+
+      <div class="sectionMeta">
+        <span class="metaPill"><span class="metaDot"></span><b>COFFEE</b> • 80–150м² (жишээ)</span>
+        <span class="metaPill"><span class="metaDot"></span>Суудал: <b>25–60</b> (жишээ)</span>
+        <span class="metaPill"><span class="metaDot"></span>Зорилго: <b>Flow + Queue</b></span>
+      </div>
+
+      <div class="gallery">
+        <figure class="shot big" data-title="Coffee shop - Ерөнхий харагдац" data-group="coffeeshop">
+          <img src="images/coffeeshop-1.png" alt="Coffee shop зураг 1">
+          <figcaption class="shotCaption">
+            <span class="t">Ерөнхий орчин / суудлын бүс</span>
+            <span class="k">Coffee</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Coffee shop - Бар/кассын бүс" data-group="coffeeshop">
+          <img src="images/coffeeshop-2.png" alt="Coffee shop зураг 2">
+          <figcaption class="shotCaption">
+            <span class="t">Бар/кассын уялдаа</span>
+            <span class="k">Coffee</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Coffee shop - Гэрэлтүүлэг / акцент" data-group="coffeeshop">
+          <img src="images/coffeeshop-3.png" alt="Coffee shop зураг 3">
+          <figcaption class="shotCaption">
+            <span class="t">Акцент гэрэл + материал</span>
+            <span class="k">Coffee</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot tall" data-title="Coffee shop - Деталь" data-group="coffeeshop">
+          <img src="images/coffeeshop-4.png" alt="Coffee shop зураг 4">
+          <figcaption class="shotCaption">
+            <span class="t">Деталь / close-up</span>
+            <span class="k">Coffee</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Coffee shop - Нэмэлт өнцөг" data-group="coffeeshop">
+          <img src="images/coffeeshop-5.png" alt="Coffee shop зураг 5">
+          <figcaption class="shotCaption">
+            <span class="t">Нэмэлт өнцөг</span>
+            <span class="k">Coffee</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Child room -->
+  <section class="section" id="childroom">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Хүүхдийн өрөө — Төлөвлөлт + тавилгын шийдэл</h2>
+          <p>Аюулгүй байдал, хадгалалт, гэрэл, сурах/амрах бүсийг нэгтгэсэн шийдлүүд.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Safe edges</span>
+          <span class="chip">Study zone</span>
+          <span class="chip">Storage</span>
+          <span class="chip">Warm light</span>
+        </div>
+      </div>
+
+      <div class="sectionMeta">
+        <span class="metaPill"><span class="metaDot"></span><b>CHILD ROOM</b> • 12–20м² (жишээ)</span>
+        <span class="metaPill"><span class="metaDot"></span>Функц: <b>Сурах + Унтах</b></span>
+        <span class="metaPill"><span class="metaDot"></span>Хадгалалт: <b>Built-in</b></span>
+      </div>
+
+      <div class="gallery">
+        <figure class="shot big" data-title="Хүүхдийн өрөө - Ерөнхий харагдац" data-group="childroom">
+          <img src="images/childroom-1.png" alt="Хүүхдийн өрөө зураг 1">
+          <figcaption class="shotCaption">
+            <span class="t">Ерөнхий төлөвлөлт</span>
+            <span class="k">Child</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Хүүхдийн өрөө - Сурах булан" data-group="childroom">
+          <img src="images/childroom-2.png" alt="Хүүхдийн өрөө зураг 2">
+          <figcaption class="shotCaption">
+            <span class="t">Сурах ширээ + гэрэлтүүлэг</span>
+            <span class="k">Child</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot" data-title="Хүүхдийн өрөө - Хадгалалт" data-group="childroom">
+          <img src="images/childroom-3.png" alt="Хүүхдийн өрөө зураг 3">
+          <figcaption class="shotCaption">
+            <span class="t">Шүүгээ / хадгалалт</span>
+            <span class="k">Child</span>
+          </figcaption>
+        </figure>
+
+        <figure class="shot tall" data-title="Хүүхдийн өрөө - Деталь" data-group="childroom">
+          <img src="images/childroom-4.png" alt="Хүүхдийн өрөө зураг 4">
+          <figcaption class="shotCaption">
+            <span class="t">Деталь</span>
+            <span class="k">Child</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footInner">
+      <div>© <span id="year"></span> TB Plan • Интерьер • Тавилга • Гүйцэтгэл</div>
+      <a href="#top" style="color:rgba(20,20,20,.80)">Дээш очих ↑</a>
+    </div>
+  </footer>
+
+  <!-- Mobile bottom bar -->
+  <div class="mobileBar" aria-label="Утасны навигаци">
+    <div class="mobileBar__inner">
+      <a class="mBtn" href="#top">Нүүр</a>
+      <a class="mBtn" href="#office">Интерьер</a>
+      <a class="mBtn" href="#furniture">Тавилга</a>
+      <a class="mBtn mBtn--accent" href="#execution">Гүйцэтгэл</a>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb" aria-hidden="true">
+    <div class="lbInner" role="dialog" aria-modal="true" aria-label="Зураг томоор харах">
+      <img class="lbImg" id="lbImg" alt="">
+      <div class="lbBar">
+        <div id="lbTitle">—</div>
+        <div class="lbBtns">
+          <button class="iconBtn" id="lbPrev" aria-label="Өмнөх">‹</button>
+          <button class="iconBtn" id="lbNext" aria-label="Дараах">›</button>
+          <button class="iconBtn" id="lbClose" aria-label="Хаах">✕</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ===== Lightbox logic (all .shot) =====
+    const lb = document.getElementById("lb");
+    const lbImg = document.getElementById("lbImg");
+    const lbTitle = document.getElementById("lbTitle");
+    const lbPrev = document.getElementById("lbPrev");
+    const lbNext = document.getElementById("lbNext");
+    const lbClose = document.getElementById("lbClose");
+    const shots = Array.from(document.querySelectorAll(".shot"));
+    let currentIndex = 0;
+
+    function openLB(i){
+      currentIndex = i;
+      const s = shots[currentIndex];
+      const img = s.querySelector("img");
+      lbImg.src = img.getAttribute("src");
+      lbImg.alt = img.getAttribute("alt") || "";
+      lbTitle.textContent = s.getAttribute("data-title") || "Зураг";
+      lb.classList.add("is-open");
+      lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLB(){
+      lb.classList.remove("is-open");
+      lb.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+    function step(dir){
+      const next = (currentIndex + dir + shots.length) % shots.length;
+      openLB(next);
+    }
+
+    shots.forEach((s, i) => s.addEventListener("click", () => openLB(i)));
+    lbClose.addEventListener("click", closeLB);
+    lbPrev.addEventListener("click", () => step(-1));
+    lbNext.addEventListener("click", () => step(1));
+    lb.addEventListener("click", (e) => { if (e.target === lb) closeLB(); });
+
+    window.addEventListener("keydown", (e) => {
+      if (!lb.classList.contains("is-open")) return;
+      if (e.key === "Escape") closeLB();
+      if (e.key === "ArrowLeft") step(-1);
+      if (e.key === "ArrowRight") step(1);
+    });
+
+    // ===== Mobile dots active state =====
+    const dotLinks = Array.from(document.querySelectorAll(".dotLink"));
+    const sections = ["office","furniture","execution","coffeeshop","childroom"]
+      .map(id => document.getElementById(id));
+
+    function setActiveDot(idx){
+      dotLinks.forEach((d,i)=> d.classList.toggle("is-active", i===idx));
+    }
+    function onScroll(){
+      const y = window.scrollY + 140;
+      let active = 0;
+      sections.forEach((sec, i)=>{
+        if (!sec) return;
+        if (sec.offsetTop <= y) active = i;
+      });
+      setActiveDot(active);
+    }
+    window.addEventListener("scroll", onScroll, {passive:true});
+    onScroll();
+  </script>
+</body>
+</html>

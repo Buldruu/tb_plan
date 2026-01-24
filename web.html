@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TB Plan | Вэб хөгжүүлэлт</title>
+
+<style>
+:root{
+  --bg:#050b07;
+  --panel:#07130c;
+  --text:#b6ffda;
+  --muted:#6bbf9b;
+  --line:#0f3d2e;
+  --accent:#00ff9c;
+  --radius:14px;
+  --max:1100px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  cursor:none;
+}
+
+a{color:var(--accent);text-decoration:none}
+.container{width:min(var(--max), calc(100% - 40px)); margin:auto}
+
+/* ===== Custom Cursor ===== */
+.cursor{
+  position:fixed;
+  width:14px;height:14px;
+  border-radius:50%;
+  background:var(--accent);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 14px var(--accent);
+  z-index:9999;
+}
+
+/* ===== Header ===== */
+header{
+  border-bottom:1px solid var(--line);
+  background:#020704;
+}
+.headerInner{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
+  font-weight:900;
+  font-size:16px;
+  color:var(--accent);
+}
+nav a{
+  margin-left:18px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* ===== Terminal ===== */
+.hero{padding:64px 0 40px}
+.terminal{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 0 80px rgba(0,255,156,.15);
+}
+.termHeader{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-bottom:1px solid var(--line);
+}
+.dot{width:12px;height:12px;border-radius:50%}
+.red{background:#ff5f56}
+.yellow{background:#ffbd2e}
+.green{background:#27c93f}
+.file{
+  margin-left:10px;
+  font-size:12px;
+  color:var(--muted);
+}
+.termBody{
+  padding:18px;
+  font-size:14px;
+  white-space:pre-wrap;
+}
+.blink{
+  display:inline-block;
+  width:10px;
+  background:var(--accent);
+  margin-left:2px;
+  animation:blink 1s infinite;
+}
+@keyframes blink{50%{opacity:0}}
+
+/* ===== Cards ===== */
+.section{margin-top:40px}
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px;
+}
+.card h3{
+  margin:0 0 12px;
+  font-size:15px;
+  color:var(--accent);
+}
+ul{margin:0;padding-left:18px}
+li{margin:8px 0;color:var(--muted)}
+
+/* ===== Footer ===== */
+footer{
+  border-top:1px solid var(--line);
+  margin-top:60px;
+  padding:24px 0;
+  font-size:13px;
+  color:var(--muted);
+}
+/* ===== Mobile Back Button ===== */
+.mobileBack{
+  display:none;
+}
+
+
+@media(max-width:900px){
+    nav{display:none}
+  .mobileBack{
+    display:block;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#020704;
+    border-bottom:1px solid var(--line);
+    padding:12px 16px;
+  }
+
+  .mobileBack a{
+    color:var(--accent);
+    font-size:14px;
+    font-weight:700;
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- Mobile Back Bar -->
+<div class="mobileBack">
+  <a href="index.html">← Буцах</a>
+</div>
+
+<div class="cursor" id="cursor"></div>
+
+<header>
+  <div class="container headerInner">
+    <div class="brand">TB Plan</div>
+    <nav>
+      <a href="index.html">нүүр</a>
+      <a href="index.html#services">үйлчилгээ</a>
+      <a href="index.html#contact">холбоо барих</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- TERMINAL HERO -->
+<section class="hero">
+  <div class="terminal">
+    <div class="termHeader">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="file">терминал — tb-plan</span>
+    </div>
+    <div class="termBody" id="terminal"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section card">
+<h3>// үйлчилгээ</h3>
+<ul>
+  <li>Өндөр гүйцэтгэлтэй бизнес вэб сайтууд</li>
+  <li>Борлуулалт чиглэсэн лендинг хуудсууд</li>
+  <li>Админ самбар, CRM системүүд</li>
+  <li>Онлайн худалдааны платформууд</li>
+  <li>Захиалгат вэб аппликейшн</li>
+</ul>
+</section>
+
+<!-- TECH STACK -->
+<section class="section card">
+<h3>// технологийн стек</h3>
+<ul>
+  <li>HTML, CSS, JavaScript</li>
+  <li>React, Next.js</li>
+  <li>Node.js, PostgreSQL</li>
+  <li>Git, CI/CD, Vercel</li>
+</ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 TB Plan — бэлэн загвар биш, цэвэр код.
+  </div>
+</footer>
+
+<script>
+/* Cursor follow */
+const cursor = document.getElementById("cursor");
+window.addEventListener("mousemove", e=>{
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top  = e.clientY + "px";
+});
+
+/* Fake terminal output (Mongolian) */
+const terminal = document.getElementById("terminal");
+const script = [
+  "$ npm install",
+  "✔ хамааралтай сангууд суулгагдлаа",
+  "",
+  "$ npm run build",
+  "> tb-plan@1.0.0 build",
+  "> next build",
+  "",
+  "✓ Амжилттай хөрвүүллээ",
+  "✓ Кодын шалгалт хийж байна",
+  "✓ Статик хуудсууд үүсгэж байна",
+  "",
+  "🚀 Build 2.3 секундэд амжилттай дууслаа",
+  "",
+  "Production орчинд бэлэн боллоо."
+];
+
+let line = 0, char = 0;
+function type(){
+  if(line >= script.length){
+    terminal.innerHTML += "<span class='blink'> </span>";
+    return;
+  }
+  if(char < script[line].length){
+    terminal.innerHTML += script[line].charAt(char);
+    char++;
+  } else {
+    terminal.innerHTML += "\n";
+    line++;
+    char = 0;
+  }
+  setTimeout(type, 22);
+}
+type();
+</script>
+
+</body>
+</html>
