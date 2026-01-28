@@ -131,7 +131,49 @@ footer{
 .mobileBack{
   display:none;
 }
+.backBtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        height: 44px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.14);
+        background: rgba(0, 0, 0, 0.12);
+        backdrop-filter: blur(10px);
+        color: #27c93f;
+        font-weight: 800;
+        font-size: 14px;
+        letter-spacing: -0.01em;
+        transition: 0.15s ease;
+        cursor: pointer;
+        white-space: nowrap;
+      }
 
+      .backBtn:hover {
+        transform: translateY(-1px);
+        background: white;
+        border-color: rgba(0, 0, 0, 0.22);
+      }
+
+      .backBtn:active {
+        transform: translateY(0);
+      }
+
+      .backBtn__icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        line-height: 1;
+      }
+
+      .backBtn__text {
+        opacity: 0.92;
+      }
 
 @media(max-width:900px){
     nav{display:none}
@@ -144,7 +186,12 @@ footer{
     border-bottom:1px solid var(--line);
     padding:12px 16px;
   }
-
+  .backBtn {
+          padding: 0 12px;
+        }
+        .backBtn__text {
+          display: none;
+        }
   .mobileBack a{
     color:var(--accent);
     font-size:14px;
@@ -156,14 +203,16 @@ footer{
 
 <body>
 <!-- Mobile Back Bar -->
-<div class="mobileBack">
-  <a href="index.html">← Буцах</a>
-</div>
+
 
 <div class="cursor" id="cursor"></div>
 
 <header>
   <div class="container headerInner">
+    <a class="backBtn" href="index.html" aria-label="Буцах">
+      <span class="backBtn__icon">←</span>
+      <span class="backBtn__text">Back</span>
+    </a>
     <div class="brand">TB Plan</div>
     <nav>
       <a href="index.html">нүүр</a>
