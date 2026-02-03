@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TB Plan</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -28,6 +42,7 @@
 
           <div class="nav__menu" id="navMenu">
             <a href="#about">Бидний тухай</a>
+            <a href="uilchilgee.html">Үйлчилгээ</a>
             <a href="#services">Чиглэлүүд</a>
             <a href="#details">Дэлгэрэнгүй</a>
             <a class="nav__cta" href="#contact">Холбоо барих</a>
@@ -38,44 +53,49 @@
 
     <!-- Нүүр хэсэг -->
     <!-- Нүүр хэсэг -->
-<section class="hero hero--editorial" aria-label="TB Plan hero">
-  <div class="hero__bg" style="--heroimg:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80');"></div>
+    <section class="hero hero--editorial" aria-label="TB Plan hero">
+      <div
+        class="hero__bg"
+        style="
+          --heroimg: url(&quot;https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80&quot;);
+        "
+      ></div>
 
-  <div class="container hero__inner">
-    <div class="hero__copy">
-      <p class="eyebrow">TB PLAN</p>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">TB PLAN</p>
 
-      <h1>Дижитал, дизайн, медиа, вэб хөгжүүлэлт  — нэг баг, нэг төлөвлөгөө.</h1>
+          <h1>
+            Дижитал, дизайн, медиа, вэб хөгжүүлэлт — нэг баг, нэг төлөвлөгөө.
+          </h1>
 
-      <p class="subhead">
-        Бид таны төслийг эхнээс нь дуустал нь хөтөлнө: вэб сайт хөгжүүлэлт,
-        интерьер төлөвлөлт, фото/видео үйлдвэрлэл, визийн материал
-        бүрдүүлэлт, мөн барилгын материалын нийлүүлэлт.
-      </p>
+          <p class="subhead">
+            Бид таны төслийг эхнээс нь дуустал нь хөтөлнө: вэб сайт хөгжүүлэлт,
+            интерьер төлөвлөлт, фото/видео үйлдвэрлэл, визийн материал
+            бүрдүүлэлт, мөн барилгын материалын нийлүүлэлт.
+          </p>
 
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="#services">Үндсэн чиглэлүүд</a>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#services">Үндсэн чиглэлүүд</a>
+          </div>
+        </div>
 
+        <div class="hero__stats">
+          <div class="stat">
+            <div class="stat__num">5</div>
+            <div class="stat__label">Үндсэн чиглэл</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">Нэгдсэн</div>
+            <div class="stat__label">Төлөвлөлт → Гүйцэтгэл</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">TB Plan</div>
+            <div class="stat__label">Нэг цэгийн үйлчилгээ</div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="hero__stats">
-      <div class="stat">
-        <div class="stat__num">5</div>
-        <div class="stat__label">Үндсэн чиглэл</div>
-      </div>
-      <div class="stat">
-        <div class="stat__num">Нэгдсэн</div>
-        <div class="stat__label">Төлөвлөлт → Гүйцэтгэл</div>
-      </div>
-      <div class="stat">
-        <div class="stat__num">TB Plan</div>
-        <div class="stat__label">Нэг цэгийн үйлчилгээ</div>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Үндсэн чиглэлүүд -->
     <section class="section" id="services">
@@ -141,11 +161,7 @@
             </div>
           </a>
 
-          <a
-            class="card"
-            href="#materials"
-            data-img="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2200&q=80"
-          >
+          <a class="card" href="#materials" data-img="images/beton.png">
             <div class="card__overlay"></div>
             <div class="card__content">
               <h3>Барилгын материал</h3>
@@ -153,6 +169,18 @@
               <span class="card__link" id="materials-detail"
                 >Дэлгэрэнгүй →</span
               >
+            </div>
+          </a>
+          <a
+            class="card"
+            href="#foods"
+            data-img="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2200&q=80"
+          >
+            <div class="card__overlay"></div>
+            <div class="card__content">
+              <h3>Хүнс</h3>
+              <p>Импорт, ханган нийлүүлэлт, бөөний болон тогтмол нийлүүлэлт.</p>
+              <span class="card__link">Дэлгэрэнгүй →</span>
             </div>
           </a>
         </div>
@@ -304,20 +332,33 @@
         </section>
 
         <!-- SLIDE 5 -->
-        <section
-          class="detail slide"
-          id="materials"
-          data-bg="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2400&q=80"
-        >
+        <section class="detail slide" id="materials" data-bg="images/beton.png">
           <div class="container detail__inner">
             <h2>Барилгын материал</h2>
-            <p>
-              Хайрга, Дайрга, Цагаан замаск, Бетон зуурмагны үйлдвэр.
-            </p>
+            <p>Хайрга, Дайрга, Цагаан замаск, Бетон зуурмагны үйлдвэр.</p>
             <ul class="detail__bullets">
               <li>Бетон , Цагаан замаск</li>
               <li>Хайрга , Дайрга</li>
               <li>Бусад материалууд</li>
+            </ul>
+          </div>
+        </section>
+        <!-- slide 6 -->
+        <section
+          class="detail slide"
+          id="foods"
+          data-bg="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2400&q=80"
+        >
+          <div class="container detail__inner">
+            <h2>Хүнс</h2>
+            <p>
+              Импорт, ханган нийлүүлэлт, тогтмол нийлүүлэлт — байгууллага болон
+              бөөний хэрэгцээнд.
+            </p>
+            <ul class="detail__bullets">
+              <li>Ногоо • тогтмол нийлүүлэлт</li>
+              <li>Ложистик • агуулах • хүргэлт</li>
+              <li>Үнэ санал • гэрээт нийлүүлэлт</li>
             </ul>
           </div>
         </section>
