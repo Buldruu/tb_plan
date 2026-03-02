@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Медиа продакшн | TB Plan</title>
+
+    <link rel="stylesheet" href="media.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #ffffff;
+        --panel: #ffffff;
+        --text: #0b0b0b;
+        --muted: rgba(0, 0, 0, 0.65);
+        --line: rgba(0, 0, 0, 0.12);
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+        --radius: 18px;
+        --max: 1120px;
+
+        --sans:
+          "Inter", "Manrope", "Plus Jakarta Sans", ui-sans-serif, system-ui,
+          -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --serif:
+          ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+          serif;
+
+        --mediaHero: url("https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=2400&q=80");
+        --heroOverlayA: rgba(0, 0, 0, 0.42);
+        --heroOverlayB: rgba(0, 0, 0, 0.62);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        color: var(--text);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      p {
+        line-height: 1.7;
+      }
+      .container {
+        width: min(var(--max), calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      /* Back button */
+      .backBtn {
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        z-index: 120;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+      .backBtn:hover {
+        background: rgba(0, 0, 0, 0.46);
+        transform: translateY(-1px);
+        transition: 0.15s ease;
+      }
+      @media (max-width: 520px) {
+        .backBtn {
+          top: 12px;
+          left: 12px;
+          padding: 9px 12px;
+        }
+      }
+
+      /* Topbar */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+        background: rgba(255, 255, 255, 0.82);
+        border-bottom: 1px solid var(--line);
+      }
+      .topbar__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+      .brand {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-weight: 900;
+        letter-spacing: 0.2px;
+      }
+      .brand__mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: rgba(0, 0, 0, 0.06);
+        border: 1px solid var(--line);
+      }
+      .brand__text {
+        font-size: 18px;
+        letter-spacing: 0.02em;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .nav__link {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.72);
+        padding: 10px 10px;
+        border-radius: 999px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+      .nav__link:hover {
+        color: rgba(0, 0, 0, 0.95);
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+      .nav__cta {
+        background: rgba(0, 0, 0, 0.06);
+        border: 1px solid var(--line);
+        color: rgba(0, 0, 0, 0.95);
+        padding: 10px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        padding: 92px 0 56px;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: var(--mediaHero);
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.04);
+        filter: contrast(1.08) saturate(1.06) brightness(0.86);
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            90deg,
+            var(--heroOverlayB) 0%,
+            var(--heroOverlayA) 60%,
+            rgba(0, 0, 0, 0.32) 100%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.28) 0%,
+            rgba(0, 0, 0, 0.75) 100%
+          );
+      }
+      .hero__inner {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .hero h1 {
+        margin: 0 0 14px;
+        font-family:
+          "Plus Jakarta Sans", "Manrope", "Inter", ui-sans-serif, system-ui,
+          sans-serif;
+        color: #fff;
+        font-weight: 900;
+        letter-spacing: -0.045em;
+        font-size: clamp(40px, 5vw, 78px);
+        line-height: 1.02;
+        text-shadow: 0 18px 60px rgba(0, 0, 0, 0.75);
+        max-width: 18ch;
+        text-wrap: balance;
+      }
+      .subhead {
+        margin: 0 0 18px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        line-height: 1.7;
+        max-width: 64ch;
+        text-shadow: 0 18px 60px rgba(0, 0, 0, 0.65);
+      }
+      .hero__actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-weight: 800;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.15s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .btn--primary {
+        background: rgba(255, 255, 255, 0.92);
+        color: #0b0b0b;
+        border-color: rgba(255, 255, 255, 0.92);
+      }
+      .btn--primary:hover {
+        background: rgba(255, 255, 255, 0.84);
+      }
+      .hero__meta {
+        display: grid;
+        gap: 12px;
+      }
+      .metaCard {
+        padding: 18px;
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .metaCard__title {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.82);
+        font-weight: 900;
+      }
+      .metaCard__value {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: 900;
+        color: #fff;
+      }
+      .metaCard__note {
+        margin-top: 6px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      /* Sections */
+      .section {
+        padding: 56px 0;
+      }
+      .section--alt {
+        background: rgba(0, 0, 0, 0.02);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .section__head h2 {
+        margin: 0 0 8px;
+        font-family: var(--serif);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: clamp(28px, 3.2vw, 44px);
+      }
+      .section__head p {
+        margin: 0 0 22px;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 70ch;
+      }
+
+      .chips {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 14px 0 18px;
+      }
+      .chip {
+        cursor: pointer;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.04);
+        color: rgba(0, 0, 0, 0.85);
+        padding: 10px 12px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 13px;
+      }
+      .chip:hover {
+        background: rgba(0, 0, 0, 0.06);
+        transform: translateY(-1px);
+        transition: 0.15s ease;
+      }
+
+      .twoCol {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .panel {
+        padding: 20px;
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+      .panel h3 {
+        margin: 0 0 10px;
+      }
+      .list {
+        margin: 0;
+        padding-left: 18px;
+        color: rgba(0, 0, 0, 0.84);
+      }
+      .list li {
+        margin: 8px 0;
+        line-height: 1.55;
+      }
+      .steps {
+        margin: 0;
+        padding-left: 18px;
+        color: rgba(0, 0, 0, 0.72);
+      }
+      .steps li {
+        margin: 8px 0;
+        line-height: 1.55;
+      }
+
+      /* ===== Gallery ===== */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .gCard {
+        grid-column: span 4;
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 16px 44px rgba(0, 0, 0, 0.14);
+        background: #fff;
+      }
+      .gCard img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        display: block;
+      }
+      .gCard figcaption {
+        padding: 12px 14px;
+        font-weight: 900;
+        letter-spacing: -0.01em;
+      }
+
+      /* Reels cards */
+      .vCard {
+        grid-column: span 3;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      .vFrame {
+        width: 300px;
+        height: 500px;
+        background: #000;
+        overflow: hidden;
+        border-radius: 22px;
+        box-shadow: 0 16px 44px rgba(0, 0, 0, 0.14);
+        cursor: pointer;
+        position: relative;
+      }
+      .vFrame video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* tiny hint */
+      .vHint {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        backdrop-filter: blur(10px);
+        pointer-events: none;
+      }
+
+      /* Modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+      }
+      .modal.is-open {
+        display: flex;
+      }
+      .modal__panel {
+        width: min(520px, 92vw);
+        border-radius: 26px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 22px 80px rgba(0, 0, 0, 0.45);
+        position: relative;
+      }
+      .modal__video {
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        background: #000;
+      }
+      .modal__video video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        background: #000;
+      }
+      .modal__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 42px;
+        height: 42px;
+        z-index: 9999;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+      }
+
+      /* Pricing */
+      .pricing {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .priceCard {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: var(--shadow);
+        border-radius: 22px;
+        padding: 18px;
+        position: relative;
+      }
+      .priceCard.is-popular {
+        outline: 2px solid rgba(0, 0, 0, 0.2);
+      }
+      .badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        font-size: 12px;
+        font-weight: 900;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.06);
+        border: 1px solid var(--line);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .priceCard__top h3 {
+        margin: 0 0 6px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .priceCard__top p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .priceCard__price {
+        margin: 14px 0 12px;
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .priceCard__price span {
+        font-size: 14px;
+        opacity: 0.75;
+        margin-right: 6px;
+      }
+      .priceCard__list {
+        margin: 0 0 14px;
+        padding-left: 18px;
+        color: rgba(0, 0, 0, 0.76);
+        line-height: 1.75;
+      }
+      .noteBox {
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px dashed rgba(0, 0, 0, 0.18);
+        background: rgba(0, 0, 0, 0.02);
+        color: rgba(0, 0, 0, 0.78);
+        line-height: 1.6;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 26px 0;
+        border-top: 1px solid var(--line);
+        color: rgba(0, 0, 0, 0.62);
+      }
+      .footer__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+      }
+
+      /* Responsive */
+      @media (max-width: 980px) {
+        .hero__inner {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .twoCol {
+          grid-template-columns: 1fr;
+        }
+        .pricing {
+          grid-template-columns: 1fr;
+        }
+        .gCard {
+          grid-column: span 12;
+        }
+        .gCard img {
+          height: 220px;
+        }
+        .vCard {
+          grid-column: span 6;
+        }
+      }
+      @media (max-width: 700px) {
+        .hero {
+          padding: 82px 0 46px;
+        }
+        .hero h1 {
+          font-size: clamp(34px, 8vw, 56px);
+        }
+        .vCard {
+          grid-column: span 12;
+        }
+        .vFrame {
+          width: 300px;
+          height: 500px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a
+          class="backBtn"
+          href="index.html#details"
+          aria-label="Back to TB Plan"
+          >← Back</a
+        >
+
+        <a class="brand" href="index.html#top" aria-label="TB Plan Нүүр">
+          <span class="brand__mark">TB</span>
+          <span class="brand__text">Plan</span>
+        </a>
+
+        <nav class="nav">
+          <a class="nav__link" href="index.html#services">Үндсэн чиглэлүүд</a>
+          <a class="nav__cta" href="index.html#contact">Холбоо барих</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">TB PLAN • MEDIA PRODUCTION</p>
+          <h1>Медиа продакшн</h1>
+          <p class="subhead">
+            Брэндийн фото/видео, бүтээгдэхүүний зураг авалт, рийл, реклам,
+            эвлүүлэг, өнгө засвар, motion зэрэг цогц контент үйлдвэрлэл.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#pricing">Үнийн санал харах</a>
+            <a class="btn" href="#examples">Жишээ ажил</a>
+          </div>
+        </div>
+
+        <div class="hero__meta">
+          <div class="metaCard">
+            <div class="metaCard__title">Контент хэлбэр</div>
+            <div class="metaCard__value">Reels • Ads • Product</div>
+            <div class="metaCard__note">9:16 / 1:1 / 16:9</div>
+          </div>
+
+          <div class="metaCard">
+            <div class="metaCard__title">Багц</div>
+            <div class="metaCard__value"></div>
+            <div class="metaCard__note">Тогтмол хамтын ажиллагаа боломжтой</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head">
+          <h2>Юу хийдэг вэ?</h2>
+          <p>
+            Доорх үйлчилгээ тус бүр дээр дарвал тухайн хэсэг рүү зөөлөн очно.
+          </p>
+        </div>
+
+        <div class="chips">
+          <button class="chip" data-scroll="#service-photo">
+            Фото зураг авалт
+          </button>
+          <button class="chip" data-scroll="#service-video">
+            Видео зураг авалт
+          </button>
+          <button class="chip" data-scroll="#service-edit">
+            Эвлүүлэг & Өнгө засвар
+          </button>
+          <button class="chip" data-scroll="#examples">Жишээ ажил</button>
+          <button class="chip" data-scroll="#pricing">Үнэ</button>
+        </div>
+
+        <div class="twoCol">
+          <div class="panel" id="service-photo">
+            <h3>Брендийн / бүтээгдэхүүний фото</h3>
+            <ul class="list">
+              <li>Studio / location зураг авалт</li>
+              <li>E-commerce бүтээгдэхүүний зураг</li>
+              <li>Lookbook / campaign зураг</li>
+            </ul>
+          </div>
+
+          <div class="panel" id="service-video">
+            <h3>Видео / Рийл / Реклам</h3>
+            <ul class="list">
+              <li>Short-form (Reels/TikTok/Shorts)</li>
+              <li>Реклам, танилцуулга видео</li>
+              <li>Storyboard + зураг авалт + post</li>
+            </ul>
+          </div>
+
+          <div class="panel" id="service-edit">
+            <h3>Эвлүүлэг, өнгө засвар, motion</h3>
+            <ul class="list">
+              <li>Cut / pacing / subtitle</li>
+              <li>Color grading</li>
+              <li>Motion graphics (logo reveal, титр, callout)</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Ажлын урсгал</h3>
+            <ol class="steps">
+              <li><b>Бриф</b> — зорилго, формат, хугацаа</li>
+              <li><b>Сценар/Storyboard</b> — 1–2 хувилбар</li>
+              <li><b>Үйлдвэрлэл</b> — зураг авалт / контент цуглуулах</li>
+              <li><b>Post</b> — эвлүүлэг, өнгө, засвар</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Examples -->
+    <section class="section section--alt" id="examples">
+      <div class="container">
+        <div class="section__head">
+          <h2>Жишээ ажил</h2>
+          <p>
+            Доорх нь demo placeholder. Чи өөрийн real зураг/видео файлуудаа
+            солиход л болно.
+          </p>
+        </div>
+
+        <!-- IMAGES -->
+        <h3 class="subTitle">Зураг</h3>
+        <div class="gallery gallery--images">
+          <figure class="gCard">
+            <img
+              src="/images/media_malgai.png"
+              alt="Брэнд зураг авалт жишээ"
+              loading="lazy"
+            />
+            <figcaption>Брендийн фото зураг авалт</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <img
+              src="/images/media_hosdeel.png"
+              alt="Бүтээгдэхүүний зураг авалт жишээ"
+              loading="lazy"
+            />
+            <figcaption>Бүтээгдэхүүний зураг (e-commerce)</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <img
+              src="/images/media_deel.png"
+              alt="Бүтээгдэхүүний зураг авалт жишээ"
+              loading="lazy"
+            />
+            <figcaption>Бүтээгдэхүүний зураг (e-commerce)</figcaption>
+          </figure>
+
+          <figure class="gCard">
+            <img
+              src="/images/media_appart.png"
+              alt="Reels контент жишээ"
+              loading="lazy"
+            />
+            <figcaption>Reels / short-form контент</figcaption>
+          </figure>
+        </div>
+
+        <!-- VIDEOS -->
+        <h3 class="subTitle">Бичлэгүүд</h3>
+        <div class="gallery gallery--videos">
+          <div class="vCard">
+            <div
+              class="vFrame"
+              data-modal-src="/videos/nitecore2.mp4"
+              role="button"
+              tabindex="0"
+            >
+              <video class="reel" muted playsinline preload="metadata" loop>
+                <source src="/videos/nitecore2.mp4" type="video/mp4" />
+              </video>
+              <div class="vHint">Tap to open</div>
+            </div>
+          </div>
+
+          <!-- <div class="vCard">
+            <div
+              class="vFrame"
+              data-modal-src="/videos/shorttt.mp4"
+              role="button"
+              tabindex="0"
+            >
+              <video class="reel" muted playsinline preload="metadata" loop>
+                <source src="/videos/shorttt.mp4" type="video/mp4" />
+              </video>
+              <div class="vHint">Tap to open</div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section__head">
+          <h2>Үйлчилгээний үнэ</h2>
+          <p>
+            Энэ нь суурь үнэ. Ажлын хэмжээ/байршил/өдөр/хүний тооноос шалтгаалж
+            өөрчлөгдөнө.
+          </p>
+        </div>
+
+        <div class="pricing">
+          <article class="priceCard">
+            <div class="priceCard__top">
+              <h3>Social Media Graphic</h3>
+              <p>Single Asset</p>
+            </div>
+            <div class="priceCard__price"><span>₮</span>45,000 – 150,000</div>
+            <ul class="priceCard__list">
+              <li>Нэг пост / нэг дизайн</li>
+              <li>Сошиал формат (1:1 / 4:5 / 9:16)</li>
+              <li>Үнэ нь төвөгшлөөс хамаарна</li>
+            </ul>
+            <a class="btn btn--primary" href="index.html#contact">Захиалах</a>
+          </article>
+
+          <article class="priceCard is-popular">
+            <div class="badge">Popular</div>
+            <div class="priceCard__top">
+              <h3>Short Video</h3>
+              <p>60 sec or less</p>
+            </div>
+            <div class="priceCard__price"><span>₮</span>80,000 – 150,000</div>
+            <ul class="priceCard__list">
+              <li>Видео эвлүүлэг</li>
+              <li>Motion graphics</li>
+              <li>Reels / Shorts формат</li>
+            </ul>
+            <a class="btn btn--primary" href="index.html#contact">Захиалах</a>
+          </article>
+
+          <article class="priceCard">
+            <div class="priceCard__top">
+              <h3>Full Production Video</h3>
+              <p>Story + shooting + full edit</p>
+            </div>
+            <div class="priceCard__price"><span>₮</span>2,000,000+</div>
+            <ul class="priceCard__list">
+              <li>Сценар / Storyboard</li>
+              <li>Зураг авалт</li>
+              <li>Бүрэн эвлүүлэг + өнгө засвар</li>
+            </ul>
+            <a class="btn btn--primary" href="index.html#contact"
+              >Үнийн санал авах</a
+            >
+          </article>
+
+          <article class="priceCard">
+            <div class="priceCard__top">
+              <h3>Video Editing</h3>
+              <p>Without shooting</p>
+            </div>
+            <div class="priceCard__price">
+              <span>₮</span>250,000 – 1,000,000
+            </div>
+            <ul class="priceCard__list">
+              <li>Зөвхөн эвлүүлэг</li>
+              <li>Color grading</li>
+              <li>Motion / subtitle</li>
+            </ul>
+            <a class="btn btn--primary" href="index.html#contact">Захиалах</a>
+          </article>
+        </div>
+
+        <div class="noteBox">
+          <b>Тогтмол хамтын ажиллагаа:</b> сар бүр 8–20 контент үйлдвэрлэх бол
+          багцаар илүү хямд үнээр санал болгоно.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="year"></span> TB Plan. Бүх эрх хуулиар хамгаалагдсан.</p>
+        <a href="index.html#top">Нүүр рүү</a>
+      </div>
+    </footer>
+
+    <!-- Fullscreen Modal -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div
+        class="modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Video player"
+      >
+        <button class="modal__close" id="modalClose" aria-label="Close">
+          ✕
+        </button>
+        <div class="modal__video">
+          <video id="modalVideo" controls playsinline></video>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // chip click → smooth scroll
+      document.querySelectorAll("[data-scroll]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const sel = btn.getAttribute("data-scroll");
+          if (!sel) return;
+          document.querySelector(sel)?.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      // ESC back
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      // ===== IG-style autoplay (ONLY ONE at a time) =====
+      const reels = Array.from(document.querySelectorAll("video.reel"));
+      let currentInline = null;
+
+      function pauseAllInline(except) {
+        reels.forEach((v) => {
+          if (v !== except) {
+            try {
+              v.pause();
+            } catch (_) {}
+          }
+        });
+      }
+
+      function playInline(video) {
+        if (!video) return;
+        pauseAllInline(video);
+        currentInline = video;
+        // autoplay needs muted
+        video.muted = true;
+        const p = video.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      }
+
+      // IntersectionObserver: play when mostly visible
+      const io = new IntersectionObserver(
+        (entries) => {
+          // choose best visible one
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+          if (visible?.target) {
+            playInline(visible.target);
+          } else {
+            // nothing visible → pause all
+            pauseAllInline(null);
+            currentInline = null;
+          }
+        },
+        { threshold: [0.25, 0.5, 0.75, 0.9] },
+      );
+
+      reels.forEach((v) => io.observe(v));
+
+      // ===== Click → Fullscreen Modal =====
+      const modal = document.getElementById("modal");
+      const modalVideo = document.getElementById("modalVideo");
+      const modalClose = document.getElementById("modalClose");
+
+      function openModal(src) {
+        // stop inline autoplay
+        pauseAllInline(null);
+
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+
+        // load modal video with sound
+        modalVideo.src = src;
+        modalVideo.currentTime = 0;
+        modalVideo.muted = false;
+
+        const p = modalVideo.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      }
+
+      function closeModal() {
+        if (!modal.classList.contains("is-open")) return;
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+
+        // stop modal video
+        try {
+          modalVideo.pause();
+          modalVideo.removeAttribute("src");
+          modalVideo.load();
+        } catch (_) {}
+
+        // resume autoplay: try play the first visible inline
+        // (observer will handle on next tick/scroll)
+      }
+
+      modalClose.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();
+      });
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // bind click on frames
+      document.querySelectorAll(".vFrame[data-modal-src]").forEach((frame) => {
+        const src = frame.getAttribute("data-modal-src");
+        frame.addEventListener("click", () => openModal(src));
+        frame.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(src);
+          }
+        });
+      });
+      console.log(modalClose);
+    </script>
+  </body>
+</html>
