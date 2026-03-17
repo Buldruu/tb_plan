@@ -104,7 +104,21 @@ const T = {
     "mobile.home": "Нүүр",
     "back": "Back",
 
-    // design/index hero (shared)
+    // design.html — d. prefix (давхардлаас зайлсхийх)
+    "d.back": "Back",
+    "d.brandSub": "Plan • Интерьер",
+    "d.hero.eyebrow": "Interior Design • Furniture • Execution",
+    "d.hero.h1": "Орчин үеийн интерьер — зөв төлөвлөлтөөс бодит гүйцэтгэл хүртэл.",
+    "d.hero.sub": "TB Plan нь <b>концепт → layout → материал → гэрэлтүүлэг → 3D зураглал → гүйцэтгэл</b> гэсэн нэг шугамаар шийдэж өгнө. Доорх зургууд дээр дарж томоор үзээрэй.",
+    "d.hero.btn1": "Интерьер дизайн",
+    "d.hero.btn2": "Тавилгын дизайн",
+    "d.hero.btn3": "Гүйцэтгэл",
+    "d.hero.btn4": "Хүүхдийн өрөө",
+    "d.footer.text": "Интерьер • Тавилга • Гүйцэтгэл",
+    "d.footer.up": "Дээш очих ↑",
+    "d.mobile.home": "Нүүр",
+
+    // design/index hero (shared — index.html хэрэглэнэ)
     "hero.eyebrow": "Interior Design • Furniture • Execution",
     "brandSub": "Plan • Интерьер",
     "nav.interior": "Интерьер",
@@ -157,7 +171,20 @@ const T = {
     "child.func": "Сурах + Унтах",
     "footer.text": "Интерьер • Тавилга • Гүйцэтгэл",
 
-    // media.html
+    // media.html — m. prefix (давхардлаас зайлсхийх)
+    "m.hero.eyebrow": "TB PLAN • МЕДИА ПРОДАКШН",
+    "m.hero.h1": "Медиа продакшн",
+    "m.hero.sub": "Брэндийн фото/видео, бүтээгдэхүүний зураг авалт, рийл, реклам, эвлүүлэг, өнгө засвар, motion зэрэг цогц контент үйлдвэрлэл.",
+    "m.hero.btn1": "Үнийн санал харах",
+    "m.hero.btn2": "Жишээ ажил",
+    "m.about.h2": "Юу хийдэг вэ?",
+    "m.about.p": "Доорх үйлчилгээ тус бүр дээр дарвал тухайн хэсэг рүү зөөлөн очно.",
+    "m.pricing.h2": "Үйлчилгээний үнэ",
+    "m.pricing.p": "Энэ нь суурь үнэ. Ажлын хэмжээ/байршил/өдөр/хүний тооноос шалтгаалж өөрчлөгдөнө.",
+    "m.footer.rights": "Бүх эрх хуулиар хамгаалагдсан.",
+    "m.footer.home": "Нүүр рүү",
+
+    // media.html — old keys (keep for back-compat)
     "hero.eyebrow.media": "TB PLAN • МЕДИА ПРОДАКШН",
     "hero.h1.media": "Медиа продакшн",
     "hero.sub.media": "Брэндийн фото/видео, бүтээгдэхүүний зураг авалт, рийл, реклам, эвлүүлэг, өнгө засвар, motion зэрэг цогц контент үйлдвэрлэл.",
@@ -374,6 +401,20 @@ const T = {
     "mobile.home": "首页",
     "back": "返回",
 
+    // design.html — d. prefix
+    "d.back": "返回",
+    "d.brandSub": "Plan • 室内设计",
+    "d.hero.eyebrow": "室内设计 • 家具 • 施工",
+    "d.hero.h1": "现代室内设计 — 从规划到完美施工。",
+    "d.hero.sub": "TB Plan 提供 <b>概念 → 布局 → 材料 → 灯光 → 3D渲染 → 施工</b> 一站式服务。点击下方图片可放大查看。",
+    "d.hero.btn1": "室内设计",
+    "d.hero.btn2": "家具设计",
+    "d.hero.btn3": "施工",
+    "d.hero.btn4": "儿童房",
+    "d.footer.text": "室内设计 • 家具 • 施工",
+    "d.footer.up": "回到顶部 ↑",
+    "d.mobile.home": "首页",
+
     // design / index hero shared
     "hero.eyebrow": "室内设计 • 家具 • 施工",
     "brandSub": "Plan • 室内设计",
@@ -427,7 +468,20 @@ const T = {
     "child.func": "学习 + 睡眠",
     "footer.text": "室内设计 • 家具 • 施工",
 
-    // media.html
+    // media.html — m. prefix
+    "m.hero.eyebrow": "TB PLAN • 媒体制作",
+    "m.hero.h1": "媒体制作",
+    "m.hero.sub": "品牌摄影/视频、产品拍摄、Reels、广告、剪辑、调色、动态效果等一体化内容制作服务。",
+    "m.hero.btn1": "查看报价",
+    "m.hero.btn2": "作品案例",
+    "m.about.h2": "我们提供什么？",
+    "m.about.p": "点击下方服务类别可跳转至对应区域。",
+    "m.pricing.h2": "服务价格",
+    "m.pricing.p": "以下为基础价格，实际费用因工作量、地点、天数等因素而有所不同。",
+    "m.footer.rights": "版权所有。",
+    "m.footer.home": "返回首页",
+
+    // media.html — old keys
     "hero.eyebrow.media": "TB PLAN • 媒体制作",
     "hero.h1.media": "媒体制作",
     "hero.sub.media": "品牌摄影/视频、产品拍摄、Reels、广告、剪辑、调色、动态效果等一体化内容制作服务。",
