@@ -1,555 +1,161 @@
 <!doctype html>
 <html lang="mn">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-i18n="servicesPage.title">Үйлчилгээ | TB Plan</title>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Үйлчилгээ | TB Plan</title>
+<link rel="stylesheet" href="index.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header class="topbar" id="top">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html#top" aria-label="TB Plan">
+        <span class="brand__mark">TB</span>
+        <span class="brand__text">Plan</span>
+      </a>
+      <nav class="nav" aria-label="Үндсэн цэс">
+        <a href="index.html#about" data-i="nav.about">Бидний тухай</a>
+        <a href="uilchilgee.html" class="nav__active" data-i="nav.services">Үйлчилгээ</a>
+        <a href="index.html#services" data-i="nav.directions">Чиглэлүүд</a>
+        <a href="index.html#details" data-i="nav.details">Дэлгэрэнгүй</a>
+        <a class="nav__cta cta" href="index.html#contact" data-i="nav.contact">Холбоо барих</a>
+      </nav>
+      <button class="langSwitch" id="langBtn"><span class="flag" id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+    </div>
+  </header>
 
-    <!-- TB Plan үндсэн style -->
-    <link rel="stylesheet" href="index.css" />
+  <section class="hero hero--editorial hero--service" aria-label="TB Plan Services hero">
+    <div class="hero__bg" style="--heroimg:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80')"></div>
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">TB PLAN</p>
+        <h1 data-i="hero.h1">TB Plan — Үйлчилгээ</h1>
+        <p class="subhead" data-i="hero.sub">Вэб хөгжүүлэлт, медиа үйлдвэрлэл — нэг баг, нэг төлөвлөгөө.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#services" data-i="hero.btn">Үйлчилгээ үзэх</a>
+        </div>
+      </div>
+      <div class="hero__stats">
+        <div class="stat"><div class="stat__num">2</div><div class="stat__label" data-i="stat.services">Үндсэн үйлчилгээ</div></div>
+        <div class="stat"><div class="stat__num">TB Plan</div><div class="stat__label" data-i="stat.onestop">Нэг цэгийн шийдэл</div></div>
+        <div class="stat"><div class="stat__num" data-i="stat.fast.num">Шуурхай</div><div class="stat__label" data-i="stat.fast.label">Төлөвлөлт → Гүйцэтгэл</div></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- i18next -->
-    <script src="https://unpkg.com/i18next@23.11.5/dist/umd/i18next.min.js"></script>
-
-    <style>
-      /* =========================
-       TB PLAN — MONOCHROME THEME
-       ========================= */
-      :root {
-        --bg: #0b0b0c;
-        --surface: #111113;
-        --card: #ffffff;
-        --text: #0f0f10;
-        --muted: #5a5a60;
-        --border: #e6e6ea;
-        --shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-        --shadow2: 0 10px 30px rgba(0, 0, 0, 0.08);
-        --radius: 16px;
-      }
-
-      /* Page base */
-      body {
-        background: #fff;
-        color: var(--text);
-      }
-
-      /* NAV (index.css дээр navbar байвал автоматаар таарна)
-       Хэрвээ navbar style чинь өөр бол доорх нь safe override */
-      .navbar {
-        background: #fff;
-        border-bottom: 1px solid var(--border);
-      }
-      .nav-link {
-        color: #111 !important;
-        font-weight: 600;
-      }
-      .nav-link:hover {
-        opacity: 0.75;
-      }
-      .nav-lang-switch .lang-text {
-        color: #111;
-      }
-
-      /* HERO */
-      .page-hero {
-        background: radial-gradient(
-          1200px 600px at 20% 20%,
-          #2b2b2f 0%,
-          #0b0b0c 55%,
-          #000 100%
-        );
-        color: #fff;
-        padding: 120px 20px 90px;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .page-hero h1 {
-        font-size: clamp(2rem, 4vw, 3rem);
-        margin-bottom: 12px;
-        letter-spacing: -0.02em;
-        font-weight: 900;
-      }
-      .page-hero p {
-        font-size: 1.1rem;
-        max-width: 900px;
-        margin: 0 auto;
-        opacity: 0.85;
-        line-height: 1.7;
-      }
-
-      /* SERVICES */
-      .services-page {
-        padding: 70px 20px;
-        background: #fff;
-      }
-      .services-page h2 {
-        text-align: center;
-        font-size: clamp(1.7rem, 3vw, 2.3rem);
-        color: #111;
-        margin-bottom: 38px;
-        font-weight: 900;
-        letter-spacing: -0.02em;
-      }
-
-      .service-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-      }
-      @media (max-width: 900px) {
-        .service-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .service-card {
-        background: var(--card);
-        padding: 28px;
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow2);
-      }
-      .service-card h3 {
-        font-size: 1.35rem;
-        color: #111;
-        margin-bottom: 10px;
-        font-weight: 900;
-        letter-spacing: -0.01em;
-      }
-      .service-card p {
-        color: var(--muted);
-        line-height: 1.7;
-        margin-bottom: 10px;
-      }
-      .service-card ul {
-        margin-top: 10px;
-        padding-left: 18px;
-      }
-      .service-card li {
-        margin: 6px 0;
-        color: #222;
-      }
-
-      /* PRICING */
-      .pricing {
-        padding: 70px 20px 90px;
-        background: #fff;
-        border-top: 1px solid var(--border);
-      }
-      .pricing h2 {
-        text-align: center;
-        font-size: clamp(1.7rem, 3vw, 2.3rem);
-        color: #111;
-        margin-bottom: 14px;
-        font-weight: 900;
-        letter-spacing: -0.02em;
-      }
-      .pricing-sub {
-        font-size: 1.25rem;
-        font-weight: 900;
-        color: #111;
-        margin: 34px 0 18px;
-        text-align: center;
-      }
-
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .price-card {
-        padding: 28px;
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        background: #fff;
-        box-shadow: var(--shadow2);
-      }
-      /* Featured card-г хар болгож өглөө */
-      .price-card.featured {
-        background: #0b0b0c;
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
-      }
-
-      .price-card h3 {
-        font-size: 1.15rem;
-        margin-bottom: 8px;
-        font-weight: 900;
-      }
-      .price {
-        font-size: 1.6rem;
-        font-weight: 900;
-        margin-bottom: 12px;
-        letter-spacing: -0.01em;
-      }
-      .price-card ul {
-        padding-left: 18px;
-        margin-top: 10px;
-      }
-      .price-card li {
-        margin: 7px 0;
-        line-height: 1.55;
-      }
-
-      .price-btn {
-        display: inline-block;
-        margin-top: 16px;
-        padding: 12px 18px;
-        border-radius: 12px;
-        background: #111;
-        color: #fff;
-        font-weight: 900;
-        text-decoration: none;
-        border: 1px solid #111;
-      }
-      .price-btn:hover {
-        opacity: 0.9;
-      }
-
-      .price-card.featured .price-btn {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.45);
-        color: #fff;
-      }
-      /* Service cards with background images */
-      .serviceCard {
-        position: relative;
-        overflow: hidden;
-        background-image: var(--cardimg);
-        background-size: cover;
-        background-position: center;
-        min-height: 280px;
-      }
-      .serviceCard .card__overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.25) 0%,
-          rgba(0, 0, 0, 0.72) 100%
-        );
-      }
-      .serviceCard .card__content {
-        position: relative;
-      }
-      .miniList {
-        margin: 12px 0 0;
-        padding-left: 18px;
-        color: rgba(255, 255, 255, 0.92);
-      }
-      .miniList li {
-        margin: 6px 0;
-      }
-      .nav__active {
-        opacity: 0.85;
-        text-decoration: underline;
-        text-underline-offset: 6px;
-      }
-      /* Optional: section spacing (TB Plan container class байгаа бол) */
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- NAV -->
-    <header class="topbar" id="top">
-      <div class="container topbar__inner">
-        <a class="brand" href="index.html#top" aria-label="TB Plan Нүүр">
-          <span class="brand__mark">TB</span>
-          <span class="brand__text">Plan</span>
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__head">
+        <h2 data-i="section.h2">Манай үйлчилгээ</h2>
+        <p data-i="section.p">Чиглэл бүр дээр дарж дэлгэрэнгүй үзэж болно.</p>
+      </div>
+      <div class="grid">
+        <a class="card serviceCard" href="#pricing-web" style="--cardimg:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=80')">
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <h3 data-i="svc.web.h3">Вэб хөгжүүлэлт</h3>
+            <p data-i="svc.web.p">Вэб сайт, лендинг, систем, админ самбар.</p>
+            <ul class="miniList">
+              <li data-i="svc.web.l1">SEO + Analytics суурь</li>
+              <li data-i="svc.web.l2">Form + Захиалга/мессеж</li>
+              <li data-i="svc.web.l3">Admin систем / CRM</li>
+            </ul>
+            <span class="card__link" data-i="card.link">Үнэ харах →</span>
+          </div>
         </a>
-
-        <nav class="nav" aria-label="Үндсэн цэс">
-          <button
-            class="nav__toggle"
-            id="navToggle"
-            aria-expanded="false"
-            aria-controls="navMenu"
-          >
-            <span></span><span></span><span></span>
-          </button>
-
-          <div class="nav__menu" id="navMenu">
-            <a href="index.html#about">Бидний тухай</a>
-            <a href="uilchilgee.html" class="nav__active">Үйлчилгээ</a>
-            <a href="index.html#services">Чиглэлүүд</a>
-            <a href="index.html#details">Дэлгэрэнгүй</a>
-            <a class="nav__cta" href="index.html#contact">Холбоо барих</a>
+        <a class="card serviceCard" href="#pricing-media" style="--cardimg:url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=2200&q=80')">
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <h3 data-i="svc.media.h3">Медиа продакшн</h3>
+            <p data-i="svc.media.p">Рийл, реклам, фото/видео эвлүүлэг.</p>
+            <ul class="miniList">
+              <li data-i="svc.media.l1">Контент төлөвлөгөө</li>
+              <li data-i="svc.media.l2">Видео эвлүүлэг + color</li>
+              <li data-i="svc.media.l3">Брэнд визуал дизайн</li>
+            </ul>
+            <span class="card__link" data-i="card.link">Үнэ харах →</span>
           </div>
-        </nav>
+        </a>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section
-      class="hero hero--editorial hero--service"
-      aria-label="TB Plan Services hero"
-    >
-      <div
-        class="hero__bg"
-        style="
-          --heroimg: url(&quot;https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80&quot;);
-        "
-      ></div>
-
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="eyebrow">TB PLAN</p>
-          <h1 data-i18n="servicesPage.hero.title">TB Plan — Үйлчилгээ</h1>
-          <p class="subhead" data-i18n="servicesPage.hero.subtitle">
-            Вэб хөгжүүлэлт, медиа үйлдвэрлэл — нэг баг, нэг төлөвлөгөө.
-          </p>
-
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#services">Үйлчилгээ үзэх</a>
-          </div>
-        </div>
-
-        <div class="hero__stats">
-          <div class="stat">
-            <div class="stat__num">2</div>
-            <div class="stat__label">Үндсэн үйлчилгээ</div>
-          </div>
-          <div class="stat">
-            <div class="stat__num">TB Plan</div>
-            <div class="stat__label">Нэг цэгийн шийдэл</div>
-          </div>
-          <div class="stat">
-            <div class="stat__num">Шуурхай</div>
-            <div class="stat__label">Төлөвлөлт → Гүйцэтгэл</div>
-          </div>
-        </div>
+  <section class="pricing" id="pricing-web">
+    <h2 data-i="pricing.h2">Үнийн санал</h2>
+    <div class="pricing-sub" data-i="pricing.web">🌐 Web хөгжүүлэлт</div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>🟢 START</h3>
+        <div class="price">400,000₮ + 100,000₮/<span data-i="per.month">сар</span></div>
+        <ul>
+          <li data-i="wstart.l1">1–5 хуудастай вэб сайт</li>
+          <li data-i="wstart.l2">Mobile &amp; desktop</li>
+          <li data-i="wstart.l3">Бэлэн загвар</li>
+          <li data-i="wstart.l4">Контент (1–2/<span data-i="per.month">сар</span>)</li>
+          <li data-i="wstart.l5">Domain + hosting</li>
+          <li data-i="wstart.l6">Суурь аюулгүй байдал</li>
+          <li data-i="wstart.l7">📌 <span data-i="contract">Гэрээ</span>: 6–12 <span data-i="month">сар</span></li>
+        </ul>
       </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section__head">
-          <h2 data-i18n="servicesPage.section.title">Манай үйлчилгээ</h2>
-          <p>Чиглэл бүр дээр дарж дэлгэрэнгүй үзэж болно.</p>
-        </div>
-
-        <div class="grid">
-          <!-- WEB -->
-          <a
-            class="card serviceCard"
-            href="#pricing-web"
-            style="
-              --cardimg: url(&quot;https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=80&quot;);
-            "
-          >
-            <div class="card__overlay"></div>
-            <div class="card__content">
-              <h3 data-i18n="services.web.title">Вэб хөгжүүлэлт</h3>
-              <p data-i18n="services.web.text">
-                Вэб сайт, лендинг, систем, админ самбар.
-              </p>
-              <ul class="miniList">
-                <li data-i18n="services.web.b1">SEO + Analytics суурь</li>
-                <li data-i18n="services.web.b2">Form + Захиалга/мессеж</li>
-                <li data-i18n="services.web.b3">Admin систем / CRM</li>
-              </ul>
-              <span class="card__link">Үнэ харах →</span>
-            </div>
-          </a>
-
-          <!-- MEDIA -->
-          <a
-            class="card serviceCard"
-            href="#pricing-media"
-            style="
-              --cardimg: url(&quot;https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=2200&q=80&quot;);
-            "
-          >
-            <div class="card__overlay"></div>
-            <div class="card__content">
-              <h3 data-i18n="services.media.title">Медиа продакшн</h3>
-              <p data-i18n="services.media.text">
-                Рийл, реклам, фото/видео эвлүүлэг.
-              </p>
-              <ul class="miniList">
-                <li data-i18n="services.media.b1">Контент төлөвлөгөө</li>
-                <li data-i18n="services.media.b2">Видео эвлүүлэг + color</li>
-                <li data-i18n="services.media.b3">Брэнд визуал дизайн</li>
-              </ul>
-              <span class="card__link">Үнэ харах →</span>
-            </div>
-          </a>
-        </div>
+      <div class="price-card featured">
+        <h3>🔵 STANDARD</h3>
+        <div class="price">600,000₮ + 120,000₮/<span data-i="per.month">сар</span></div>
+        <ul>
+          <li data-i="wstd.l1">5–10 хуудас</li>
+          <li data-i="wstd.l2">Custom дизайн</li>
+          <li data-i="wstd.l3">Контент (4/<span data-i="per.month">сар</span>)</li>
+          <li data-i="wstd.l4">SEO суурь</li>
+          <li data-i="wstd.l5">Хурдны оптимизаци</li>
+          <li data-i="wstd.l6">Form / захиалга</li>
+          <li data-i="wstd.l7">📌 <span data-i="contract">Гэрээ</span>: 12 <span data-i="month">сар</span></li>
+        </ul>
       </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="pricing">
-      <h2 data-i18n="pricing.title"></h2>
-
-      <div class="pricing-sub" data-i18n="pricing.web"></div>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <h3>🟢 START</h3>
-          <div class="price">400,000₮ + 100,000₮/сар</div>
-          <ul>
-            <li>1–5 хуудастай вэб сайт</li>
-            <li>Mobile & desktop</li>
-            <li>Бэлэн загвар</li>
-            <li>Контент (1–2/сар)</li>
-            <li>Domain + hosting</li>
-            <li>Суурь аюулгүй байдал</li>
-            <li>📌 Гэрээ: 6–12 сар</li>
-          </ul>
-        </div>
-
-        <div class="price-card featured">
-          <h3>🔵 STANDARD</h3>
-          <div class="price">600,000₮ + 120,000₮/сар</div>
-          <ul>
-            <li>5–10 хуудас</li>
-            <li>Custom дизайн</li>
-            <li>Контент (4/сар)</li>
-            <li>SEO суурь</li>
-            <li>Хурдны оптимизаци</li>
-            <li>Form / захиалга</li>
-            <li>📌 Гэрээ: 12 сар</li>
-          </ul>
-        </div>
-
-        <div class="price-card">
-          <h3>🟣 BUSINESS</h3>
-          <div class="price">800,000₮ + 150,000₮/сар</div>
-          <ul>
-            <li>10+ хуудас / dynamic</li>
-            <li>Admin panel</li>
-            <li>Захиалга, мессеж</li>
-            <li>SEO + Google index</li>
-            <li>Backup + security</li>
-            <li>Priority support</li>
-            <li>📌 Гэрээ: 12 сар</li>
-          </ul>
-        </div>
+      <div class="price-card">
+        <h3>🟣 BUSINESS</h3>
+        <div class="price">800,000₮ + 150,000₮/<span data-i="per.month">сар</span></div>
+        <ul>
+          <li data-i="wbiz.l1">10+ хуудас / dynamic</li>
+          <li data-i="wbiz.l2">Admin panel</li>
+          <li data-i="wbiz.l3">Захиалга, мессеж</li>
+          <li data-i="wbiz.l4">SEO + Google index</li>
+          <li data-i="wbiz.l5">Backup + security</li>
+          <li data-i="wbiz.l6">Priority support</li>
+          <li data-i="wbiz.l7">📌 <span data-i="contract">Гэрээ</span>: 12 <span data-i="month">сар</span></li>
+        </ul>
       </div>
+    </div>
 
-      <div class="pricing-sub" data-i18n="pricing.app"></div>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <h3>🟢 MOBILE APP (MVP)</h3>
-          <div class="price">1,100,000₮ + 120,000₮/сар</div>
-          <ul>
-            <li>Android эсвэл iOS</li>
-            <li>Энгийн UI/UX</li>
-            <li>Контент удирдлага</li>
-            <li>Store байршуулалт</li>
-            <li>📌 Гэрээ: 12 сар</li>
-          </ul>
-        </div>
-
-        <div class="price-card featured">
-          <h3>🔵 BUSINESS APP</h3>
-          <div class="price">2,100,000₮ + 150,000₮/сар</div>
-          <ul>
-            <li>Android + iOS</li>
-            <li>Admin систем</li>
-            <li>Push notification</li>
-            <li>Security + backup</li>
-            <li>📌 Гэрээ: 12–18 сар</li>
-          </ul>
-        </div>
+    <div class="pricing-sub" id="pricing-media" data-i="pricing.app">📱 Mobile Application</div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>🟢 MOBILE APP (MVP)</h3>
+        <div class="price">1,100,000₮ + 120,000₮/<span data-i="per.month">сар</span></div>
+        <ul>
+          <li data-i="mvp.l1">Android эсвэл iOS</li>
+          <li data-i="mvp.l2">Энгийн UI/UX</li>
+          <li data-i="mvp.l3">Контент удирдлага</li>
+          <li data-i="mvp.l4">Store байршуулалт</li>
+          <li data-i="mvp.l5">📌 <span data-i="contract">Гэрээ</span>: 12 <span data-i="month">сар</span></li>
+        </ul>
       </div>
-    </section>
+      <div class="price-card featured">
+        <h3>🔵 BUSINESS APP</h3>
+        <div class="price">2,100,000₮ + 150,000₮/<span data-i="per.month">сар</span></div>
+        <ul>
+          <li data-i="bapp.l1">Android + iOS</li>
+          <li data-i="bapp.l2">Admin систем</li>
+          <li data-i="bapp.l3">Push notification</li>
+          <li data-i="bapp.l4">Security + backup</li>
+          <li data-i="bapp.l5">📌 <span data-i="contract">Гэрээ</span>: 12–18 <span data-i="month">сар</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <!-- i18n -->
-    <script>
-      const resources = {
-        mn: {
-          translation: {
-            "nav.about": "Бидний тухай",
-            "nav.uilchilgee": "Үйлчилгээ",
-            "nav.directions": "Чиглэлүүд",
-            "nav.contact": "Холбоо барих",
-
-            "servicesPage.title": "Үйлчилгээ | TB Plan",
-            "servicesPage.hero.title": "TB Plan — Үйлчилгээ",
-            "servicesPage.hero.subtitle":
-              "Вэб хөгжүүлэлт, медиа үйлдвэрлэл — нэг баг, нэг төлөвлөгөө.",
-            "servicesPage.section.title": "Манай үйлчилгээ",
-
-            "services.web.title": "Вэб хөгжүүлэлт",
-            "services.web.text":
-              "Вэб сайт, лендинг, систем, админ самбар, мобайл апп хөгжүүлэлт.",
-            "services.web.b1": "SEO + Analytics суурь",
-            "services.web.b2": "Form + Захиалга/мессеж",
-            "services.web.b3": "Admin систем / CRM",
-
-            "services.media.title": "Медиа продакшн",
-            "services.media.text":
-              "Рийл, реклам, фото/видео эвлүүлэг, өнгө засвар, motion контент.",
-            "services.media.b1": "Контент төлөвлөгөө",
-            "services.media.b2": "Видео эвлүүлэг + color",
-            "services.media.b3": "Брэнд визуал дизайн",
-
-            "pricing.title": "Үнийн санал",
-            "pricing.web": "🌐 Web хөгжүүлэлт",
-            "pricing.app": "📱 Mobile Application",
-          },
-        },
-        en: {
-          translation: {
-            "nav.about": "About",
-            "nav.uilchilgee": "Services",
-            "nav.directions": "Directions",
-            "nav.contact": "Contact",
-
-            "servicesPage.title": "Services | TB Plan",
-            "servicesPage.hero.title": "TB Plan — Services",
-            "servicesPage.hero.subtitle":
-              "Web development & media production — one team, one plan.",
-            "servicesPage.section.title": "Our Services",
-
-            "services.web.title": "Web Development",
-            "services.web.text":
-              "Websites, landing pages, systems, admin dashboards and mobile apps.",
-            "services.web.b1": "SEO + Analytics setup",
-            "services.web.b2": "Forms + orders/messages",
-            "services.web.b3": "Admin system / CRM",
-
-            "services.media.title": "Media Production",
-            "services.media.text":
-              "Reels, ads, photo/video editing, color grading and motion content.",
-            "services.media.b1": "Content planning",
-            "services.media.b2": "Video editing + color",
-            "services.media.b3": "Brand visual design",
-
-            "pricing.title": "Pricing",
-            "pricing.web": "🌐 Web Development",
-            "pricing.app": "📱 Mobile Application",
-          },
-        },
-      };
-
-      i18next.init(
-        { lng: localStorage.getItem("siteLang") || "mn", resources },
-        () => {
-          document.querySelectorAll("[data-i18n]").forEach((el) => {
-            el.innerHTML = i18next.t(el.dataset.i18n);
-          });
-          document.title = i18next.t("servicesPage.title");
-        },
-      );
-
-      document.querySelectorAll("[data-change-lang]").forEach((b) => {
-        b.onclick = () => {
-          localStorage.setItem("siteLang", b.dataset.changeLang);
-          location.reload();
-        };
-      });
-    </script>
+  
     <script src="index.js"></script>
-  </body>
+</body>
 </html>
