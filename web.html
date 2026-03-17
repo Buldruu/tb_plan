@@ -4,315 +4,68 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TB Plan | Вэб хөгжүүлэлт</title>
-
-<style>
-:root{
-  --bg:#050b07;
-  --panel:#07130c;
-  --text:#b6ffda;
-  --muted:#6bbf9b;
-  --line:#0f3d2e;
-  --accent:#00ff9c;
-  --radius:14px;
-  --max:1100px;
-}
-
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  cursor:none;
-}
-
-a{color:var(--accent);text-decoration:none}
-.container{width:min(var(--max), calc(100% - 40px)); margin:auto}
-
-/* ===== Custom Cursor ===== */
-.cursor{
-  position:fixed;
-  width:14px;height:14px;
-  border-radius:50%;
-  background:var(--accent);
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  box-shadow:0 0 14px var(--accent);
-  z-index:9999;
-}
-
-/* ===== Header ===== */
-header{
-  border-bottom:1px solid var(--line);
-  background:#020704;
-}
-.headerInner{
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.brand{
-  font-weight:900;
-  font-size:16px;
-  color:var(--accent);
-}
-nav a{
-  margin-left:18px;
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* ===== Terminal ===== */
-.hero{padding:64px 0 40px}
-.terminal{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:0 0 80px rgba(0,255,156,.15);
-}
-.termHeader{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 14px;
-  border-bottom:1px solid var(--line);
-}
-.dot{width:12px;height:12px;border-radius:50%}
-.red{background:#ff5f56}
-.yellow{background:#ffbd2e}
-.green{background:#27c93f}
-.file{
-  margin-left:10px;
-  font-size:12px;
-  color:var(--muted);
-}
-.termBody{
-  padding:18px;
-  font-size:14px;
-  white-space:pre-wrap;
-}
-.blink{
-  display:inline-block;
-  width:10px;
-  background:var(--accent);
-  margin-left:2px;
-  animation:blink 1s infinite;
-}
-@keyframes blink{50%{opacity:0}}
-
-/* ===== Cards ===== */
-.section{margin-top:40px}
-.card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:20px;
-}
-.card h3{
-  margin:0 0 12px;
-  font-size:15px;
-  color:var(--accent);
-}
-ul{margin:0;padding-left:18px}
-li{margin:8px 0;color:var(--muted)}
-
-/* ===== Footer ===== */
-footer{
-  border-top:1px solid var(--line);
-  margin-top:60px;
-  padding:24px 0;
-  font-size:13px;
-  color:var(--muted);
-}
-/* ===== Mobile Back Button ===== */
-.mobileBack{
-  display:none;
-}
-.backBtn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        height: 44px;
-        padding: 0 14px;
-        border-radius: 999px;
-        border: 1px solid rgba(0, 0, 0, 0.14);
-        background: rgba(0, 0, 0, 0.12);
-        backdrop-filter: blur(10px);
-        color: #27c93f;
-        font-weight: 800;
-        font-size: 14px;
-        letter-spacing: -0.01em;
-        transition: 0.15s ease;
-        cursor: pointer;
-        white-space: nowrap;
-      }
-
-      .backBtn:hover {
-        transform: translateY(-1px);
-        background: white;
-        border-color: rgba(0, 0, 0, 0.22);
-      }
-
-      .backBtn:active {
-        transform: translateY(0);
-      }
-
-      .backBtn__icon {
-        width: 24px;
-        height: 24px;
-        border-radius: 999px;
-        display: grid;
-        place-items: center;
-        background: rgba(0, 0, 0, 0.06);
-        border: 1px solid rgba(0, 0, 0, 0.12);
-        line-height: 1;
-      }
-
-      .backBtn__text {
-        opacity: 0.92;
-      }
-
-@media(max-width:900px){
-    nav{display:none}
-  .mobileBack{
-    display:block;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:#020704;
-    border-bottom:1px solid var(--line);
-    padding:12px 16px;
-  }
-  .backBtn {
-          padding: 0 12px;
-        }
-        .backBtn__text {
-          display: none;
-        }
-  .mobileBack a{
-    color:var(--accent);
-    font-size:14px;
-    font-weight:700;
-  }
-}
-</style>
+  <link rel="stylesheet" href="index.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
 </head>
-
-<body>
-<!-- Mobile Back Bar -->
-
-
+<body class="theme-terminal">
 <div class="cursor" id="cursor"></div>
 
 <header>
   <div class="container headerInner">
     <a class="backBtn" href="index.html" aria-label="Буцах">
       <span class="backBtn__icon">←</span>
-      <span class="backBtn__text">Back</span>
+      <span class="backBtn__text" data-i="back">Back</span>
     </a>
-    <div class="brand">TB Plan</div>
+    <div class="brand-text-terminal">TB Plan</div>
     <nav>
-      <a href="index.html">нүүр</a>
-      <a href="index.html#services">үйлчилгээ</a>
-      <a href="index.html#contact">холбоо барих</a>
+      <a href="index.html" data-i="nav.home">нүүр</a>
+      <a href="index.html#services" data-i="nav.services">үйлчилгээ</a>
+      <a href="index.html#contact" data-i="nav.contact">холбоо барих</a>
     </nav>
+    <button class="langSwitch" id="langBtn"><span class="flag" id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
   </div>
 </header>
 
 <main class="container">
-
-<!-- TERMINAL HERO -->
-<section class="hero">
-  <div class="terminal">
-    <div class="termHeader">
-      <span class="dot red"></span>
-      <span class="dot yellow"></span>
-      <span class="dot green"></span>
-      <span class="file">терминал — tb-plan</span>
+  <section class="hero-terminal">
+    <div class="terminal">
+      <div class="termHeader">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="file" data-i="term.file">терминал — tb-plan</span>
+      </div>
+      <div class="termBody" id="terminal"></div>
     </div>
-    <div class="termBody" id="terminal"></div>
-  </div>
-</section>
+  </section>
 
-<!-- SERVICES -->
-<section class="section card">
-<h3>// үйлчилгээ</h3>
-<ul>
-  <li>Өндөр гүйцэтгэлтэй бизнес вэб сайтууд</li>
-  <li>Борлуулалт чиглэсэн лендинг хуудсууд</li>
-  <li>Админ самбар, CRM системүүд</li>
-  <li>Онлайн худалдааны платформууд</li>
-  <li>Захиалгат вэб аппликейшн</li>
-</ul>
-</section>
+  <section style="margin-top:40px" class="card-terminal">
+    <h3 data-i="svc.h3">// үйлчилгээ</h3>
+    <ul>
+      <li data-i="svc.l1">Өндөр гүйцэтгэлтэй бизнес вэб сайтууд</li>
+      <li data-i="svc.l2">Борлуулалт чиглэсэн лендинг хуудсууд</li>
+      <li data-i="svc.l3">Админ самбар, CRM системүүд</li>
+      <li data-i="svc.l4">Онлайн худалдааны платформууд</li>
+      <li data-i="svc.l5">Захиалгат вэб аппликейшн</li>
+    </ul>
+  </section>
 
-<!-- TECH STACK -->
-<section class="section card">
-<h3>// технологийн стек</h3>
-<ul>
-  <li>HTML, CSS, JavaScript</li>
-  <li>React, Next.js</li>
-  <li>Node.js, PostgreSQL</li>
-  <li>Git, CI/CD, Vercel</li>
-</ul>
-</section>
-
+  <section style="margin-top:18px" class="card-terminal">
+    <h3 data-i="stack.h3">// технологийн стек</h3>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>React, Next.js</li>
+      <li>Node.js, PostgreSQL</li>
+      <li>Git, CI/CD, Vercel</li>
+    </ul>
+  </section>
 </main>
 
 <footer>
-  <div class="container">
-    © 2026 TB Plan — бэлэн загвар биш, цэвэр код.
-  </div>
+  <div class="container" data-i="footer">© 2026 TB Plan — бэлэн загвар биш, цэвэр код.</div>
 </footer>
 
-<script>
-/* Cursor follow */
-const cursor = document.getElementById("cursor");
-window.addEventListener("mousemove", e=>{
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top  = e.clientY + "px";
-});
 
-/* Fake terminal output (Mongolian) */
-const terminal = document.getElementById("terminal");
-const script = [
-  "$ npm install",
-  "✔ хамааралтай сангууд суулгагдлаа",
-  "",
-  "$ npm run build",
-  "> tb-plan@1.0.0 build",
-  "> next build",
-  "",
-  "✓ Амжилттай хөрвүүллээ",
-  "✓ Кодын шалгалт хийж байна",
-  "✓ Статик хуудсууд үүсгэж байна",
-  "",
-  "🚀 Build 2.3 секундэд амжилттай дууслаа",
-  "",
-  "Production орчинд бэлэн боллоо."
-];
-
-let line = 0, char = 0;
-function type(){
-  if(line >= script.length){
-    terminal.innerHTML += "<span class='blink'> </span>";
-    return;
-  }
-  if(char < script[line].length){
-    terminal.innerHTML += script[line].charAt(char);
-    char++;
-  } else {
-    terminal.innerHTML += "\n";
-    line++;
-    char = 0;
-  }
-  setTimeout(type, 22);
-}
-type();
-</script>
-
+    <script src="index.js"></script>
 </body>
 </html>
