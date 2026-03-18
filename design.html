@@ -21,12 +21,17 @@
           <span class="brand__text" data-i="d.brandSub">Plan • Интерьер</span>
         </a>
         <nav class="nav" aria-label="Навигаци">
-          <a href="#office" data-i="nav.interior">Интерьер</a>
-          <a href="#furniture" data-i="nav.furniture">Тавилга</a>
-          <a href="#execution" data-i="nav.execution">Гүйцэтгэл</a>
-          <a href="#coffeeshop" data-i="nav.coffee">Кофе шоп</a>
-          <a href="#childroom" data-i="nav.child">Хүүхдийн өрөө</a>
-          <a class="cta" href="#contact" data-i="nav.cta">Үнийн санал</a>
+          <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="nav__menu" id="navMenu">
+            <a href="#office" data-i="nav.interior">Интерьер</a>
+            <a href="#furniture" data-i="nav.furniture">Тавилга</a>
+            <a href="#execution" data-i="nav.execution">Гүйцэтгэл</a>
+            <a href="#coffeeshop" data-i="nav.coffee">Кофе шоп</a>
+            <a href="#childroom" data-i="nav.child">Хүүхдийн өрөө</a>
+            <a class="nav__cta" href="#contact" data-i="nav.cta">Үнийн санал</a>
+          </div>
         </nav>
         <button class="langSwitch" id="langBtn"><span class="flag" id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
         <div class="mobileDots">
