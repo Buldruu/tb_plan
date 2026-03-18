@@ -17,11 +17,16 @@
         <span class="brand__text">Plan</span>
       </a>
       <nav class="nav" aria-label="Үндсэн цэс">
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav__menu" id="navMenu">
         <a href="index.html#about" data-i="nav.about">Бидний тухай</a>
         <a href="uilchilgee.html" class="nav__active" data-i="nav.services">Үйлчилгээ</a>
         <a href="index.html#services" data-i="nav.directions">Чиглэлүүд</a>
         <a href="index.html#details" data-i="nav.details">Дэлгэрэнгүй</a>
-        <a class="nav__cta cta" href="index.html#contact" data-i="nav.contact">Холбоо барих</a>
+        <a class="nav__cta" href="index.html#contact" data-i="nav.contact">Холбоо барих</a>
+        </div>
       </nav>
       <button class="langSwitch" id="langBtn"><span class="flag" id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
     </div>
