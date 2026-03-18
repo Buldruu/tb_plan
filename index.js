@@ -664,18 +664,40 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");
 
-navToggle?.addEventListener("click", () => {
-  const isOpen = navMenu.classList.toggle("is-open");
-  navToggle.setAttribute("aria-expanded", String(isOpen));
+function closeNav() {
+  navMenu?.classList.remove("is-open");
+  navToggle?.setAttribute("aria-expanded", "false");
+}
+function openNav() {
+  navMenu?.classList.add("is-open");
+  navToggle?.setAttribute("aria-expanded", "true");
+}
+
+navToggle?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const isOpen = navMenu.classList.contains("is-open");
+  isOpen ? closeNav() : openNav();
 });
 
+// Close when clicking a link
 navMenu?.querySelectorAll("a").forEach(a => {
-  a.addEventListener("click", () => {
-    if (navMenu.classList.contains("is-open")) {
-      navMenu.classList.remove("is-open");
-      navToggle?.setAttribute("aria-expanded", "false");
-    }
-  });
+  a.addEventListener("click", () => closeNav());
+});
+
+// Close when clicking outside
+document.addEventListener("click", (e) => {
+  if (
+    navMenu?.classList.contains("is-open") &&
+    !navMenu.contains(e.target) &&
+    !navToggle?.contains(e.target)
+  ) {
+    closeNav();
+  }
+});
+
+// Close on Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeNav();
 });
 
 // ===== Card background images =====
