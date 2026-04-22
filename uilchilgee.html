@@ -13,39 +13,37 @@
 .hero-deco2{position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.05),transparent 70%);pointer-events:none}
 .hero-eyebrow-svc{font-size:10px;color:#2563eb;text-transform:uppercase;letter-spacing:.35em;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .hero-eyebrow-svc::before{content:'';display:block;width:20px;height:1px;background:#2563eb}
-/* Service cards */
-.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem}
-.svc-card{background:var(--surface2);border:1px solid var(--stroke);border-radius:14px;padding:1.5rem;transition:.25s;display:flex;flex-direction:column}
-.svc-card:hover{border-color:rgba(37,99,235,.25);box-shadow:0 8px 30px rgba(37,99,235,.08);transform:translateY(-2px)}
+.svc-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.5rem;transition:.25s;display:flex;flex-direction:column}
+.svc-card:hover{border-color:rgba(37,99,235,.35);box-shadow:0 8px 30px rgba(37,99,235,.1);transform:translateY(-2px)}
 .svc-img{height:140px;border-radius:10px;overflow:hidden;margin-bottom:1rem}
 .svc-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:transform .4s,filter .3s}
 .svc-card:hover .svc-img img{transform:scale(1.04);filter:saturate(1)}
-.svc-card h3{font-size:15px;font-weight:600;letter-spacing:-.02em;margin-bottom:.4rem;color:var(--text)}
-.svc-card p{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:.85rem}
+.svc-card h3{font-size:15px;font-weight:600;letter-spacing:-.02em;margin-bottom:.4rem;color:#f0f0ee}
+.svc-card p{font-size:12.5px;color:rgba(240,240,238,.55);line-height:1.65;margin-bottom:.85rem}
 .svc-card ul{list-style:none;padding:0;flex:1}
-.svc-card ul li{font-size:12.5px;color:var(--muted);padding:.28rem 0;border-bottom:1px solid var(--stroke);padding-left:.95rem;position:relative;line-height:1.55}
+.svc-card ul li{font-size:12.5px;color:rgba(240,240,238,.5);padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.08);padding-left:.95rem;position:relative;line-height:1.55}
 .svc-card ul li:last-child{border-bottom:none}
 .svc-card ul li::before{content:'›';position:absolute;left:0;color:#2563eb;font-weight:700}
 .svc-link{margin-top:1rem;display:inline-flex;align-items:center;gap:.35rem;font-size:12.5px;font-weight:600;color:#2563eb;cursor:none;transition:.15s}
 .svc-link:hover{gap:.6rem}
 /* Pricing tabs */
-.ptabs{display:flex;gap:.4rem;margin-bottom:1.75rem;background:var(--surface2);border-radius:10px;padding:4px}
+.ptabs{display:flex;gap:.4rem;margin-bottom:1.75rem;background:rgba(255,255,255,.06);border-radius:10px;padding:4px;border:1px solid rgba(255,255,255,.08)}
 .ptab{flex:1;text-align:center;padding:.55rem;border-radius:7px;font-size:.8125rem;font-weight:500;color:var(--muted);cursor:none;transition:.2s;font-family:var(--font-body);background:transparent;border:none}
-.ptab.active{background:rgba(255,255,255,.08);color:#2563eb}
+.ptab.active{background:#2563eb;color:#fff;box-shadow:0 2px 8px rgba(37,99,235,.4)}
 .p-content{display:none}
 .p-content.active{display:block}
 /* Price cards */
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .pgrid.app{grid-template-columns:repeat(2,1fr);max-width:540px}
-.pcard{background:var(--surface2);border:1px solid var(--stroke);border-radius:16px;padding:1.5rem;transition:.25s;position:relative;display:flex;flex-direction:column}
-.pcard:hover{border-color:rgba(37,99,235,.25);box-shadow:0 10px 36px rgba(37,99,235,.08);transform:translateY(-3px)}
-.pcard.feat{border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.06)}
-.pcard h3{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:.25rem;display:flex;align-items:center;gap:.4rem;color:var(--text)}
-.pcard .tier{font-size:11.5px;color:var(--muted);margin-bottom:1rem}
-.pcard .price{font-size:1.2rem;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:.25rem}
-.pcard .pnote{font-size:11px;color:var(--muted);margin-bottom:1rem}
+.pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.5rem;transition:.25s;position:relative;display:flex;flex-direction:column}
+.pcard:hover{border-color:rgba(37,99,235,.35);box-shadow:0 10px 36px rgba(37,99,235,.1);transform:translateY(-3px)}
+.pcard.feat{border-color:rgba(37,99,235,.45);background:rgba(37,99,235,.08)}
+.pcard h3{font-size:15px;font-weight:700;letter-spacing:-.02em;margin-bottom:.25rem;display:flex;align-items:center;gap:.4rem;color:#f0f0ee}
+.pcard .tier{font-size:11.5px;color:rgba(240,240,238,.45);margin-bottom:1rem}
+.pcard .price{font-size:1.2rem;font-weight:700;letter-spacing:-.03em;color:#f0f0ee;margin-bottom:.25rem}
+.pcard .pnote{font-size:11px;color:rgba(240,240,238,.4);margin-bottom:1rem}
 .pcard ul{list-style:none;padding:0;flex:1}
-.pcard ul li{font-size:12.5px;color:var(--muted);padding:.28rem 0;border-bottom:1px solid var(--stroke);line-height:1.55}
+.pcard ul li{font-size:12.5px;color:rgba(240,240,238,.5);padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.08);line-height:1.55}
 .pcard ul li:last-child{border-bottom:none}
 .fbadge{font-size:9.5px;font-weight:700;color:#2563eb;text-transform:uppercase;letter-spacing:.1em;background:rgba(37,99,235,.12);padding:2px 8px;border-radius:999px}
 .btn-porder{margin-top:1.25rem;display:block;text-align:center;padding:.6rem;border-radius:9px;font-size:.8125rem;font-weight:600;background:#2563eb;color:#fff;cursor:none;transition:.2s;font-family:var(--font-body)}
@@ -53,7 +51,7 @@
 /* Hero pills */
 .hero-pills{display:flex;flex-wrap:wrap;gap:.5rem;opacity:0;transition:opacity 900ms}
 .hero-pills.fi{opacity:1}
-.hpill{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:999px;border:1px solid var(--stroke2);font-size:12.5px;color:var(--muted);background:rgba(255,255,255,.04)}
+.hpill{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.15);font-size:12.5px;color:rgba(240,240,238,.7);background:rgba(255,255,255,.06)}
 @media(max-width:760px){.svc-grid,.pgrid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -62,17 +60,20 @@
 
 <nav>
   <div class="nav-pill lg" id="navPill">
-    <a class="nav-back" href="index.html">← <span data-i="back">Буцах</span></a>
-    <div class="nav-div"></div>
-    <span class="nav-brand">TB Plan</span>
-    <div class="nav-div"></div>
+    <div class="nav-left-m">
+      <a class="nav-back" href="index.html">←<span class="back-label"> <span data-i="back">Буцах</span></span></a>
+      <div class="nav-div"></div>
+      <span class="nav-brand">TB Plan</span>
+    </div>
     <div class="nav-links">
       <a class="nav-link" href="index.html#about"   data-i="nav.about">Бидний тухай</a>
       <a class="nav-link" style="color:#2563eb;background:rgba(37,99,235,.1);border-radius:999px;padding:6px 11px" href="#">Үйлчилгээ</a>
       <a class="nav-link" href="#pricing-web"       data-i="nav.directions">Үнэ</a>
     </div>
-    <a style="background:#2563eb;color:#fff;padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:600;border:none" href="index.html#contact" data-i="nav.contact">Холбоо барих</a>
-    <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+    <div class="nav-right-m">
+      <a class="nav-cta-inline" style="background:#2563eb;color:#fff;border-radius:7px;font-weight:600;text-decoration:none" href="index.html#contact" data-i="nav.contact">Холбоо барих</a>
+      <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+    </div>
   </div>
 </nav>
 
@@ -95,8 +96,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">SERVICES</span></div>
-      <h2 class="section-h2" data-i="section.h2"></h2>
-      <p class="section-sub" data-i="section.p"></p>
+      <h2 class="section-h2" style="color:#f0f0ee" data-i="section.h2"></h2>
+      <p class="section-sub" style="color:rgba(240,240,238,.5)" data-i="section.p"></p>
     </div>
     <div class="svc-grid">
       <div class="svc-card">
@@ -121,7 +122,7 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">PRICING</span></div>
-      <h2 class="section-h2" data-i="pricing.h2.u"></h2>
+      <h2 class="section-h2" style="color:#f0f0ee" data-i="pricing.h2.u"></h2>
     </div>
     <div class="ptabs">
       <button class="ptab active" onclick="switchTab('web',this)" data-i="pricing.web">🌐 Вэб хөгжүүлэлт</button>
