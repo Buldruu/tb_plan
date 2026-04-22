@@ -11,19 +11,17 @@
 #hero-media{position:relative;height:100vh;display:flex;flex-direction:column;overflow:hidden}
 .hero-media-bg{position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 60% 20%,rgba(108,99,255,.18),transparent 65%),radial-gradient(ellipse 60% 50% at 20% 80%,rgba(79,195,247,.12),transparent 55%),linear-gradient(180deg,#06060a,#0a0a14)}
 .hero-grid-bg{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.025) 59px,rgba(255,255,255,.025) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.02) 59px,rgba(255,255,255,.02) 60px)}
-/* Service cards */
-.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem}
 .svc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1.5rem;transition:.25s}
 .svc-card:hover{border-color:rgba(108,99,255,.3);box-shadow:0 12px 40px rgba(108,99,255,.1)}
-.svc-card h3{font-size:15px;font-weight:600;letter-spacing:-.02em;margin-bottom:.75rem;color:var(--text)}
+.svc-card h3{font-size:15px;font-weight:600;letter-spacing:-.02em;margin-bottom:.75rem;color:#f0f0f8}
 .svc-card ul{list-style:none;padding:0}
-.svc-card ul li{font-size:13px;color:var(--muted);padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.06);padding-left:1.1rem;position:relative;line-height:1.55}
+.svc-card ul li{font-size:13px;color:rgba(240,240,248,.5);padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.06);padding-left:1.1rem;position:relative;line-height:1.55}
 .svc-card ul li:last-child{border-bottom:none}
 .svc-card ul li::before{content:'→';position:absolute;left:0;color:#4fc3f7;font-size:11px;font-weight:600}
 .svc-card ol{padding-left:1.25rem}
-.svc-card ol li{font-size:13px;color:var(--muted);line-height:1.65;padding:.25rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.svc-card ol li{font-size:13px;color:rgba(240,240,248,.5);line-height:1.65;padding:.25rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
 .svc-card ol li:last-child{border-bottom:none}
-.svc-card ol li b{color:var(--text);font-weight:600}
+.svc-card ol li b{color:#f0f0f8;font-weight:600}
 /* Chips nav */
 .chip-nav{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
 .chip-nav .chip{font-size:11px;font-weight:500;padding:4px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:var(--muted);background:transparent;cursor:none;font-family:var(--font-body);transition:.15s;text-decoration:none}
@@ -75,12 +73,15 @@
 
 <nav>
   <div class="nav-pill lg" id="navPill">
-    <a class="nav-back" href="index.html">← <span data-i="back">Буцах</span></a>
-    <div class="nav-div"></div>
-    <span class="nav-brand">TB Plan</span>
-    <div class="nav-div"></div>
-    <a style="background:linear-gradient(135deg,#6c63ff,#4fc3f7);color:#fff;padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:600;border:none" href="#pricing" data-i="hero.btn1.media">Үнийн санал</a>
-    <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+    <div class="nav-left-m">
+      <a class="nav-back" href="index.html">←<span class="back-label"> <span data-i="back">Буцах</span></span></a>
+      <div class="nav-div"></div>
+      <span class="nav-brand">TB Plan</span>
+    </div>
+    <div class="nav-right-m">
+      <a class="nav-cta-inline" style="background:linear-gradient(135deg,#6c63ff,#4fc3f7);color:#fff;border-radius:7px;font-weight:600;text-decoration:none" href="#pricing" data-i="hero.btn1.media">Үнийн санал</a>
+      <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+    </div>
   </div>
 </nav>
 
@@ -115,8 +116,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">SERVICES</span></div>
-      <h2 class="section-h2" data-i="about.h2.media"></h2>
-      <p class="section-sub" data-i="about.p.media"></p>
+      <h2 class="section-h2" style="color:#f0f0f8" data-i="about.h2.media"></h2>
+      <p class="section-sub" style="color:rgba(240,240,248,.5)" data-i="about.p.media"></p>
       <div class="chip-nav">
         <a class="chip" href="#service-photo" data-i="chip.photo">Фото зураг авалт</a>
         <a class="chip" href="#service-video" data-i="chip.video">Видео зураг авалт</a>
@@ -150,8 +151,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">PORTFOLIO</span></div>
-      <h2 class="section-h2" data-i="examples.h2"></h2>
-      <p class="section-sub" data-i="examples.p"></p>
+      <h2 class="section-h2" style="color:#f0f0f8" data-i="examples.h2"></h2>
+      <p class="section-sub" style="color:rgba(240,240,248,.5)" data-i="examples.p"></p>
     </div>
     <p class="sub-title" data-i="examples.photos">Зураг</p>
     <div class="photo-grid">
@@ -178,8 +179,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">PRICING</span></div>
-      <h2 class="section-h2" data-i="pricing.h2.media"></h2>
-      <p class="section-sub" data-i="pricing.p.media"></p>
+      <h2 class="section-h2" style="color:#f0f0f8" data-i="pricing.h2.media"></h2>
+      <p class="section-sub" style="color:rgba(240,240,248,.5)" data-i="pricing.p.media"></p>
     </div>
     <div class="pricing-grid">
       <div class="price-card">
