@@ -73,17 +73,20 @@ footer{border-color:var(--stroke)}
 
 <nav>
   <div class="nav-pill lg" id="navPill">
-    <a class="nav-back" href="index.html">← <span data-i="back">Буцах</span></a>
-    <div class="nav-div"></div>
-    <span class="nav-brand">TB Plan</span>
-    <div class="nav-div"></div>
+    <div class="nav-left-m">
+      <a class="nav-back" href="index.html">←<span class="back-label"> <span data-i="back">Буцах</span></span></a>
+      <div class="nav-div"></div>
+      <span class="nav-brand">TB Plan</span>
+    </div>
     <div class="nav-links">
       <a class="nav-link" href="#services" data-i="nav.web.services">// үйлчилгээ</a>
       <a class="nav-link" href="#stack"    data-i="nav.web.stack">// стек</a>
       <a class="nav-link" href="index.html#contact" data-i="nav.web.contact">// холбоо барих</a>
     </div>
-    <a style="background:var(--accent-a);color:#040a06;padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:700;border:none" href="index.html#contact" data-i="nav.web.cta">Захиалах</a>
-    <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+    <div class="nav-right-m">
+      <a class="nav-cta-inline" style="background:var(--accent-a);color:#040a06;border-radius:7px;font-weight:700;text-decoration:none" href="index.html#contact" data-i="nav.web.cta">Захиалах</a>
+      <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+    </div>
   </div>
 </nav>
 
@@ -98,7 +101,7 @@ footer{border-color:var(--stroke)}
         <div>
           <p style="font-size:10px;color:var(--accent-a);text-transform:uppercase;letter-spacing:.35em;font-weight:500;margin-bottom:.8rem;font-family:var(--font-mono)">TB PLAN • WEB DEVELOPMENT</p>
           <h1 class="hero-h1" id="heroH1" data-hero-key="hero.h1.web" style="color:var(--text)"></h1>
-          <p class="hero-sub" id="heroSub" data-i="hero.sub.web"></p>
+          <p class="hero-sub" id="heroSub" data-i="hero.sub.web" style="color:rgba(182,255,216,.65)"></p>
           <div class="hero-btns" id="heroBtns">
             <a class="btn-acc" href="index.html#contact" data-i="hero.btn1.web">Захиалах</a>
             <a class="btn-line" href="#services"         data-i="hero.btn2.web">Үйлчилгээ үзэх</a>
@@ -119,8 +122,8 @@ footer{border-color:var(--stroke)}
 <section class="section reveal" id="terminal-section">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono)">// терминал</span></div>
-      <h2 class="section-h2" data-i="term.title"></h2>
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono);color:var(--muted)">// терминал</span></div>
+      <h2 class="section-h2" style="color:var(--text)" data-i="term.title"></h2>
     </div>
     <div class="terminal">
       <div class="termHeader">
@@ -136,9 +139,9 @@ footer{border-color:var(--stroke)}
 <section class="section section--alt reveal" id="services">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono)">// үйлчилгээ</span></div>
-      <h2 class="section-h2" data-i="svc.h3"></h2>
-      <p class="section-sub" data-i="svc.sub"></p>
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono);color:var(--muted)">// үйлчилгээ</span></div>
+      <h2 class="section-h2" style="color:var(--text)" data-i="svc.h3"></h2>
+      <p class="section-sub" style="color:var(--muted)" data-i="svc.sub"></p>
     </div>
     <div class="card-grid">
       <div class="svc-card"><h3>// бизнесийн вэб сайт</h3><ul><li data-i="svc.l1"></li><li data-i="svc.l2"></li><li>SEO суурь + хурдны оновчлол</li><li>Mobile-first дизайн</li></ul></div>
@@ -153,9 +156,9 @@ footer{border-color:var(--stroke)}
 <section class="section reveal" id="stack">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono)">// технологийн стек</span></div>
-      <h2 class="section-h2" data-i="stack.h3"></h2>
-      <p class="section-sub">Орчин үеийн, гүйцэтгэлтэй технологиуд ашиглана.</p>
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono);color:var(--muted)">// технологийн стек</span></div>
+      <h2 class="section-h2" style="color:var(--text)" data-i="stack.h3"></h2>
+      <p class="section-sub" style="color:var(--muted)">Орчин үеийн, гүйцэтгэлтэй технологиуд ашиглана.</p>
     </div>
     <div class="stack-grid">
       <div class="stack-item"><div class="sn">React</div><div class="sr">Frontend</div></div>
