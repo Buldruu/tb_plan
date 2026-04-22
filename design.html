@@ -1,201 +1,232 @@
 <!doctype html>
 <html lang="mn">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TB Plan | Интерьер • Тавилга • Гүйцэтгэл</title>
-    <link rel="stylesheet" href="index.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>TB Plan | Интерьер · Тавилга · Гүйцэтгэл</title>
+<link rel="stylesheet" href="index.css"/>
+<style>
+:root{ --accent-a:#b8864e; --accent-b:#8a6235; }
+#hero-design{position:relative;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.hero-bg-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=80') center/cover;filter:brightness(.58) saturate(1.1);animation:kbD 14s ease-in-out infinite alternate}
+@keyframes kbD{from{transform:scale(1.04)}to{transform:scale(1.1) translate(-1%,-1%)}}
+.hero-overlay-d{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,21,16,.72),rgba(26,21,16,.28) 60%,rgba(26,21,16,.52))}
+.hero-fade-d{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--bg),transparent)}
+.gallery-d{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+.shot{position:relative;border-radius:12px;overflow:hidden;cursor:none;background:#111;aspect-ratio:4/3;grid-column:span 4}
+.shot.big{grid-column:span 8;aspect-ratio:16/9}
+.shot.tall{grid-column:span 4;aspect-ratio:3/4}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.shot:hover img{transform:scale(1.05)}
+.shot-cap{position:absolute;bottom:0;left:0;right:0;padding:.65rem .85rem;background:linear-gradient(to top,rgba(0,0,0,.82),transparent);display:flex;justify-content:space-between;align-items:flex-end;opacity:0;transition:opacity .25s}
+.shot:hover .shot-cap{opacity:1}
+.shot-cap .t{font-size:12px;font-weight:500;color:#fff}
+.shot-cap .k{font-size:10px;color:rgba(255,255,255,.6);padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.3)}
+.mpill{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .9rem;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);font-size:12px;color:var(--muted)}
+.mdot{width:5px;height:5px;border-radius:50%;background:var(--accent-a);flex-shrink:0}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
+.chip{font-size:11px;font-weight:500;padding:4px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.15);color:var(--muted);background:transparent}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.info-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.5rem;transition:.25s}
+.info-card:hover{border-color:rgba(184,134,78,.35);transform:translateY(-2px)}
+.info-card h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:.5rem}
+.info-card p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.lb.open{display:flex}
+.lb-inner{max-width:90vw;max-height:88vh;position:relative}
+.lb-inner img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:10px}
+.lb-bar{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0 0}
+.lb-title{font-size:13px;color:rgba(255,255,255,.6)}
+.lb-btns{display:flex;gap:.5rem}
+.lb-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.4);color:#fff;font-size:17px;display:grid;place-items:center;cursor:none;transition:.2s;font-family:var(--font-body)}
+.lb-btn:hover{background:rgba(0,0,0,.7)}
+@media(max-width:768px){.gallery-d{grid-template-columns:1fr 1fr}.shot,.shot.big,.shot.tall{grid-column:span 2;aspect-ratio:4/3}.info-grid{grid-template-columns:1fr}}
+</style>
 </head>
-  <body class="has-mobilebar">
-    <header class="topbar" id="top">
-      <div class="container topbar__inner">
-        <a class="backBtn" href="index.html" aria-label="Буцах">
-          <span class="backBtn__icon">←</span>
-          <span class="backBtn__text" data-i="d.back">Back</span>
-        </a>
-        <a class="brand" href="#top" aria-label="TB Plan">
-          <span class="brand__mark">TB</span>
-          <span class="brand__text" data-i="d.brandSub">Plan • Интерьер</span>
-        </a>
-        <nav class="nav" aria-label="Навигаци">
-          <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
-            <span></span><span></span><span></span>
-          </button>
-          <div class="nav__menu" id="navMenu">
-            <a href="#office" data-i="nav.interior">Интерьер</a>
-            <a href="#furniture" data-i="nav.furniture">Тавилга</a>
-            <a href="#execution" data-i="nav.execution">Гүйцэтгэл</a>
-            <a href="#coffeeshop" data-i="nav.coffee">Кофе шоп</a>
-            <a href="#childroom" data-i="nav.child">Хүүхдийн өрөө</a>
-            <a class="nav__cta" href="#contact" data-i="nav.cta">Үнийн санал</a>
-          </div>
-        </nav>
-        <button class="langSwitch" id="langBtn"><span class="flag" id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
-        <div class="mobileDots">
-          <a class="dotLink" href="#office"></a><a class="dotLink" href="#furniture"></a>
-          <a class="dotLink" href="#execution"></a><a class="dotLink" href="#coffeeshop"></a>
-          <a class="dotLink" href="#childroom"></a>
-        </div>
-      </div>
-    </header>
+<body>
+<div id="cursor"></div>
 
-    <section class="hero">
-      <div class="container"><div class="stage"><div class="frame"><div class="heroCard">
-        <div class="heroCard__inner">
-          <p class="eyebrow" data-i="d.hero.eyebrow">Interior Design • Furniture • Execution</p>
-          <h1 data-i="d.hero.h1">Орчин үеийн интерьер — зөв төлөвлөлтөөс бодит гүйцэтгэл хүртэл.</h1>
-          <p class="sub" data-i="d.hero.sub">TB Plan нь <b>концепт → layout → материал → гэрэлтүүлэг → 3D зураглал → гүйцэтгэл</b> гэсэн нэг шугамаар шийдэж өгнө.</p>
-          <div class="heroActions">
-            <a class="btn btn--primary" href="#office" data-i="d.hero.btn1">Интерьер дизайн</a>
-            <a class="btn" href="#furniture" data-i="d.hero.btn2">Тавилгын дизайн</a>
-            <a class="btn" href="#execution" data-i="d.hero.btn3">Гүйцэтгэл</a>
-            <a class="btn" href="#childroom" data-i="d.hero.btn4">Хүүхдийн өрөө</a>
+<nav>
+  <div class="nav-pill lg" id="navPill">
+    <a class="nav-back" href="index.html">← <span data-i="back">Буцах</span></a>
+    <div class="nav-div"></div>
+    <span class="nav-brand">TB Plan</span>
+    <div class="nav-div"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="#office"     data-i="nav.interior">Интерьер</a>
+      <a class="nav-link" href="#furniture"  data-i="nav.furniture">Тавилга</a>
+      <a class="nav-link" href="#execution"  data-i="nav.execution">Гүйцэтгэл</a>
+      <a class="nav-link" href="#coffeeshop" data-i="nav.coffee">Кофе шоп</a>
+      <a class="nav-link" href="#childroom"  data-i="nav.child">Хүүхдийн өрөө</a>
+    </div>
+    <a class="nav-link" style="background:rgba(184,134,78,.12);color:#b8864e;border:1px solid rgba(184,134,78,.28);border-radius:999px;padding:6px 14px;font-size:.78rem;font-weight:600" href="index.html#contact" data-i="nav.cta">Үнийн санал</a>
+    <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+  </div>
+</nav>
+
+<section id="hero-design">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay-d"></div>
+  <div class="hero-fade-d"></div>
+  <div class="hero-layout">
+    <div style="height:5rem"></div>
+    <div class="hero-body">
+      <div class="hero-grid">
+        <div>
+          <p style="font-size:10px;color:rgba(240,240,238,.6);text-transform:uppercase;letter-spacing:.35em;font-weight:500;margin-bottom:.8rem" data-i="hero.eyebrow"></p>
+          <h1 class="hero-h1" id="heroH1" data-hero-key="hero.h1.design"></h1>
+          <p class="hero-sub" id="heroSub" data-i="hero.sub.design"></p>
+          <div class="hero-btns" id="heroBtns">
+            <a class="btn-w" href="#office"    data-i="hero.btn1">Интерьер дизайн</a>
+            <a class="btn-g lg" href="#childroom" data-i="hero.btn4">Хүүхдийн өрөө</a>
           </div>
         </div>
-        <div class="miniRow">
-          <div class="mini"><strong data-i="mini1.title">Бидний өгөх зүйл</strong><span data-i="mini1.body">Концепт • 3D • Материалын сонголт • Зураг төсөл</span></div>
-          <div class="mini"><strong data-i="mini2.title">Процесс</strong><span data-i="mini2.body">Хэмжилт → санал → зураглал → засвар → финал</span></div>
-          <div class="mini" id="contact"><strong data-i="mini3.title">Үнийн санал авах</strong><span data-i="mini3.body">Талбай (м²) + хэв маяг + төсөв + хугацаа — 4 мэдээлэл байхад хангалттай</span></div>
-        </div>
-      </div></div></div></div>
-    </section>
-
-    <section class="section" id="office">
-      <div class="container">
-        <div class="sectionHead">
-          <div><h2 data-i="s1.h2">Интерьер дизайн — Оффис / Ажлын орчин</h2><p data-i="s1.p">Ажлын байрны зохион байгуулалт, гэрэлтүүлэг, хадгалалт, "open space" шийдлүүд.</p></div>
-          <div class="chips"><span class="chip">Open-space</span><span class="chip">Loft</span><span class="chip">Warm wood</span><span class="chip">Storage wall</span></div>
-        </div>
-        <div class="sectionMeta">
-          <span class="metaPill"><span class="metaDot"></span><b>OFFICE</b> • 120м²</span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="meta.ceiling">Тааз</span>: <b>3.2м</b></span>
-          <span class="metaPill"><span class="metaDot"></span>Style: <b>Loft / Wood</b></span>
-        </div>
-        <div class="gallery">
-          <figure class="shot big" data-title-mn="Оффис - Нийт орчин" data-title-zh="办公室 - 整体环境"><img src="images/office-1.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="office.cap1">Нийт орчны зохион байгуулалт</span><span class="k" data-i="nav.interior">Интерьер</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Оффис - Танхим" data-title-zh="办公室 - 展示区"><img src="images/office-2.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="office.cap2">Танхим / презентацийн хэсэг</span><span class="k" data-i="nav.interior">Интерьер</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Оффис - Coffee булан" data-title-zh="办公室 - 休息角"><img src="images/office-3.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="office.cap3">Амралтын/coffee булан</span><span class="k" data-i="nav.interior">Интерьер</span></figcaption></figure>
-          <figure class="shot tall" data-title-mn="Оффис - Ажлын хэсэг" data-title-zh="办公室 - 工作区"><img src="images/office-4.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="office.cap4">Ажлын ширээний кластер</span><span class="k" data-i="nav.interior">Интерьер</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Оффис - Хадгалалтын хана" data-title-zh="办公室 - 储物墙"><img src="images/office-5.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="office.cap5">Тавиур + хадгалалтын шийдэл</span><span class="k" data-i="nav.interior">Интерьер</span></figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="furniture">
-      <div class="container">
-        <div class="sectionHead">
-          <div><h2 data-i="s2.h2">Тавилгын дизайн — Built-in шийдэл</h2><p data-i="s2.p">Шүүгээ, ор, ажлын ширээ, хадгалалтын уялдаа — өрөөнд тааруулж бодитоор гаргана.</p></div>
-          <div class="chips"><span class="chip">Built-in</span><span class="chip" data-i="chip.storage">Хадгалалт</span><span class="chip">Minimal</span><span class="chip">Warm tone</span></div>
-        </div>
-        <div class="sectionMeta">
-          <span class="metaPill"><span class="metaDot"></span><b>FURNITURE</b> • Built-in</span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="meta.material">Материал</span>: <b>MDF/Ламинат</b></span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="meta.func">Функц</span>: <b>Storage + Work</b></span>
-        </div>
-        <div class="gallery">
-          <figure class="shot big" data-title-mn="Тавилга - Шүүгээний фасад" data-title-zh="家具 - 柜子正面"><img src="images/kitchen-1.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="furn.cap1">Шүүгээний фасад + муруй тавиур</span><span class="k" data-i="nav.furniture">Тавилга</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Тавилга - 3D" data-title-zh="家具 - 3D规划"><img src="images/kitchen-2.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="furn.cap2">Өрөөний layout / 3D</span><span class="k" data-i="nav.furniture">Тавилга</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Тавилга - Ор+ширээ" data-title-zh="家具 - 床+工作台"><img src="images/kitchen-3.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="furn.cap3">Ор + ажлын ширээний интеграц</span><span class="k" data-i="nav.furniture">Тавилга</span></figcaption></figure>
-          <figure class="shot tall" data-title-mn="Тавилга - Деталь" data-title-zh="家具 - 细节"><img src="images/kitchen-4.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="furn.cap4">Деталь + хадгалалтын шийдэл</span><span class="k" data-i="nav.furniture">Тавилга</span></figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="execution">
-      <div class="container">
-        <div class="sectionHead">
-          <div><h2 data-i="s3.h2">Гүйцэтгэл — Талбайн бодит ажил</h2><p data-i="s3.p">Материал, угсралт, деталь гүйцэтгэл, хугацааны хяналт.</p></div>
-          <div class="chips"><span class="chip">Fit-out</span><span class="chip" data-i="chip.material">Материал</span><span class="chip" data-i="chip.detail">Деталь</span><span class="chip" data-i="chip.control">Хяналт</span></div>
-        </div>
-        <div class="sectionMeta">
-          <span class="metaPill"><span class="metaDot"></span><b>EXECUTION</b> • Fit-out</span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="meta.days">Хугацаа</span>: <b>14–30 <span data-i="meta.day">хоног</span></b></span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="meta.control">Хяналт</span>: <b>Daily report</b></span>
-        </div>
-        <div class="gallery">
-          <figure class="shot big" data-title-mn="Гүйцэтгэл - 1" data-title-zh="施工 - 1"><img src="images/building-1.jpg" alt=""/><figcaption class="shotCaption"><span class="t" data-i="exec.cap1">Ерөнхий харагдац / талбайн шийдэл</span><span class="k" data-i="nav.execution">Гүйцэтгэл</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Гүйцэтгэл - 2" data-title-zh="施工 - 2"><img src="images/building-2.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="exec.cap2">Зохион байгуулалт / интерьер булан</span><span class="k" data-i="nav.execution">Гүйцэтгэл</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Гүйцэтгэл - 3" data-title-zh="施工 - 3"><img src="images/building-3.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="exec.cap3">Деталь / материалын мэдрэмж</span><span class="k" data-i="nav.execution">Гүйцэтгэл</span></figcaption></figure>
-          <figure class="shot tall" data-title-mn="Гүйцэтгэл - 4" data-title-zh="施工 - 4"><img src="images/building-4.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="exec.cap4">Талбайн шийдэл / өндөр зай</span><span class="k" data-i="nav.execution">Гүйцэтгэл</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Гүйцэтгэл - 5" data-title-zh="施工 - 5"><img src="images/building-5.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="exec.cap5">Гүйцэтгэлийн явц</span><span class="k" data-i="nav.execution">Гүйцэтгэл</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Гүйцэтгэл - 6" data-title-zh="施工 - 6"><img src="images/building-6.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="exec.cap6">Материалын уялдаа</span><span class="k" data-i="nav.execution">Гүйцэтгэл</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Гүйцэтгэл - 7" data-title-zh="施工 - 7"><img src="images/building-7.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="exec.cap7">Тавилга/угсралтын деталь</span><span class="k" data-i="nav.execution">Гүйцэтгэл</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Гүйцэтгэл - 8" data-title-zh="施工 - 8"><img src="images/building-8.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="exec.cap8">Финал харагдац</span><span class="k" data-i="nav.execution">Гүйцэтгэл</span></figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="coffeeshop">
-      <div class="container">
-        <div class="sectionHead">
-          <div><h2 data-i="s4.h2">Кофе шоп / Үйлчилгээний талбай</h2><p data-i="s4.p">Урсгал, суудлын зохион байгуулалт, гэрэлтүүлэг, брэнд мэдрэмжтэй интерьер шийдэл.</p></div>
-          <div class="chips"><span class="chip">Hospitality</span><span class="chip">Flow</span><span class="chip">Lighting</span><span class="chip">Brand feel</span></div>
-        </div>
-        <div class="sectionMeta">
-          <span class="metaPill"><span class="metaDot"></span><b>COFFEE</b> • 80–150м²</span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="meta.seats">Суудал</span>: <b>25–60</b></span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="meta.goal">Зорилго</span>: <b>Flow + Queue</b></span>
-        </div>
-        <div class="gallery">
-          <figure class="shot big" data-title-mn="Coffee shop - Ерөнхий" data-title-zh="咖啡厅 - 整体"><img src="images/coffeeshop-1.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="cafe.cap1">Ерөнхий орчин / суудлын бүс</span><span class="k">Coffee</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Coffee shop - Бар" data-title-zh="咖啡厅 - 吧台"><img src="images/coffeeshop-2.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="cafe.cap2">Бар/кассын уялдаа</span><span class="k">Coffee</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Coffee shop - Гэрэлтүүлэг" data-title-zh="咖啡厅 - 灯光"><img src="images/coffeeshop-3.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="cafe.cap3">Акцент гэрэл + материал</span><span class="k">Coffee</span></figcaption></figure>
-          <figure class="shot tall" data-title-mn="Coffee shop - Деталь" data-title-zh="咖啡厅 - 细节"><img src="images/coffeeshop-4.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="cafe.cap4">Деталь / close-up</span><span class="k">Coffee</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Coffee shop - Нэмэлт" data-title-zh="咖啡厅 - 其他角度"><img src="images/coffeeshop-5.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="cafe.cap5">Нэмэлт өнцөг</span><span class="k">Coffee</span></figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="childroom">
-      <div class="container">
-        <div class="sectionHead">
-          <div><h2 data-i="s5.h2">Хүүхдийн өрөө — Төлөвлөлт + тавилгын шийдэл</h2><p data-i="s5.p">Аюулгүй байдал, хадгалалт, гэрэл, сурах/амрах бүсийг нэгтгэсэн шийдлүүд.</p></div>
-          <div class="chips"><span class="chip">Safe edges</span><span class="chip">Study zone</span><span class="chip">Storage</span><span class="chip">Warm light</span></div>
-        </div>
-        <div class="sectionMeta">
-          <span class="metaPill"><span class="metaDot"></span><b>CHILD ROOM</b> • 12–20м²</span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="meta.func">Функц</span>: <b data-i="child.func">Сурах + Унтах</b></span>
-          <span class="metaPill"><span class="metaDot"></span><span data-i="chip.storage">Хадгалалт</span>: <b>Built-in</b></span>
-        </div>
-        <div class="gallery">
-          <figure class="shot big" data-title-mn="Хүүхдийн өрөө - Ерөнхий" data-title-zh="儿童房 - 整体"><img src="images/childroom-1.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="child.cap1">Ерөнхий төлөвлөлт</span><span class="k" data-i="nav.child">Хүүхдийн өрөө</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Хүүхдийн өрөө - Сурах" data-title-zh="儿童房 - 学习区"><img src="images/childroom-2.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="child.cap2">Сурах ширээ + гэрэлтүүлэг</span><span class="k" data-i="nav.child">Хүүхдийн өрөө</span></figcaption></figure>
-          <figure class="shot" data-title-mn="Хүүхдийн өрөө - Хадгалалт" data-title-zh="儿童房 - 储物"><img src="images/childroom-3.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="child.cap3">Шүүгээ / хадгалалт</span><span class="k" data-i="nav.child">Хүүхдийн өрөө</span></figcaption></figure>
-          <figure class="shot tall" data-title-mn="Хүүхдийн өрөө - Деталь" data-title-zh="儿童房 - 细节"><img src="images/childroom-4.png" alt=""/><figcaption class="shotCaption"><span class="t" data-i="child.cap4">Деталь</span><span class="k" data-i="nav.child">Хүүхдийн өрөө</span></figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <footer><div class="container footInner">
-      <div>© <span id="year"></span> TB Plan • <span data-i="d.footer.text">Интерьер • Тавилга • Гүйцэтгэл</span></div>
-      <a href="#top" style="color:rgba(20,20,20,.8)" data-i="d.footer.up">Дээш очих ↑</a>
-    </div></footer>
-
-    <div class="mobileBar"><div class="mobileBar__inner">
-      <a class="mBtn" href="#top" data-i="d.mobile.home">Нүүр</a>
-      <a class="mBtn" href="#office" data-i="nav.interior">Интерьер</a>
-      <a class="mBtn" href="#furniture" data-i="nav.furniture">Тавилга</a>
-      <a class="mBtn mBtn--accent" href="#execution" data-i="nav.execution">Гүйцэтгэл</a>
-    </div></div>
-
-    <div class="lb" id="lb" aria-hidden="true">
-      <div class="lbInner" role="dialog" aria-modal="true">
-        <img class="lbImg" id="lbImg" alt=""/>
-        <div class="lbBar">
-          <div id="lbTitle">—</div>
-          <div class="lbBtns">
-            <button class="iconBtn" id="lbPrev">‹</button>
-            <button class="iconBtn" id="lbNext">›</button>
-            <button class="iconBtn" id="lbClose">✕</button>
-          </div>
+        <div class="hero-tag-col">
+          <div class="hero-tag lg" id="heroTag"><p data-i="hero.tag.design">Интерьер. Тавилга. Гүйцэтгэл.</p></div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
 
-    
-      <script src="index.js"></script>
+<section class="section reveal" id="office">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">01 — INTERIOR</span></div>
+      <h2 class="section-h2" data-i="s1.h2"></h2><p class="section-sub" data-i="s1.p"></p>
+      <div class="chips"><span class="chip">Open-space</span><span class="chip">Loft</span><span class="chip">Warm wood</span></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+      <span class="mpill"><span class="mdot"></span><b>OFFICE</b> • 120м²</span>
+      <span class="mpill"><span class="mdot"></span><span data-i="meta.ceiling">Тааз</span>: <b>3.2м</b></span>
+      <span class="mpill"><span class="mdot"></span>Style: <b>Loft / Wood</b></span>
+    </div>
+    <div class="gallery-d">
+      <figure class="shot big"  data-title-mn="Оффис — Нийт орчин"   data-title-zh="办公室 — 整体环境"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt=""/><div class="shot-cap"><span class="t" data-i="office.cap1"></span><span class="k">Interior</span></div></figure>
+      <figure class="shot"      data-title-mn="Оффис — Танхим"        data-title-zh="办公室 — 展示区"  ><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="office.cap2"></span><span class="k">Interior</span></div></figure>
+      <figure class="shot"      data-title-mn="Оффис — Coffee булан"  data-title-zh="办公室 — 休息角"  ><img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="office.cap3"></span><span class="k">Interior</span></div></figure>
+      <figure class="shot tall" data-title-mn="Оффис — Ажлын хэсэг"  data-title-zh="办公室 — 工作区"  ><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80"   alt=""/><div class="shot-cap"><span class="t" data-i="office.cap4"></span><span class="k">Interior</span></div></figure>
+      <figure class="shot"      data-title-mn="Оффис — Хадгалалт"    data-title-zh="办公室 — 储物"    ><img src="https://images.unsplash.com/photo-1615529328331-f8917597711f?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="office.cap5"></span><span class="k">Interior</span></div></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt reveal" id="furniture">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">02 — FURNITURE</span></div>
+      <h2 class="section-h2" data-i="s2.h2"></h2><p class="section-sub" data-i="s2.p"></p>
+      <div class="chips"><span class="chip">Built-in</span><span class="chip" data-i="chip.storage">Хадгалалт</span><span class="chip">Minimal</span></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+      <span class="mpill"><span class="mdot"></span><b>FURNITURE</b></span>
+      <span class="mpill"><span class="mdot"></span><span data-i="meta.material">Материал</span>: <b>MDF / Ламинат</b></span>
+    </div>
+    <div class="gallery-d">
+      <figure class="shot big"  data-title-mn="Тавилга — Шүүгээний фасад" data-title-zh="家具 — 柜子正面"><img src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?auto=format&fit=crop&w=1200&q=80" alt=""/><div class="shot-cap"><span class="t" data-i="furn.cap1"></span><span class="k">Furniture</span></div></figure>
+      <figure class="shot"      data-title-mn="Тавилга — 3D"              data-title-zh="家具 — 3D规划"  ><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="furn.cap2"></span><span class="k">Furniture</span></div></figure>
+      <figure class="shot"      data-title-mn="Тавилга — Ор+ширээ"        data-title-zh="家具 — 床+工作台"><img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="furn.cap3"></span><span class="k">Furniture</span></div></figure>
+      <figure class="shot tall" data-title-mn="Тавилга — Деталь"          data-title-zh="家具 — 细节"    ><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=600&q=80"   alt=""/><div class="shot-cap"><span class="t" data-i="furn.cap4"></span><span class="k">Furniture</span></div></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="execution">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">03 — EXECUTION</span></div>
+      <h2 class="section-h2" data-i="s3.h2"></h2><p class="section-sub" data-i="s3.p"></p>
+      <div class="chips"><span class="chip">Fit-out</span><span class="chip" data-i="chip.material">Материал</span><span class="chip" data-i="chip.detail">Деталь</span></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+      <span class="mpill"><span class="mdot"></span><b>EXECUTION</b></span>
+      <span class="mpill"><span class="mdot"></span><span data-i="meta.days">Хугацаа</span>: <b>14–30 хоног</b></span>
+    </div>
+    <div class="gallery-d">
+      <figure class="shot big"  data-title-mn="Гүйцэтгэл — 1" data-title-zh="施工 — 1"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80" alt=""/><div class="shot-cap"><span class="t" data-i="exec.cap1"></span><span class="k">Execution</span></div></figure>
+      <figure class="shot"      data-title-mn="Гүйцэтгэл — 2" data-title-zh="施工 — 2"><img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="exec.cap2"></span><span class="k">Execution</span></div></figure>
+      <figure class="shot"      data-title-mn="Гүйцэтгэл — 3" data-title-zh="施工 — 3"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="exec.cap3"></span><span class="k">Execution</span></div></figure>
+      <figure class="shot tall" data-title-mn="Гүйцэтгэл — 4" data-title-zh="施工 — 4"><img src="https://images.unsplash.com/photo-1612637968894-660373e23b03?auto=format&fit=crop&w=600&q=80"   alt=""/><div class="shot-cap"><span class="t" data-i="exec.cap4"></span><span class="k">Execution</span></div></figure>
+      <figure class="shot"      data-title-mn="Гүйцэтгэл — 5" data-title-zh="施工 — 5"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="exec.cap5"></span><span class="k">Execution</span></div></figure>
+      <figure class="shot"      data-title-mn="Гүйцэтгэл — 6" data-title-zh="施工 — 6"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="exec.cap6"></span><span class="k">Execution</span></div></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt reveal" id="coffeeshop">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">04 — COFFEE SHOP</span></div>
+      <h2 class="section-h2" data-i="s4.h2"></h2><p class="section-sub" data-i="s4.p"></p>
+      <div class="chips"><span class="chip">Hospitality</span><span class="chip">Flow</span><span class="chip">Lighting</span></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+      <span class="mpill"><span class="mdot"></span><b>COFFEE</b> • 80–150м²</span>
+      <span class="mpill"><span class="mdot"></span><span data-i="meta.seats">Суудал</span>: <b>25–60</b></span>
+    </div>
+    <div class="gallery-d">
+      <figure class="shot big"  data-title-mn="Coffee shop — Ерөнхий"      data-title-zh="咖啡厅 — 整体"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=80" alt=""/><div class="shot-cap"><span class="t" data-i="cafe.cap1"></span><span class="k">Coffee</span></div></figure>
+      <figure class="shot"      data-title-mn="Coffee shop — Бар"           data-title-zh="咖啡厅 — 吧台"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="cafe.cap2"></span><span class="k">Coffee</span></div></figure>
+      <figure class="shot"      data-title-mn="Coffee shop — Гэрэлтүүлэг"  data-title-zh="咖啡厅 — 灯光"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="cafe.cap3"></span><span class="k">Coffee</span></div></figure>
+      <figure class="shot tall" data-title-mn="Coffee shop — Деталь"        data-title-zh="咖啡厅 — 细节"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"   alt=""/><div class="shot-cap"><span class="t" data-i="cafe.cap4"></span><span class="k">Coffee</span></div></figure>
+      <figure class="shot"      data-title-mn="Coffee shop — Нэмэлт"       data-title-zh="咖啡厅 — 其他"><img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="cafe.cap5"></span><span class="k">Coffee</span></div></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="childroom">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line"></div><span class="eyebrow-text">05 — CHILD ROOM</span></div>
+      <h2 class="section-h2" data-i="s5.h2"></h2><p class="section-sub" data-i="s5.p"></p>
+      <div class="chips"><span class="chip">Safe edges</span><span class="chip">Study zone</span><span class="chip" data-i="chip.storage">Хадгалалт</span></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+      <span class="mpill"><span class="mdot"></span><b>CHILD ROOM</b> • 12–20м²</span>
+      <span class="mpill"><span class="mdot"></span><span data-i="meta.func">Функц</span>: <b data-i="child.func">Сурах + Унтах</b></span>
+    </div>
+    <div class="gallery-d">
+      <figure class="shot big"  data-title-mn="Хүүхдийн өрөө — Ерөнхий"   data-title-zh="儿童房 — 整体"><img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=1200&q=80" alt=""/><div class="shot-cap"><span class="t" data-i="child.cap1"></span><span class="k">Child Room</span></div></figure>
+      <figure class="shot"      data-title-mn="Хүүхдийн өрөө — Сурах"     data-title-zh="儿童房 — 学习区"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="child.cap2"></span><span class="k">Child Room</span></div></figure>
+      <figure class="shot"      data-title-mn="Хүүхдийн өрөө — Хадгалалт" data-title-zh="儿童房 — 储物"><img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80"  alt=""/><div class="shot-cap"><span class="t" data-i="child.cap3"></span><span class="k">Child Room</span></div></figure>
+      <figure class="shot tall" data-title-mn="Хүүхдийн өрөө — Деталь"    data-title-zh="儿童房 — 细节"><img src="https://images.unsplash.com/photo-1620325867502-221cfb5faa5f?auto=format&fit=crop&w=600&q=80"   alt=""/><div class="shot-cap"><span class="t" data-i="child.cap4"></span><span class="k">Child Room</span></div></figure>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><h4 data-i="mini1.title"></h4><p data-i="mini1.body"></p></div>
+      <div class="info-card"><h4 data-i="mini2.title"></h4><p data-i="mini2.body"></p></div>
+      <div class="info-card"><h4 data-i="mini3.title"></h4><p data-i="mini3.body"></p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="marquee-wrap"><div class="marquee-track">
+    <span class="marquee-text">TB PLAN • ИНТЕРЬЕР • ТАВИЛГА • ГҮЙЦЭТГЭЛ • </span>
+    <span class="marquee-text">TB PLAN • ИНТЕРЬЕР • ТАВИЛГА • ГҮЙЦЭТГЭЛ • </span>
+    <span class="marquee-text">TB PLAN • ИНТЕРЬЕР • ТАВИЛГА • ГҮЙЦЭТГЭЛ • </span>
+  </div></div>
+  <div class="container footer-inner">
+    <div class="footer-brand">TB Plan</div>
+    <p class="footer-copy">© <span id="year"></span> TB Plan • <span data-i="footer.text"></span></p>
+    <a class="footer-up" href="index.html" data-i="footer.home"></a>
+  </div>
+</footer>
+
+<div class="lb" id="lb">
+  <div class="lb-inner">
+    <img id="lbImg" alt=""/>
+    <div class="lb-bar">
+      <div class="lb-title" id="lbTitle"></div>
+      <div class="lb-btns">
+        <button class="lb-btn" id="lbPrev">‹</button>
+        <button class="lb-btn" id="lbNext">›</button>
+        <button class="lb-btn" id="lbClose">✕</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="index.js"></script>
 </body>
 </html>
