@@ -1,312 +1,236 @@
 <!doctype html>
 <html lang="mn">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TB Plan</title>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- DM Serif Display: гарчигт зориулсан цэвэр serif -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet"/>
-    <!-- Noto Sans SC: хятад үсэгт зориулсан -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
-  </head>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>TB Plan — Дижитал · Дизайн · Медиа</title>
+<link rel="stylesheet" href="index.css"/>
+</head>
+<body>
 
-  <body>
-    <!-- Topbar -->
-    <header class="topbar" id="top">
-      <div class="container topbar__inner">
-        <a class="brand" href="#top" aria-label="TB Plan Нүүр">
-          <span class="brand__mark">TB</span>
-          <span class="brand__text">Plan</span>
-        </a>
+<div id="cursor"></div>
 
-        <nav class="nav" aria-label="Үндсэн цэс">
-          <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
-            <span></span><span></span><span></span>
-          </button>
-          <div class="nav__menu" id="navMenu">
-            <a href="#about"        data-i="nav.about">Бидний тухай</a>
-            <a href="uilchilgee.html" data-i="nav.services">Үйлчилгээ</a>
-            <a href="#services"     data-i="nav.directions">Чиглэлүүд</a>
-            <a href="#details"      data-i="nav.details">Дэлгэрэнгүй</a>
-            <a class="nav__cta" href="#contact" data-i="nav.contact">Холбоо барих</a>
-          </div>
-        </nav>
+<!-- LOADER -->
+<div id="loader">
+  <div class="ldr-label">TB PLAN — LOADING</div>
+  <div class="ldr-center"><div class="ldr-word"><span id="loaderWord">Design</span></div></div>
+  <div class="ldr-bottom"><div class="ldr-counter" id="loaderCounter">000</div></div>
+  <div class="ldr-bar"><div class="ldr-fill" id="loaderFill"></div></div>
+</div>
 
-        <button class="langSwitch" id="langBtn" aria-label="Хэл солих">
-          <span class="flag" id="langFlag">🇨🇳</span>
-          <span id="langLabel">中文</span>
-        </button>
-      </div>
-    </header>
+<!-- NAV -->
+<nav>
+  <div class="nav-pill lg" id="navPill">
+    <span class="nav-brand">TB Plan</span>
+    <div class="nav-div"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="#about"   data-i="nav.about">Бидний тухай</a>
+      <a class="nav-link" href="#services" data-i="nav.services">Үйлчилгээ</a>
+      <a class="nav-link" href="#details"  data-i="nav.directions">Чиглэлүүд</a>
+      <a class="nav-link" href="#contact"  data-i="nav.contact">Холбоо барих</a>
+    </div>
+    <div class="nav-div"></div>
+    <button class="nav-cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i="nav.cta.btn">Холбоо барих</button>
+    <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+  </div>
+</nav>
 
-    <!-- Hero -->
-    <section class="hero hero--editorial" aria-label="TB Plan hero">
-      <div class="hero__bg" style="--heroimg:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80')"></div>
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="eyebrow">TB PLAN</p>
-          <h1 data-i="hero.h1">Дижитал, дизайн, медиа, вэб хөгжүүлэлт — нэг баг, нэг төлөвлөгөө.</h1>
-          <p class="subhead" data-i="hero.sub">Бид таны төслийг эхнээс нь дуустал нь хөтөлнө: вэб сайт хөгжүүлэлт, интерьер төлөвлөлт, фото/видео үйлдвэрлэл, мөн барилгын материалын нийлүүлэлт.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#services" data-i="hero.btn">Үндсэн чиглэлүүд</a>
+<!-- HERO -->
+<section id="hero">
+  <video id="hero-video" autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260403_050628_c4e32401-fab4-4a27-b7a8-6e9291cd5959.mp4" type="video/mp4"/>
+  </video>
+  <div class="hero-layout">
+    <div class="hero-nav" style="height:5rem"></div>
+    <div class="hero-body">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-h1" id="heroH1" data-hero-key="hero.h1"></h1>
+          <p class="hero-sub" id="heroSub" data-i="hero.sub"></p>
+          <div class="hero-btns" id="heroBtns">
+            <button class="btn-w" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" data-i="hero.btn1">Чиглэлүүд харах</button>
+            <button class="btn-g lg" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i="hero.btn2">Холбоо барих ↗</button>
           </div>
         </div>
-        <div class="hero__stats">
-          <div class="stat">
-            <div class="stat__num">5+</div>
-            <div class="stat__label" data-i="stat.directions">Үндсэн чиглэл</div>
-          </div>
-          <div class="stat">
-            <div class="stat__num" data-i="stat.integrated.num">Нэгдсэн</div>
-            <div class="stat__label" data-i="stat.integrated.label">Төлөвлөлт → Гүйцэтгэл</div>
-          </div>
-          <div class="stat">
-            <div class="stat__num">TB Plan</div>
-            <div class="stat__label" data-i="stat.onestop">Нэг цэгийн үйлчилгээ</div>
+        <div class="hero-tag-col">
+          <div class="hero-tag lg" id="heroTag">
+            <p data-i="hero.tag">Дижитал. Дизайн. Медиа.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
 
-    <!-- Чиглэлүүд -->
-    <section class="section reveal" id="services">
-      <div class="container">
-        <div class="section__head">
-          <h2 data-i="services.h2">Үндсэн чиглэлүүд</h2>
-          <p data-i="services.p">Карт дээр дарвал тухайн чиглэлийн дэлгэрэнгүй хуудас руу очно.</p>
-        </div>
+<!-- SERVICES -->
+<section id="services" class="section reveal" style="background:#fff;color:#000">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:#ddd"></div><span class="eyebrow-text" data-i="eyebrow.services"></span></div>
+      <h2 class="section-h2" style="color:#000"><span data-i="services.h2.a">Манай</span> <em data-i="services.h2.b">үйлчилгээнүүд</em></h2>
+      <p class="section-sub" data-i="services.p"></p>
+    </div>
+    <div class="bento">
+      <a class="bcard bcard--wide" href="web.html">
+        <div class="bcard__bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="bcard__overlay"></div>
+        <div class="bcard__hover-badge"><div class="badge-pill" data-i="card.web.h3"></div></div>
+        <div class="bcard__content"><div class="bcard__num">01</div><h3 class="bcard__h3" data-i="card.web.h3"></h3><p class="bcard__p" data-i="card.web.p"></p><span class="bcard__link" data-i="card.link"></span></div>
+      </a>
+      <a class="bcard bcard--narrow" href="design.html">
+        <div class="bcard__bg" style="background-image:url('https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="bcard__overlay"></div>
+        <div class="bcard__hover-badge"><div class="badge-pill" data-i="card.interior.h3"></div></div>
+        <div class="bcard__content"><div class="bcard__num">02</div><h3 class="bcard__h3" data-i="card.interior.h3"></h3><p class="bcard__p" data-i="card.interior.p"></p><span class="bcard__link" data-i="card.link"></span></div>
+      </a>
+      <a class="bcard bcard--third" href="media.html">
+        <div class="bcard__bg" style="background-image:url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="bcard__overlay"></div>
+        <div class="bcard__hover-badge"><div class="badge-pill" data-i="card.media.h3"></div></div>
+        <div class="bcard__content"><div class="bcard__num">03</div><h3 class="bcard__h3" data-i="card.media.h3"></h3><p class="bcard__p" data-i="card.media.p"></p><span class="bcard__link" data-i="card.link"></span></div>
+      </a>
+      <a class="bcard bcard--third" href="#materials">
+        <div class="bcard__bg" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="bcard__overlay"></div>
+        <div class="bcard__hover-badge"><div class="badge-pill" data-i="card.materials.h3"></div></div>
+        <div class="bcard__content"><div class="bcard__num">04</div><h3 class="bcard__h3" data-i="card.materials.h3"></h3><p class="bcard__p" data-i="card.materials.p"></p><span class="bcard__link" data-i="card.link"></span></div>
+      </a>
+      <a class="bcard bcard--narrow" href="#foods">
+        <div class="bcard__bg" style="background-image:url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="bcard__overlay"></div>
+        <div class="bcard__hover-badge"><div class="badge-pill" data-i="card.food.h3"></div></div>
+        <div class="bcard__content"><div class="bcard__num">05</div><h3 class="bcard__h3" data-i="card.food.h3"></h3><p class="bcard__p" data-i="card.food.p"></p><span class="bcard__link" data-i="card.link"></span></div>
+      </a>
+    </div>
+  </div>
+</section>
 
-        <div class="grid" id="serviceGrid">
-          <a class="card" href="web.html"
-            data-img="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=80">
-            <div class="card__overlay"></div>
-            <div class="card__content">
-              <h3 data-i="card.web.h3">Вэб хөгжүүлэлт</h3>
-              <p data-i="card.web.p">Орчин үеийн вэб сайт, лендинг, систем, админ самбар.</p>
-              <span class="card__link" data-i="card.link">Дэлгэрэнгүй →</span>
-            </div>
-          </a>
-
-          <a class="card" href="design.html"
-            data-img="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2200&q=80">
-            <div class="card__overlay"></div>
-            <div class="card__content">
-              <h3 data-i="card.interior.h3">Интерьер дизайн</h3>
-              <p data-i="card.interior.p">Төлөвлөлт, концепт, 3D зураглал, материалын шийдэл.</p>
-              <span class="card__link" data-i="card.link">Дэлгэрэнгүй →</span>
-            </div>
-          </a>
-
-          <a class="card" href="media.html"
-            data-img="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=2200&q=80">
-            <div class="card__overlay"></div>
-            <div class="card__content">
-              <h3 data-i="card.media.h3">Медиа продакшн</h3>
-              <p data-i="card.media.p">Фото/видео, рийл, эвлүүлэг, брэнд визуал контент.</p>
-              <span class="card__link" data-i="card.link">Дэлгэрэнгүй →</span>
-            </div>
-          </a>
-
-          <a class="card" href="#visa"
-            data-img="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=2200&q=80">
-            <div class="card__overlay"></div>
-            <div class="card__content">
-              <p data-i="card.visa.p">Материал шалгалт, маягт, зөвлөгөө, бэлтгэл.</p>
-              <span class="card__link" data-i="card.link">Дэлгэрэнгүй →</span>
-            </div>
-          </a>
-
-          <a class="card" href="#materials" data-img="images/beton.png">
-            <div class="card__overlay"></div>
-            <div class="card__content">
-              <h3 data-i="card.materials.h3">Барилгын материал</h3>
-              <p data-i="card.materials.p">Нийлүүлэлт, ханган нийлүүлэлт, хүргэлт.</p>
-              <span class="card__link" id="materials-detail" data-i="card.link">Дэлгэрэнгүй →</span>
-            </div>
-          </a>
-
-          <a class="card" href="#foods"
-            data-img="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2200&q=80">
-            <div class="card__overlay"></div>
-            <div class="card__content">
-              <h3 data-i="card.food.h3">Хүнс</h3>
-              <p data-i="card.food.p">Импорт, ханган нийлүүлэлт, бөөний болон тогтмол нийлүүлэлт.</p>
-              <span class="card__link" data-i="card.link">Дэлгэрэнгүй →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Бидний тухай -->
-    <section class="section section--alt reveal" id="about">
-      <div class="container">
-        <div class="section__head">
-          <h2 data-i="about.h2">TB Plan — Бидний тухай</h2>
-          <p data-i="about.sub">Манай байгууллагын үйл ажиллагааны товч танилцуулга</p>
-        </div>
-
-        <div class="twoCol">
-          <div class="panel">
-            <h3 data-i="about.p1.h3">Бид юу хийдэг вэ?</h3>
-            <p data-i="about.p1.p">TB Plan нь олон чиглэлийн нэгдсэн үйлчилгээ үзүүлдэг байгууллага. Бид төслийг зөв төлөвлөөд, хурдан хэрэгжүүлж, хэмжигдэхүйц үр дүн гаргахад төвлөрдөг.</p>
-            <ul class="list">
-              <li data-i="about.l1">Вэб сайт болон вэб систем хөгжүүлэлт</li>
-              <li data-i="about.l2">Интерьер төлөвлөлт, концепт болон 3D зураглал</li>
-              <li data-i="about.l3">Фото/видео үйлдвэрлэл, контент бүтээлт</li>
-              <li data-i="about.l5">Барилгын материалын ханган нийлүүлэлт</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h3 data-i="about.p2.h3">Бид хэрхэн ажилладаг вэ?</h3>
-            <p data-i="about.p2.p">Эхлээд хэрэгцээг тодорхойлж, дараа нь төлөвлөгөө + хугацаа + үнэ санал болгоно. Явцын тайлан, загвар/драфт, засваруудыг тодорхой стандарттайгаар хүргүүлдэг.</p>
-            <div class="pillRow">
-              <span class="pill" data-i="pill.research">Судалгаа</span>
-              <span class="pill" data-i="pill.plan">Төлөвлөлт</span>
-              <span class="pill" data-i="pill.design">Дизайн</span>
-              <span class="pill" data-i="pill.prod">Үйлдвэрлэл</span>
-            </div>
-            <div class="note"></div>
-          </div>
+<!-- ABOUT -->
+<section id="about" class="section reveal" style="background:#f7f7f5;border-top:1px solid #eee;border-bottom:1px solid #eee;color:#000">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:#ddd"></div><span class="eyebrow-text" data-i="eyebrow.about"></span></div>
+      <h2 class="section-h2" style="color:#000">TB Plan — <em data-i="about.h2.em">Бидний тухай</em></h2>
+      <p class="section-sub" data-i="about.sub"></p>
+    </div>
+    <div class="two-col">
+      <div class="panel" style="background:#fff;border:1px solid #ebebeb">
+        <h3 data-i="about.p1.h3"></h3>
+        <p data-i="about.p1.p"></p>
+        <ul>
+          <li data-i="about.l1"></li><li data-i="about.l2"></li>
+          <li data-i="about.l3"></li><li data-i="about.l4"></li>
+          <li data-i="about.l5"></li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill" style="background:#fafafa;border-color:#e4e4e4;color:#777" data-i="pill.research"></span>
+          <span class="pill" style="background:#fafafa;border-color:#e4e4e4;color:#777" data-i="pill.plan"></span>
+          <span class="pill" style="background:#fafafa;border-color:#e4e4e4;color:#777" data-i="pill.design"></span>
+          <span class="pill" style="background:#fafafa;border-color:#e4e4e4;color:#777" data-i="pill.prod"></span>
         </div>
       </div>
-    </section>
-
-    <!-- Detail Slider -->
-    <section class="detailSlider" id="details" aria-label="Дэлгэрэнгүй слайдер">
-      <button class="sliderBtn sliderBtn--left" id="prevSlide" aria-label="Өмнөх слайд">‹</button>
-      <button class="sliderBtn sliderBtn--right" id="nextSlide" aria-label="Дараах слайд">›</button>
-
-      <div class="sliderTrack" id="sliderTrack">
-        <section class="detail slide is-active" id="web"
-          data-bg="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=80">
-          <div class="container detail__inner">
-            <h2 data-i="slide.web.h2">Вэб хөгжүүлэлт</h2>
-            <p data-i="slide.web.p">Орчин үеийн, хурдан, найдвартай вэб шийдлүүдийг бизнесийн хэрэгцээнд нийцүүлэн хөгжүүлж байна.</p>
-            <ul class="detail__bullets">
-              <li data-i="slide.web.l1">Бизнесийн вэб сайт + гишүүнчлэл</li>
-              <li data-i="slide.web.l2">Админ самбар / CRM / захиалгын систем</li>
-              <li data-i="slide.web.l3">SEO суурь + хурдны оновчлол</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="detail slide" id="interior"
-          data-bg="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2400&q=80">
-          <div class="container detail__inner">
-            <h2 data-i="slide.interior.h2">Интерьер дизайн</h2>
-            <p data-i="slide.interior.p">Орон зайн төлөвлөлтөөс дотоод засал чимэглэл, материал, гэрэлтүүлэг, 3D зураглал хүртэл цогц шийдэл.</p>
-            <ul class="detail__bullets">
-              <li data-i="slide.interior.l1">Интерьер дизайн</li>
-              <li data-i="slide.interior.l2">Тавилгын дизайн</li>
-              <li data-i="slide.interior.l3">Гүйцэтгэл</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="detail slide" id="media"
-          data-bg="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=2400&q=80">
-          <div class="container detail__inner">
-            <h2 data-i="slide.media.h2">Медиа продакшн</h2>
-            <p data-i="slide.media.p">Брэндийн фото/видео, бүтээгдэхүүний зураг авалт, рийл, эвлүүлэг, өнгө засвар.</p>
-            <ul class="detail__bullets">
-              <li data-i="slide.media.l1">Брендийн фото, видео зураг авалт</li>
-              <li data-i="slide.media.l2">Рийл, реклам, богино контент</li>
-              <li data-i="slide.media.l3">Эвлүүлэг, өнгө засвар, motion</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="detail slide" id="materials" data-bg="images/beton.png">
-          <div class="container detail__inner">
-            <h2 data-i="slide.materials.h2">Барилгын материал</h2>
-            <p data-i="slide.materials.p">Хайрга, Дайрга, Цагаан замаск, Бетон зуурмагны үйлдвэр.</p>
-            <ul class="detail__bullets">
-              <li data-i="slide.materials.l1">Бетон, Цагаан замаск</li>
-              <li data-i="slide.materials.l2">Хайрга, Дайрга</li>
-              <li data-i="slide.materials.l3">Бусад материалууд</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="detail slide" id="foods"
-          data-bg="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2400&q=80">
-          <div class="container detail__inner">
-            <h2 data-i="slide.food.h2">Хүнс</h2>
-            <p data-i="slide.food.p">Импорт, ханган нийлүүлэлт, тогтмол нийлүүлэлт — байгууллага болон бөөний хэрэгцээнд.</p>
-            <ul class="detail__bullets">
-              <li data-i="slide.food.l1">Ногоо • тогтмол нийлүүлэлт</li>
-              <li data-i="slide.food.l2">Ложистик • агуулах • хүргэлт</li>
-              <li data-i="slide.food.l3">Үнэ санал • гэрээт нийлүүлэлт</li>
-            </ul>
-          </div>
-        </section>
-      </div>
-
-      <div class="sliderDots" id="sliderDots" aria-label="Слайдын цэгүүд"></div>
-    </section>
-
-    <!-- Холбоо барих -->
-    <section class="section reveal" id="contact">
-      <div class="container">
-        <div class="section__head">
-          <h2 data-i="contact.h2">Холбоо барих</h2>
-          <p data-i="contact.sub">Та юу хийх гэж байгаагаа бичээрэй — бид төлөвлөгөөтэйгөөр хариулна.</p>
+      <div class="panel" style="background:#fff;border:1px solid #ebebeb">
+        <h3 data-i="about.p2.h3"></h3>
+        <p data-i="about.p2.p"></p>
+        <div class="process-steps">
+          <div class="step" style="background:#fafafa;border:1px solid #ebebeb"><div class="step-dot">01</div><div class="step-label" style="color:#444" data-i="step.1"></div></div>
+          <div class="step" style="background:#fafafa;border:1px solid #ebebeb"><div class="step-dot">02</div><div class="step-label" style="color:#444" data-i="step.2"></div></div>
+          <div class="step" style="background:#fafafa;border:1px solid #ebebeb"><div class="step-dot">03</div><div class="step-label" style="color:#444" data-i="step.3"></div></div>
+          <div class="step" style="background:#fafafa;border:1px solid #ebebeb"><div class="step-dot">04</div><div class="step-label" style="color:#444" data-i="step.4"></div></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <form class="form" id="contactForm" novalidate>
-          <div class="form__row">
-            <label>
-              <span data-i="form.name">Нэр</span>
-              <input type="text" name="name"
-                data-placeholder-mn="Таны нэр"
-                data-placeholder-zh="您的姓名"
-                placeholder="Таны нэр" required />
-            </label>
-            <label>
-              <span data-i="form.contact">И-мэйл / Утас</span>
-              <input type="text" name="contact"
-                data-placeholder-mn="you@email.com эсвэл +976..."
-                data-placeholder-zh="邮箱 / 电话"
-                placeholder="you@email.com эсвэл +976..." required />
-            </label>
+<!-- DETAIL SLIDER -->
+<section id="details" class="reveal">
+  <div class="slider-wrap">
+    <button class="slide-btn-prev" id="prevSlide">‹</button>
+    <button class="slide-btn-next" id="nextSlide">›</button>
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide is-active" id="web" style="min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center">
+        <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=80')"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.22),rgba(0,0,0,.72))"></div>
+        <div class="slide-inner"><div class="slide-num">01 / 05</div><h2 class="slide-h2" data-i="slide.web.h2"></h2><p class="slide-p" data-i="slide.web.p"></p><ul class="slide-bullets"><li data-i="slide.web.l1"></li><li data-i="slide.web.l2"></li><li data-i="slide.web.l3"></li></ul></div>
+      </div>
+      <div class="slide" id="interior" style="min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center">
+        <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2400&q=80')"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.22),rgba(0,0,0,.72))"></div>
+        <div class="slide-inner"><div class="slide-num">02 / 05</div><h2 class="slide-h2" data-i="slide.interior.h2"></h2><p class="slide-p" data-i="slide.interior.p"></p><ul class="slide-bullets"><li data-i="slide.interior.l1"></li><li data-i="slide.interior.l2"></li><li data-i="slide.interior.l3"></li></ul></div>
+      </div>
+      <div class="slide" id="media" style="min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center">
+        <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=2400&q=80')"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.22),rgba(0,0,0,.72))"></div>
+        <div class="slide-inner"><div class="slide-num">03 / 05</div><h2 class="slide-h2" data-i="slide.media.h2"></h2><p class="slide-p" data-i="slide.media.p"></p><ul class="slide-bullets"><li data-i="slide.media.l1"></li><li data-i="slide.media.l2"></li><li data-i="slide.media.l3"></li></ul></div>
+      </div>
+      <div class="slide" id="materials" style="min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center">
+        <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2400&q=80')"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.22),rgba(0,0,0,.72))"></div>
+        <div class="slide-inner"><div class="slide-num">04 / 05</div><h2 class="slide-h2" data-i="slide.materials.h2"></h2><p class="slide-p" data-i="slide.materials.p"></p><ul class="slide-bullets"><li data-i="slide.materials.l1"></li><li data-i="slide.materials.l2"></li><li data-i="slide.materials.l3"></li></ul></div>
+      </div>
+      <div class="slide" id="foods" style="min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center">
+        <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2400&q=80')"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.22),rgba(0,0,0,.72))"></div>
+        <div class="slide-inner"><div class="slide-num">05 / 05</div><h2 class="slide-h2" data-i="slide.food.h2"></h2><p class="slide-p" data-i="slide.food.p"></p><ul class="slide-bullets"><li data-i="slide.food.l1"></li><li data-i="slide.food.l2"></li><li data-i="slide.food.l3"></li></ul></div>
+      </div>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section reveal" style="background:#fff;color:#000">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:#ddd"></div><span class="eyebrow-text" data-i="eyebrow.contact"></span></div>
+      <h2 class="section-h2" style="color:#000"><em data-i="contact.h2.a">Ярилцацгаая</em></h2>
+      <p class="section-sub" data-i="contact.sub"></p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3 data-i="contact.info.h3" style="color:#000"></h3>
+        <p data-i="contact.info.p" style="color:#666"></p>
+        <div>
+          <span class="contact-tag"><span class="dot"></span><span data-i="contact.tag.available"></span></span>
+          <span class="contact-tag">📍 Улаанбаатар, Монгол</span>
+          <span class="contact-tag">🌐 mn · zh</span>
+        </div>
+      </div>
+      <div class="form-card" style="background:#fff;border:1px solid #ebebeb">
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group"><label data-i="form.name" style="color:#aaa"></label><input type="text" name="name" placeholder="Таны нэр" required/></div>
+            <div class="form-group"><label data-i="form.contact" style="color:#aaa"></label><input type="text" name="contact" placeholder="you@email.com" required/></div>
           </div>
-
-          <label>
-            <span data-i="form.service">Сонирхож буй үйлчилгээ</span>
-            <select name="service" id="serviceSelect"></select>
-          </label>
-
-          <label>
-            <span data-i="form.message">Мессеж</span>
-            <textarea name="message" rows="5"
-              data-placeholder-mn="Ямар үйлчилгээ хэрэгтэйгээ товч тайлбарлаарай..."
-              data-placeholder-zh="请简要说明您需要的服务..."
-              placeholder="Ямар үйлчилгээ хэрэгтэйгээ товч тайлбарлаарай..."
-              required></textarea>
-          </label>
-
-          <div class="form__actions">
-            <button class="btn btn--primary" type="submit" data-i="form.submit">Илгээх</button>
-            <p class="form__hint" id="formHint" aria-live="polite"></p>
-          </div>
+          <div class="form-group"><label data-i="form.service" style="color:#aaa"></label><select name="service" id="serviceSelect"></select></div>
+          <div class="form-group"><label data-i="form.message" style="color:#aaa"></label><textarea name="message" rows="4" placeholder="Ямар үйлчилгээ хэрэгтэйгээ товч тайлбарлаарай..." required></textarea></div>
+          <button class="btn-submit" type="submit" data-i="form.submit" style="background:#000;color:#fff"></button>
+          <div class="form-hint" id="formHint"></div>
         </form>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <footer class="footer">
-      <div class="container footer__inner">
-        <p>© <span id="year"></span> TB Plan. <span data-i="footer.rights">Бүх эрх хуулиар хамгаалагдсан.</span></p>
-        <a href="#top" data-i="footer.up">Дээш очих ↑</a>
-      </div>
-    </footer>
+<!-- FOOTER -->
+<footer style="background:#fff;color:#000">
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-text">TB PLAN • ДИЖИТАЛ • ДИЗАЙН • МЕДИА • ВЭБ • </span>
+      <span class="marquee-text">TB PLAN • ДИЖИТАЛ • ДИЗАЙН • МЕДИА • ВЭБ • </span>
+      <span class="marquee-text">TB PLAN • ДИЖИТАЛ • ДИЗАЙН • МЕДИА • ВЭБ • </span>
+      <span class="marquee-text">TB PLAN • ДИЖИТАЛ • ДИЗАЙН • МЕДИА • ВЭБ • </span>
+    </div>
+  </div>
+  <div class="container footer-inner">
+    <div class="footer-brand" style="color:#000">TB Plan</div>
+    <p class="footer-copy">© <span id="year"></span> TB Plan. <span data-i="footer.rights"></span></p>
+    <a class="footer-up" href="#hero" data-i="footer.up" style="color:#aaa"></a>
+  </div>
+</footer>
 
-    <!-- i18n -->
-    <script src="index.js"></script>
-
-    
-  </body>
+<script src="index.js"></script>
+</body>
 </html>
