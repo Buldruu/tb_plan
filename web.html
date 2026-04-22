@@ -1,35 +1,127 @@
 <!doctype html>
 <html lang="mn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>TB Plan | Вэб хөгжүүлэлт</title>
-  <link rel="stylesheet" href="index.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="index.css"/>
+<style>
+/* Terminal green override */
+:root{
+  --bg:#040a06; --surface:#07130c; --surface2:#0b1d11;
+  --text:#b6ffd8; --muted:#4d9966;
+  --stroke:#0f3d22; --stroke2:#164d2b;
+  --accent-a:#00ff9c; --accent-b:#00cc7a;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+}
+body{background:var(--bg);color:var(--text);cursor:none}
+.hero-scanlines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.18) 2px,rgba(0,0,0,.18) 4px);pointer-events:none;z-index:1;opacity:.35}
+.hero-glow{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(0,255,156,.07),transparent 70%);pointer-events:none}
+.hero-grid-web{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(0,255,156,.025) 59px,rgba(0,255,156,.025) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(0,255,156,.018) 59px,rgba(0,255,156,.018) 60px)}
+#hero-web{position:relative;height:100vh;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
+/* Nav accent */
+.nav-brand{color:var(--accent-a) !important}
+.nav-link{font-family:var(--font-mono);color:var(--muted) !important}
+.nav-link:hover{color:var(--accent-a) !important;background:rgba(0,255,156,.06) !important}
+.nav-back{color:var(--muted) !important}
+.nav-back:hover{color:var(--accent-a) !important;background:rgba(0,255,156,.06) !important}
+.nav-pill{border-color:var(--stroke2) !important}
+.lang-btn{border-color:var(--stroke2) !important;color:var(--muted) !important}
+.lang-btn:hover{color:var(--accent-a) !important}
+/* Hero tag */
+.hero-tag{border-color:rgba(0,255,156,.2) !important;background:rgba(0,0,0,.35) !important}
+.hero-tag p{font-family:var(--font-mono);color:var(--muted)}
+.hero-tag p span{color:var(--accent-a)}
+/* Buttons */
+.btn-acc{background:var(--accent-a);color:#040a06;padding:.65rem 1.5rem;border-radius:8px;font-size:.875rem;font-weight:700;border:none;cursor:none;font-family:var(--font-body);transition:.2s}
+.btn-acc:hover{background:rgba(0,255,156,.8);transform:translateY(-1px)}
+.btn-line{padding:.65rem 1.5rem;border-radius:8px;font-size:.875rem;font-weight:500;color:var(--text);cursor:none;border:1px solid var(--stroke2);transition:.2s;font-family:var(--font-body)}
+.btn-line:hover{border-color:rgba(0,255,156,.5);color:var(--accent-a)}
+/* Scroll hint */
+.scroll-line::after{background:var(--accent-a)}
+/* Section */
+.section--alt{background:var(--surface);border-color:var(--stroke)}
+/* Service cards */
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem}
+.svc-card{background:var(--surface);border:1px solid var(--stroke);border-radius:14px;padding:1.5rem;transition:.25s}
+.svc-card:hover{border-color:rgba(0,255,156,.3);box-shadow:0 8px 30px rgba(0,255,156,.07)}
+.svc-card h3{font-size:13.5px;font-weight:600;color:var(--accent-a);margin-bottom:.75rem;font-family:var(--font-mono)}
+.svc-card ul{list-style:none;padding:0}
+.svc-card ul li{font-size:13px;color:var(--muted);padding:.3rem 0;padding-left:1.1rem;position:relative;border-bottom:1px solid var(--stroke);line-height:1.55}
+.svc-card ul li:last-child{border-bottom:none}
+.svc-card ul li::before{content:'$';position:absolute;left:0;color:var(--accent-a);font-family:var(--font-mono);font-size:10px;top:.35rem}
+/* Stack */
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.5rem}
+.stack-item{background:var(--surface);border:1px solid var(--stroke);border-radius:10px;padding:1rem;text-align:center;transition:.2s;cursor:none}
+.stack-item:hover{border-color:rgba(0,255,156,.3);background:var(--surface2)}
+.stack-item .sn{font-size:13px;font-weight:600;color:var(--text);margin-bottom:.2rem;font-family:var(--font-mono)}
+.stack-item .sr{font-size:11px;color:var(--muted)}
+/* CTA box */
+.cta-box{background:var(--surface);border:1px solid var(--stroke2);border-radius:16px;padding:2.5rem;text-align:center;margin-top:4rem;border-style:dashed}
+.cta-box h3{font-size:clamp(22px,3vw,36px);font-weight:600;letter-spacing:-.03em;color:var(--text);margin-bottom:.75rem}
+.cta-box p{font-size:14px;color:var(--muted);margin-bottom:1.75rem;max-width:46ch;margin-inline:auto}
+/* Footer */
+footer{border-color:var(--stroke)}
+.footer-brand,.marquee-text{color:rgba(0,255,156,.08) !important}
+.footer-copy,.footer-up{color:var(--muted)}
+.footer-up:hover{color:var(--accent-a)}
+@media(max-width:700px){.card-grid,.stack-grid{grid-template-columns:1fr 1fr}}
+</style>
 </head>
-<body class="theme-terminal">
-<div class="cursor" id="cursor"></div>
+<body>
+<div id="cursor"></div>
 
-<header>
-  <div class="container headerInner">
-    <a class="backBtn" href="index.html" aria-label="Буцах">
-      <span class="backBtn__icon">←</span>
-      <span class="backBtn__text" data-i="back">Back</span>
-    </a>
-    <div class="brand-text-terminal">TB Plan</div>
-    <nav>
-      <a href="index.html" data-i="nav.home">нүүр</a>
-      <a href="index.html#services" data-i="nav.services">үйлчилгээ</a>
-      <a href="index.html#contact" data-i="nav.contact">холбоо барих</a>
-    </nav>
-    <button class="langSwitch" id="langBtn"><span class="flag" id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
+<nav>
+  <div class="nav-pill lg" id="navPill">
+    <a class="nav-back" href="index.html">← <span data-i="back">Буцах</span></a>
+    <div class="nav-div"></div>
+    <span class="nav-brand">TB Plan</span>
+    <div class="nav-div"></div>
+    <div class="nav-links">
+      <a class="nav-link" href="#services" data-i="nav.web.services">// үйлчилгээ</a>
+      <a class="nav-link" href="#stack"    data-i="nav.web.stack">// стек</a>
+      <a class="nav-link" href="index.html#contact" data-i="nav.web.contact">// холбоо барих</a>
+    </div>
+    <a style="background:var(--accent-a);color:#040a06;padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:700;border:none" href="index.html#contact" data-i="nav.web.cta">Захиалах</a>
+    <button class="lang-btn" id="langBtn"><span id="langFlag">🇨🇳</span><span id="langLabel">中文</span></button>
   </div>
-</header>
+</nav>
 
-<main class="container">
-  <section class="hero-terminal">
+<section id="hero-web">
+  <div class="hero-scanlines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-grid-web"></div>
+  <div class="hero-layout" style="position:relative;z-index:2">
+    <div style="height:5rem"></div>
+    <div class="hero-body">
+      <div class="hero-grid">
+        <div>
+          <p style="font-size:10px;color:var(--accent-a);text-transform:uppercase;letter-spacing:.35em;font-weight:500;margin-bottom:.8rem;font-family:var(--font-mono)">TB PLAN • WEB DEVELOPMENT</p>
+          <h1 class="hero-h1" id="heroH1" data-hero-key="hero.h1.web" style="color:var(--text)"></h1>
+          <p class="hero-sub" id="heroSub" data-i="hero.sub.web"></p>
+          <div class="hero-btns" id="heroBtns">
+            <a class="btn-acc" href="index.html#contact" data-i="hero.btn1.web">Захиалах</a>
+            <a class="btn-line" href="#services"         data-i="hero.btn2.web">Үйлчилгээ үзэх</a>
+          </div>
+        </div>
+        <div class="hero-tag-col">
+          <div class="hero-tag lg" id="heroTag" style="border-color:rgba(0,255,156,.2);background:rgba(0,0,0,.35)">
+            <p style="font-family:var(--font-mono);color:var(--muted)"><span style="color:var(--accent-a)">$</span> npm run build<br/><span style="color:var(--accent-a)">✓</span> Build successful<br/><span style="color:var(--accent-a)">🚀</span> Ready for deploy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span style="font-family:var(--font-mono)">Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- TERMINAL -->
+<section class="section reveal" id="terminal-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono)">// терминал</span></div>
+      <h2 class="section-h2" data-i="term.title"></h2>
+    </div>
     <div class="terminal">
       <div class="termHeader">
         <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
@@ -37,35 +129,65 @@
       </div>
       <div class="termBody" id="terminal"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section style="margin-top:40px" class="card-terminal">
-    <h3 data-i="svc.h3">// үйлчилгээ</h3>
-    <ul>
-      <li data-i="svc.l1">Өндөр гүйцэтгэлтэй бизнес вэб сайтууд</li>
-      <li data-i="svc.l2">Борлуулалт чиглэсэн лендинг хуудсууд</li>
-      <li data-i="svc.l3">Админ самбар, CRM системүүд</li>
-      <li data-i="svc.l4">Онлайн худалдааны платформууд</li>
-      <li data-i="svc.l5">Захиалгат вэб аппликейшн</li>
-    </ul>
-  </section>
+<!-- SERVICES -->
+<section class="section section--alt reveal" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono)">// үйлчилгээ</span></div>
+      <h2 class="section-h2" data-i="svc.h3"></h2>
+      <p class="section-sub" data-i="svc.sub"></p>
+    </div>
+    <div class="card-grid">
+      <div class="svc-card"><h3>// бизнесийн вэб сайт</h3><ul><li data-i="svc.l1"></li><li data-i="svc.l2"></li><li>SEO суурь + хурдны оновчлол</li><li>Mobile-first дизайн</li></ul></div>
+      <div class="svc-card"><h3>// систем, admin panel</h3><ul><li data-i="svc.l3"></li><li data-i="svc.l5"></li><li>Захиалга + мессеж + мэдэгдэл</li><li>Backup + security суурь</li></ul></div>
+      <div class="svc-card"><h3>// e-commerce</h3><ul><li data-i="svc.l4"></li><li>Төлбөрийн систем интеграци</li><li>Бараа удирдлага, захиалга</li><li>Хэрэглэгчийн бүртгэл + хяналт</li></ul></div>
+      <div class="svc-card"><h3>// хугацаа + процесс</h3><ul><li>Хүлээж авах → Төлөвлөгөө → Дизайн</li><li>Хөгжүүлэлт → Тест → Нийтлэл</li><li>Явцын тайлан + засвар</li><li>Гэрээт дэмжлэг (сарын)</li></ul></div>
+    </div>
+  </div>
+</section>
 
-  <section style="margin-top:18px" class="card-terminal">
-    <h3 data-i="stack.h3">// технологийн стек</h3>
-    <ul>
-      <li>HTML, CSS, JavaScript</li>
-      <li>React, Next.js</li>
-      <li>Node.js, PostgreSQL</li>
-      <li>Git, CI/CD, Vercel</li>
-    </ul>
-  </section>
-</main>
+<!-- STACK -->
+<section class="section reveal" id="stack">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow-row"><div class="eyebrow-line" style="background:var(--stroke2)"></div><span class="eyebrow-text" style="font-family:var(--font-mono)">// технологийн стек</span></div>
+      <h2 class="section-h2" data-i="stack.h3"></h2>
+      <p class="section-sub">Орчин үеийн, гүйцэтгэлтэй технологиуд ашиглана.</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-item"><div class="sn">React</div><div class="sr">Frontend</div></div>
+      <div class="stack-item"><div class="sn">Next.js</div><div class="sr">Full-stack</div></div>
+      <div class="stack-item"><div class="sn">Node.js</div><div class="sr">Backend</div></div>
+      <div class="stack-item"><div class="sn">PostgreSQL</div><div class="sr">Database</div></div>
+      <div class="stack-item"><div class="sn">TypeScript</div><div class="sr">Language</div></div>
+      <div class="stack-item"><div class="sn">Tailwind</div><div class="sr">Styling</div></div>
+      <div class="stack-item"><div class="sn">Vercel</div><div class="sr">Deploy</div></div>
+      <div class="stack-item"><div class="sn">Git / CI-CD</div><div class="sr">DevOps</div></div>
+    </div>
+    <div class="cta-box reveal">
+      <h3 data-i="cta.h3">Төслөө эхлүүлэхэд бэлэн үү?</h3>
+      <p data-i="cta.p"></p>
+      <a class="btn-acc" href="index.html#contact" data-i="cta.btn">Холбоо барих →</a>
+    </div>
+  </div>
+</section>
 
 <footer>
-  <div class="container" data-i="footer">© 2026 TB Plan — бэлэн загвар биш, цэвэр код.</div>
+  <div class="marquee-wrap"><div class="marquee-track">
+    <span class="marquee-text" style="color:rgba(0,255,156,.05)">TB PLAN • WEB • CODE • BUILD • DEPLOY • </span>
+    <span class="marquee-text" style="color:rgba(0,255,156,.05)">TB PLAN • WEB • CODE • BUILD • DEPLOY • </span>
+    <span class="marquee-text" style="color:rgba(0,255,156,.05)">TB PLAN • WEB • CODE • BUILD • DEPLOY • </span>
+  </div></div>
+  <div class="container footer-inner" style="font-family:var(--font-mono)">
+    <div class="footer-brand" style="color:var(--accent-a)">TB Plan</div>
+    <p class="footer-copy" data-i="footer.web"></p>
+    <a class="footer-up" href="index.html">← index.html</a>
+  </div>
 </footer>
 
-
-    <script src="index.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
